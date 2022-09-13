@@ -8,18 +8,49 @@
     <link rel="stylesheet" href="dist/css/index.css">
     <title>DIPH</title>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
    <header class="">
         <div class="col-sm d-flex align-items-center">
             <img src="assets/components/logo/DIPH-logo.png" alt="Picture of DIPH logo">
             <span>DIPH</span>
-    </div>
+        </div>
    </header> 
-   <main>
-    <p>hello im a <a href="#">yo</a></p>
+   <main class="d-flex align-items-center flex-column">
+        <p>hello im a <a href="#">yo</a></p>
+        <section class="card container col-6 p-3">
+            <div class="write-post-wrapper d-flex flex-column col">
+                <div class="d-flex flex-column">
+                    <div class="d-flex">
+                        <div class="profile-img-wrapper">
+                            <img class="" src="#">
+                        </div>
+                        <h2>Username</h2>
+                    </div>
+                    <div class="form-floating">
+                        <textarea class="form-control" id="postInput" placeholder="Write here"></textarea>
+                        <label class="fw-lighter" for="postInput">Write something...</label>
+                    </div>
+                </div>
+                <button class="btn col-2 align-self-end rounded">Post</button>
+            </div>
+        </section>
+        <section class="col-6 mt-4">
+            <div class="d-flex justify-content-between">
+                <div class="search-wrap d-flex rounded-pill col-4">
+                    <img class="search-icon" src="/assets/components/icons/search-icon.png">              
+                    <input id="searchInput">
+                </div>
+                <select class="rounded-pill px-3">
+                    <option>Filter...</option>
+                    <option value="1">Chronological</option>
+                    <option value="2">By username</option>
+                    <option value="3">I have no idea</option>
+                </select>
+            </div>
+        </section>
    </main>
-   <footer>
-    &copy; Dina Olufsen & Phillip Mikalsen
+   <footer class="mt-auto">
+        <p class="text-center">&copy; Dina Olufsen & Phillip Mikalsen</p>
    </footer>
 </body>
 </html>
