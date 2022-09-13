@@ -1,5 +1,20 @@
+// CUSTOM
+@import "components/_variables";
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+// COMPONENTS
 @import "components/_header";
 
+body {
+    color: $white;
+    background-color: $bg;
 
-// BOTTOM IMPORT // 
-@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+    & a {
+        color: $link-color;
+    }
+}
+
+header,
+footer {
+        background-color: $gray;
+    }
