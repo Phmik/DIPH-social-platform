@@ -10776,8 +10776,12 @@ textarea.form-control-lg {
   }
 }
 header {
-  height: 5rem;
   font-family: proxima-nova-extra-condensed, sans-serif;
+  text-transform: uppercase;
+}
+header .home-link {
+  font-weight: 700;
+  font-size: 2.5rem;
 }
 header .d-flex {
   text-align: center;
@@ -10785,6 +10789,24 @@ header .d-flex {
 header img {
   height: 4rem;
   margin: 0.5rem;
+}
+header nav {
+  cursor: pointer;
+  font-family: proxima-nova-condensed, sans-serif;
+  font-size: 0.8rem;
+}
+header .nav-link,
+header .home-link {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+header .img-container img {
+  height: 3.5rem;
+  width: 3.5rem;
+  object-fit: cover;
+}
+header .active {
+  text-decoration: underline;
 }
 
 body {
