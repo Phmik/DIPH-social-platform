@@ -7,10 +7,18 @@ $body-text: dolly-new, sans-serif;
 
 // COLORS
 
-$gray: #333333;
-$bg: #A9717B;
-$green: #2A7567;
-$green-hover: #27574E;
-$link-color: #D999A5;
-$dark-red: #660024;
-$white: #FFFFFF;
+$gray:         #333333;
+$bg:           #A9717B;
+$green:        #2A7567;
+$green-hover:  #27574E;
+$link-color:   #D999A5;
+$dark-red:     #660024;
+$white:        #FFFFFF;
+
+//CARD
+$card-bg: $gray;
+
+//TEXTAREA
+$form-floating-height:            8rem;
+$input-border-width:              0;
+$input-btn-focus-width:           0;

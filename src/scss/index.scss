@@ -1,5 +1,6 @@
 // CUSTOM
 @import "components/_variables";
+@import "components/_buttons";
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
 // COMPONENTS
@@ -11,6 +12,23 @@ body {
 
     & a {
         color: $link-color;
+    }
+
+    & #postInput {
+        background-color: $gray;
+    }
+
+    & .search-wrap {
+        background-color: $white;
+        padding: 0.5rem;
+        height: 2.5rem;
+
+        & #searchInput{
+            width: 100%;
+            height: 100%;
+            border: none;
+
+        }
     }
 }
 

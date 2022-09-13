@@ -15,7 +15,8 @@
   },
   "homepage": "https://github.com/Phmik/DIPH-social-platform#readme",
   "dependencies": {
-    "bootstrap": "^5.2.0"
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "^5.2.1"
   },
   "devDependencies": {
     "live-server": "^1.2.2",

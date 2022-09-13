@@ -1,0 +1,11 @@
+
+.btn {
+    color: $white !important;
+    background-color: $green !important;
+    border: solid 2px $white !important;
+    text-transform: uppercase;
+
+    &:hover {
+        background-color: $green-hover !important;
+    }
+}
