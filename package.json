@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Noroff JS2 with Dina",
   "main": "index.js",
-  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Phmik/DIPH-social-platform.git"
@@ -27,5 +26,4 @@
     "build": "sass src/scss:dist/css",
     "watch": "sass --watch src/scss:dist/css & live-server"
   }
-  
 }
