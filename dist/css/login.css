@@ -1,9 +1,9 @@
 /* Error: Undefined variable.
  *   ,
- * 3 |     font-family: $logo-font;
+ * 2 |     font-family: $logo-font;
  *   |                  ^^^^^^^^^^
  *   '
- *   src\scss\components\_header.scss 3:18  @import
+ *   src\scss\components\_header.scss 2:18  @import
  *   src\scss\login.scss 1:9                root stylesheet */
 
 body::before {
@@ -14,5 +14,5 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
-  content: "Error: Undefined variable.\a   \2577 \a 3 \2502      font-family: $logo-font;\d\a   \2502                   ^^^^^^^^^^\a   \2575 \a   src\\scss\\components\\_header.scss 3:18  @import\a   src\\scss\\login.scss 1:9                root stylesheet";
+  content: "Error: Undefined variable.\a   \2577 \a 2 \2502      font-family: $logo-font;\d\a   \2502                   ^^^^^^^^^^\a   \2575 \a   src\\scss\\components\\_header.scss 2:18  @import\a   src\\scss\\login.scss 1:9                root stylesheet";
 }
