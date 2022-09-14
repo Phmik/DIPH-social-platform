@@ -6,45 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.typekit.net/tat3ron.css">
     <link rel="stylesheet" href="dist/css/index.css">
-    <title>Log in</title>
+    <title>DIPH | Log In</title>
 </head>
-<body>
-   <header>
-    <div class="d-flex align-items-center justify-content-between">
-        <div class="justify-content-start d-flex align-items-center">
-            <a href="/index.html" class="home-link">
-                <img src="assets/components/logo/DIPH-logo.png" alt="Picture of DIPH logo">
-                DIPH
-            </a>
+<body class="d-flex flex-column min-vh-100">
+    <header>
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="justify-content-start d-flex align-items-center">
+                <a href="/index.html" class="home-link d-flex">
+                    <img src="assets/components/logo/DIPH-logo.png" alt="Picture of DIPH logo">
+                    <span class="align-self-center">DIPH</span>
+                </a>
+            </div>
+            <nav class="nav">
+                <ul class="nav">
+                    <li class="nav-item flex-column">
+                        <a href="/login.html" class="nav-link">
+                            <div class="img-container">
+                                <img src="assets/components/icons/key-icon.png" alt="picture of key for login" class="rounded-circle">
+                            </div>
+                            login
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/profile.html" class="nav-link">
+                            <div class="img-container">
+                            <img src="assets/images/moi.jpg" alt="" class="rounded-circle">
+                            </div>
+                            profile
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
-        <nav class="nav">
-            <ul class="nav justify-content-end">
-                <li class="nav-item flex-column">
-                    <a href="/login.html" class="nav-link row active" aria-current="page">
-                        <div class="img-container">
-                            <img src="assets/components/icons/key-icon.png" alt="picture of key for login" class="rounded-circle">
-                        </div>
-                        login
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/profile.html" class="nav-link row">
-                        <div class="img-container">
-                        <img src="assets/images/moi.jpg" alt="" class="rounded-circle">
-                        </div>
-                        profile
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-    
-   </header> 
-   <main>
-    <p>hello im a <a href="#">yo</a></p>
-   </main>
-   <footer>
-    <p class="text-center">&copy; Dina Olufsen & Phillip Mikalsen</p>
-   </footer>
+       </header> 
+   <main class="d-flex align-items-center flex-column mb-3">
+
+    </main>
+    <footer class="mt-auto">
+        <p class="text-center">&copy; Dina Olufsen & Phillip Mikalsen</p>
+    </footer>
 </body>
 </html>
