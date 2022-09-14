@@ -6,21 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.typekit.net/tat3ron.css">
     <link rel="stylesheet" href="dist/css/index.css">
-    <title>DIPH</title>
+    <title>DIPH | Home</title>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
    <header>
     <div class="d-flex align-items-center justify-content-between">
         <div class="justify-content-start d-flex align-items-center">
-            <a href="/index.html" class="home-link">
+            <a href="/index.html" class="home-link d-flex">
                 <img src="assets/components/logo/DIPH-logo.png" alt="Picture of DIPH logo">
-                DIPH
+                <span class="align-self-center">DIPH</span>
             </a>
         </div>
         <nav class="nav">
-            <ul class="nav justify-content-end">
+            <ul class="nav">
                 <li class="nav-item flex-column">
-                    <a href="/login.html" class="nav-link row">
+                    <a href="/login.html" class="nav-link">
                         <div class="img-container">
                             <img src="assets/components/icons/key-icon.png" alt="picture of key for login" class="rounded-circle">
                         </div>
@@ -28,7 +28,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/profile.html" class="nav-link row">
+                    <a href="/profile.html" class="nav-link">
                         <div class="img-container">
                         <img src="assets/images/moi.jpg" alt="" class="rounded-circle">
                         </div>
@@ -39,18 +39,18 @@
         </nav>
     </div>
    </header> 
-   <main class="d-flex align-items-center flex-column">
-        <p>hello im a <a href="#">yo</a></p>
-        <section class="card container col-6 p-3">
+   <main class="d-flex align-items-center flex-column mb-3">
+        <h1 class="visually-hidden">DIPH home page</h1>
+        <section class="card container col-6 p-3 mt-5">
             <div class="write-post-wrapper d-flex flex-column col">
                 <div class="d-flex flex-column">
-                    <div class="d-flex">
+                    <div class="d-flex align-items-center">
                         <div class="profile-img-wrapper">
-                            <img class="" src="#">
+                            <img src="/assets/components/icons/account-icon.png">
                         </div>
-                        <h2>Username</h2>
+                        <h2 class="ms-2">Username</h2>
                     </div>
-                    <div class="form-floating">
+                    <div class="form-floating ms-5">
                         <textarea class="form-control" id="postInput" placeholder="Write here"></textarea>
                         <label class="fw-lighter" for="postInput">Write something...</label>
                     </div>
@@ -58,18 +58,62 @@
                 <button class="btn col-2 align-self-end rounded">Post</button>
             </div>
         </section>
-        <section class="col-6 mt-4">
+        <section class="col-6 mt-5">
             <div class="d-flex justify-content-between">
                 <div class="search-wrap d-flex rounded-pill col-4">
                     <img class="search-icon" src="/assets/components/icons/search-icon.png">              
-                    <input id="searchInput">
+                    <input class="form-control" type="search" id="searchInput">
                 </div>
-                <select class="rounded-pill px-3">
+                <select class="rounded-pill px-3" id="filterSelect">
                     <option>Filter...</option>
                     <option value="1">Chronological</option>
                     <option value="2">By username</option>
                     <option value="3">I have no idea</option>
                 </select>
+            </div>
+            <div class="post-wrapper d-flex flex-column col">
+                <div class="card d-flex flex-column p-3 mt-3">
+                    <div class="d-flex align-items-center">
+                        <div class="profile-img-wrapper">
+                            <img src="/assets/components/icons/account-icon.png">
+                        </div>
+                        <h3 class="ms-2">Username</h3>
+                    </div>
+                    <div class="ms-5">
+                        <p></p>
+                    </div>
+                    <div class="small-icons d-flex">
+                        <div class="me-3">
+                            <img src="/assets/components/icons/comment.png">
+                            <span>1</span>
+                        </div>
+                        <div>
+                            <img src="/assets/components/icons/heart-empty.png">
+                            <span>1</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card d-flex flex-column p-3 mt-3">
+                    <div class="d-flex align-items-center">
+                        <div class="profile-img-wrapper">
+                            <img src="/assets/components/icons/account-icon.png">
+                        </div>
+                        <h3 class="ms-2">Username</h3>
+                    </div>
+                    <div class="ms-5">
+                        <p></p>
+                    </div>
+                    <div class="small-icons d-flex">
+                        <div class="me-3">
+                            <img src="/assets/components/icons/comment.png">
+                            <span>1</span>
+                        </div>
+                        <div>
+                            <img src="/assets/components/icons/heart-empty.png">
+                            <span>1</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
    </main>
