@@ -10778,9 +10778,27 @@ textarea.form-control-lg {
 body {
   color: #FFFFFF;
   background-color: #A9717B;
+  font-family: dolly-new, sans-serif;
 }
 body a {
   color: #D999A5;
+}
+
+h1, .h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6,
+.btn {
+  text-transform: uppercase;
+  font-family: proxima-nova-condensed, sans-serif;
+  font-weight: 700;
 }
 
 header,
@@ -10826,10 +10844,10 @@ header .active {
 }
 
 .card {
-  padding: 2rem;
-  margin: 2rem;
   max-width: 45rem;
   width: 100%;
+  border-radius: 1.2rem;
+  font-family: proxima-nova-condensed, sans-serif;
 }
 .card .login-head-container img {
   width: 4rem;
@@ -10838,7 +10856,6 @@ header .active {
   font-family: proxima-nova-extra-condensed, sans-serif;
   font-weight: 700;
   font-size: 2.7rem;
-  margin: 0 1.5rem;
   text-transform: uppercase;
   justify-self: center;
 }
@@ -10846,14 +10863,21 @@ header .active {
   margin: 1.5rem 0;
 }
 .card .user-link {
-  font-size: 0.75rem;
-  margin: 1rem 0rem;
+  font-size: 0.9rem;
 }
 .card .btn {
   max-width: 70%;
+  font-size: 1.5rem;
 }
 .card .form-control:hover {
   background-color: rgb(255, 225, 225) !important;
+}
+.card .form-text {
+  color: #97A4B0;
+  font-size: 0.9rem;
+}
+.card .col-form-label {
+  font-weight: 700;
 }
 
 /*# sourceMappingURL=login.css.map */

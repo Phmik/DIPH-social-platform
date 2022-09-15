@@ -43,33 +43,32 @@
         <div class="card d-flex m-4 p-4">
             <div class="login-head-container justify-content-start d-flex align-items-center">
                 <img src="assets/components/icons/key-icon.png" alt="picture of a key for log in">
-                <span class="align-self-center mx-4">Log in</span>
+                <span class="align-self-center mx-4">Sign up</span>
             </div>
         <form action="">
             <fieldset>
                 <div class="row g-3 justify-content-center">
                     <div class="col-auto">
+                        <label for="username" class="col-form-label">Username</label>
+                        <input type="text" id="inputUsername" class="form-control rounded-pill" aria-describedby="usernameHelp">
+                        <div id="usernameHelp" class="form-text">
+                            Username must be atleast 4 characters long
+                        </div>
                         <label for="inputEmail" class="col-form-label">E-mail</label>
                         <input type="email" id="inputEmail" class="form-control rounded-pill" aria-describedby="emailHelp">
                         <div id="emailHelp" class="form-text">
-                            We will never share your e-mail with anyone
+                            Please enter an valid Email
                         </div>
                         <label for="inputPassword" class="col-form-label">Password</label>
                         <input type="password" id="inputPassword" class="form-control rounded-pill" aria-describedby="passwordHelp">
                         <div id="passwordHelp" class="form-text">
-                            Please don't share your password with anyone
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" id="rememberCheck" class="form-check-input remember-checkbox">
-                            <label for="rememberRadio" class="form-check-label">
-                                Remember me
-                            </label>
+                            Password must contain 8-20 characters and <br> contain at least 1 uppercase and 1 number
                         </div>
                         <div class="d-flex justify-content-center row text-center">
                         <button class="btn btn-primary my-3">
-                            Log in
+                            sign up
                         </button>
-                        <a href="/signup.html" class="user-link">Don't have a user? Sign up! </a>
+                        <a href="/login.html" class="user-link">Already have a user? Log in! </a>
                     </div>
                     </div>
                 </div>
