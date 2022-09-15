@@ -10771,9 +10771,27 @@ textarea.form-control-lg {
 body {
   color: #FFFFFF;
   background-color: #A9717B;
+  font-family: dolly-new, sans-serif;
 }
 body a {
   color: #D999A5;
+}
+
+h1, .h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6,
+.btn {
+  text-transform: uppercase;
+  font-family: proxima-nova-condensed, sans-serif;
+  font-weight: 700;
 }
 
 header,
