@@ -1,1 +1,49 @@
-@import "components/header";
+// CUSTOM
+@import "components/_variables";
+@import "components/_buttons";
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+// COMPONENTS
+@import "components/layout.scss";
+@import "components/_header";
+
+.card {
+    padding: 2rem;
+    margin: 2rem;
+    max-width: 45rem;
+    width: 100%;
+
+    & .login-head-container {
+
+        & img {
+            width: 4rem;
+        }
+
+        & span {
+            font-family: $logo-font;
+            font-weight: $logo-weight;
+            font-size: 2.7rem;
+            margin: 0 1.5rem;
+            text-transform: uppercase;
+            justify-self: center;
+        }
+
+    }
+
+    & .form-check {
+        margin: 1.5rem 0;
+    }
+
+    & .user-link {
+        font-size: 0.75rem;
+        margin: 1rem 0rem
+    }
+
+    & .btn {
+        max-width: 70%;
+    }
+
+    & .form-control:hover {
+        background-color: rgb(255, 225, 225) !important
+    }
+}
