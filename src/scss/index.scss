@@ -1,9 +1,11 @@
 // CUSTOM
+
 @import "components/_variables";
 @import "components/_buttons";
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
 // COMPONENTS
+@import "components/layout.scss";
 @import "components/_header";
 
 
@@ -56,8 +58,3 @@ body {
         }
     }
 }
-
-header,
-footer {
-        background-color: $gray;
-    }

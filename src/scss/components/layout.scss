@@ -1,0 +1,13 @@
+body {
+    color: $white;
+    background-color: $bg;
+
+    & a {
+        color: $link-color;
+    }
+}
+
+header,
+footer {
+        background-color: $gray;
+    }
