@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.typekit.net/tat3ron.css">
-    <link rel="stylesheet" href="dist/css/index.css">
+    <link rel="stylesheet" href="dist/css/profile.css">
     <title>DIPH | Profile</title>
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -42,23 +42,23 @@
    <main class="d-flex align-items-center flex-column mb-3">
         <section class="w-100 profile-header">
             <div class="banner">
-                <img src="#" alt="">
-                <div class="banner-gradient">
-                    <div class="dropdown">
-                        <a class="dropdown-toggle">
+                <div class="banner-gradient w-100 h-100">
+                    <div class="banner-img-wrapper d-flex justify-content-between"></div>
+                    <div class="dropdown d-flex justify-content-end">
+                        <div type="button" class="dropdown-toggle mt-1" class="rounded-circle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img src="/assets/components/icons/options-icon.png" alt="">
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                        </ul>                        
+                        </div>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="#">Edit Banner</a></li>
+                            <li><a class="dropdown-item" href="#">Edit Profile Image</a></li>
+                        </ul>
                     </div>
-                    <div>
-                        <img class="rounded-circle" src="/assets/components/icons/account-icon.png" alt="">
-                        <div>
-                            <div>
-                                <h1>Username</h1>
-                                <button class="btn">Follow</button>
+                    <div class="d-flex align-items-end profile-info">
+                        <img class="rounded-circle" id="profilePic" src="/assets/components/icons/account-icon.png" alt="">
+                        <div class="profile-text d-flex flex-column ms-4">
+                            <div class="d-flex align-items-center">
+                                <h1 class="me-4">Username</h1>
+                                <button class="btn px-4">Follow</button>
                             </div>
                             <div>Description</div>
                         </div>
@@ -66,9 +66,21 @@
                 </div>
             </div>
         </section>
+        <section class="content-wrapper w-75 mt-5 gap-2 d-flex">
+            <div class="container col-8">
+                <div class="card">
+                    <h2>Hello</h2>
+                </div>
+            </div>
+            <div class="container col-4">
+                <div class="card">Hi</div>
+            </div>
+        </section>
     </main>
     <footer class="mt-auto">
         <p class="text-center">&copy; Dina Olufsen & Phillip Mikalsen</p>
     </footer>
+    <script src="./node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

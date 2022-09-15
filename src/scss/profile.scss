@@ -1,1 +1,61 @@
-@import "components/header";
+// CUSTOM
+@import "components/_variables";
+@import "components/_buttons";
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+// COMPONENTS
+@import "components/layout.scss";
+@import "components/_header";
+
+main {
+    & .banner {
+        background-color: $dark-red;
+        height: 15rem;
+
+        & .banner-gradient {
+            z-index: 2;
+            position: relative;
+            background: linear-gradient(0deg, rgba(51,51,51,1) 0%, rgba(0,0,0,0) 100%);
+
+            & .banner-img-wrapper {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+            }
+
+            & .dropdown {
+                z-index: 3;
+                & .dropdown-toggle {
+                    &::after {
+                        border: none;
+                    }
+                    & img {
+                        width: 1.8rem;
+                        height: 1.8rem;
+                    }
+                }
+            }
+
+            & .profile-info {
+                margin-left: 10%;
+            }
+
+            & div {
+                z-index: 3;
+
+                & #profilePic {
+                    transform: translateY(3rem);
+                    height: 12rem;
+                    width: 12rem;
+                }
+
+                & .btn {
+                    height: 2.4rem;
+                }
+            }
+        }
+    }
+}
