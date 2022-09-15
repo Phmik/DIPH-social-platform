@@ -1,9 +1,11 @@
 // CUSTOM
 @import "components/_variables";
+@import "components/_buttons";
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
 // COMPONENTS
 @import "components/_header";
+
 
 body {
     color: $white;
@@ -11,6 +13,47 @@ body {
 
     & a {
         color: $link-color;
+    }
+
+    & .profile-img-wrapper {
+        height: 3rem;
+        width: 3rem;
+
+        & img {
+            height: 2.5rem;
+            width: 2.5rem;
+        }
+    }
+
+    & #postInput {
+        background-color: $gray;
+        color: $white;
+    }
+
+    & .search-wrap {
+        background-color: $white;
+        padding: 0.5rem;
+        height: 2.5rem;
+
+        & #searchInput{
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    }
+
+    & #filterSelect {
+        background-color: $gray;
+        color: $white;
+        border: none;
+    }
+
+    & .small-icons {
+
+        & img {
+            height: 1.5rem;
+            width: 1.5rem;
+        }
     }
 }
 
