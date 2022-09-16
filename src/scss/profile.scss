@@ -58,4 +58,27 @@ main {
             }
         }
     }
+
+    & .profile-img-wrapper {
+        height: 3rem;
+        width: 3rem;
+
+        & img {
+            height: 2.5rem;
+            width: 2.5rem;
+        }
+    }
+
+    & #postInput {
+        background-color: $gray;
+        color: $white;
+    }
+
+    & .small-icons {
+
+        & img {
+            height: 1.5rem;
+            width: 1.5rem;
+        }
+    }
 }
