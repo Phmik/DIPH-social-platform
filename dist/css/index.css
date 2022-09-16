@@ -10843,13 +10843,6 @@ header .active {
   text-decoration: underline;
 }
 
-body {
-  color: #FFFFFF;
-  background-color: #A9717B;
-}
-body a {
-  color: #D999A5;
-}
 body .profile-img-wrapper {
   height: 3rem;
   width: 3rem;

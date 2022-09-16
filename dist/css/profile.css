@@ -10778,9 +10778,27 @@ textarea.form-control-lg {
 body {
   color: #FFFFFF;
   background-color: #A9717B;
+  font-family: dolly-new, sans-serif;
 }
 body a {
   color: #D999A5;
+}
+
+h1, .h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6,
+.btn {
+  text-transform: uppercase;
+  font-family: proxima-nova-condensed, sans-serif;
+  font-weight: 700;
 }
 
 header,
@@ -10865,6 +10883,22 @@ main .banner .banner-gradient div #profilePic {
 }
 main .banner .banner-gradient div .btn {
   height: 2.4rem;
+}
+main .profile-img-wrapper {
+  height: 3rem;
+  width: 3rem;
+}
+main .profile-img-wrapper img {
+  height: 2.5rem;
+  width: 2.5rem;
+}
+main #postInput {
+  background-color: #333333;
+  color: #FFFFFF;
+}
+main .small-icons img {
+  height: 1.5rem;
+  width: 1.5rem;
 }
 
 /*# sourceMappingURL=profile.css.map */
