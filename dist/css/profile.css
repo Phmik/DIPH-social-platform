@@ -10856,18 +10856,19 @@ main .banner .banner-gradient .banner-img-wrapper {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
   z-index: 1;
 }
 main .banner .banner-gradient .dropdown {
-  z-index: 3;
+  z-index: 4;
+}
+main .banner .banner-gradient .dropdown .dropdown-toggle {
+  width: 1.8rem;
+  height: 1.8rem;
 }
 main .banner .banner-gradient .dropdown .dropdown-toggle::after {
   border: none;
 }
 main .banner .banner-gradient .dropdown .dropdown-toggle img {
-  width: 1.8rem;
   height: 1.8rem;
 }
 main .banner .banner-gradient .profile-info {
@@ -10877,9 +10878,9 @@ main .banner .banner-gradient div {
   z-index: 3;
 }
 main .banner .banner-gradient div #profilePic {
-  transform: translateY(3rem);
-  height: 12rem;
-  width: 12rem;
+  transform: translateY(20%);
+  height: 10rem;
+  width: 10rem;
 }
 main .banner .banner-gradient div .btn {
   height: 2.4rem;
@@ -10899,6 +10900,19 @@ main #postInput {
 main .small-icons img {
   height: 1.5rem;
   width: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  main .banner {
+    height: 11rem;
+  }
+  main .banner .banner-gradient .profile-info {
+    margin-left: 0;
+  }
+  main .banner .banner-gradient .profile-info #profilePic {
+    width: 6rem;
+    height: 6rem;
+  }
 }
 
 /*# sourceMappingURL=profile.css.map */

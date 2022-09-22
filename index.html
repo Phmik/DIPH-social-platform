@@ -39,78 +39,82 @@
         </nav>
     </div>
    </header> 
-   <main class="d-flex align-items-center flex-column mb-3">
+   <main class="container-fluid align-items-center flex-column ">
         <h1 class="visually-hidden">DIPH home page</h1>
-        <section class="card container col-6 p-3 mt-5">
-            <div class="write-post-wrapper d-flex flex-column col">
-                <div class="d-flex flex-column">
-                    <div class="d-flex align-items-center">
-                        <div class="profile-img-wrapper">
-                            <img src="/assets/components/icons/account-icon.png">
+        <section class="row justify-content-center">
+            <div class="card p-3 mt-5 col-11 col-sm-8 col-md-6">
+                <div class="write-post-wrapper d-flex flex-column">
+                    <div class="d-flex w-100 flex-column">
+                        <div class="d-flex align-items-center">
+                            <div class="profile-img-wrapper">
+                                <img src="/assets/components/icons/account-icon.png">
+                            </div>
+                            <h2 class="ms-2">Username</h2>
                         </div>
-                        <h2 class="ms-2">Username</h2>
+                        <div class="form-floating ms-5">
+                            <textarea class="form-control" id="postInput" placeholder="Write here"></textarea>
+                            <label class="fw-lighter" for="postInput">Write something...</label>
+                        </div>
                     </div>
-                    <div class="form-floating ms-5">
-                        <textarea class="form-control" id="postInput" placeholder="Write here"></textarea>
-                        <label class="fw-lighter" for="postInput">Write something...</label>
-                    </div>
+                    <button class="btn w-25 align-self-end rounded">Post</button>
                 </div>
-                <button class="btn col-2 align-self-end rounded">Post</button>
             </div>
         </section>
-        <section class="col-6 mt-5">
-            <div class="d-flex justify-content-between">
-                <div class="search-wrap d-flex rounded-pill col-4">
-                    <img class="search-icon" src="/assets/components/icons/search-icon.png">              
-                    <input class="form-control" type="search" id="searchInput">
+        <section class="row justify-content-center">
+            <div class="col-11 col-sm-8 col-md-6 px-0 my-5">
+                <div class="row justify-content-between mx-0">
+                    <div class="search-wrap d-flex rounded-pill col-7 col-sm-6 col-md-5">
+                        <img class="search-icon" src="/assets/components/icons/search-icon.png">              
+                        <input class="form-control" type="search" id="searchInput">
+                    </div>
+                    <select class="rounded-pill px-3 col-4 col-sm-3" id="filterSelect">
+                        <option>Filter...</option>
+                        <option value="1">Chronological</option>
+                        <option value="2">By username</option>
+                        <option value="3">I have no idea</option>
+                    </select>
                 </div>
-                <select class="rounded-pill px-3" id="filterSelect">
-                    <option>Filter...</option>
-                    <option value="1">Chronological</option>
-                    <option value="2">By username</option>
-                    <option value="3">I have no idea</option>
-                </select>
-            </div>
-            <div class="post-wrapper d-flex flex-column col">
-                <div class="card d-flex flex-column p-3 mt-3">
-                    <div class="d-flex align-items-center">
-                        <div class="profile-img-wrapper">
-                            <img src="/assets/components/icons/account-icon.png">
+                <div class="post-wrapper d-flex flex-column">
+                    <div class="card d-flex flex-column p-3 mt-3">
+                        <div class="d-flex align-items-center">
+                            <div class="profile-img-wrapper">
+                                <img src="/assets/components/icons/account-icon.png">
+                            </div>
+                            <h3 class="ms-2">Username</h3>
                         </div>
-                        <h3 class="ms-2">Username</h3>
-                    </div>
-                    <div class="ms-5">
-                        <p></p>
-                    </div>
-                    <div class="small-icons d-flex">
-                        <div class="me-3">
-                            <img src="/assets/components/icons/comment.png">
-                            <span>1</span>
+                        <div class="ms-5">
+                            <p></p>
                         </div>
-                        <div>
-                            <img src="/assets/components/icons/heart-empty.png">
-                            <span>1</span>
+                        <div class="small-icons d-flex">
+                            <div class="me-3">
+                                <img src="/assets/components/icons/comment.png">
+                                <span>0</span>
+                            </div>
+                            <div>
+                                <img src="/assets/components/icons/heart-empty.png">
+                                <span>0</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="card d-flex flex-column p-3 mt-3">
-                    <div class="d-flex align-items-center">
-                        <div class="profile-img-wrapper">
-                            <img src="/assets/components/icons/account-icon.png">
+                    <div class="card d-flex flex-column p-3 mt-3">
+                        <div class="d-flex align-items-center">
+                            <div class="profile-img-wrapper">
+                                <img src="/assets/components/icons/account-icon.png">
+                            </div>
+                            <h3 class="ms-2">Username</h3>
                         </div>
-                        <h3 class="ms-2">Username</h3>
-                    </div>
-                    <div class="ms-5">
-                        <p></p>
-                    </div>
-                    <div class="small-icons d-flex">
-                        <div class="me-3">
-                            <img src="/assets/components/icons/comment.png">
-                            <span>1</span>
+                        <div class="ms-5">
+                            <p></p>
                         </div>
-                        <div>
-                            <img src="/assets/components/icons/heart-empty.png">
-                            <span>1</span>
+                        <div class="small-icons d-flex">
+                            <div class="me-3">
+                                <img src="/assets/components/icons/comment.png">
+                                <span>0</span>
+                            </div>
+                            <div>
+                                <img src="/assets/components/icons/heart-empty.png">
+                                <span>0</span>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -21,19 +21,19 @@ main {
                 position: absolute;
                 top: 0;
                 left: 0;
-                width: 100%;
-                height: 100%;
                 z-index: 1;
             }
 
             & .dropdown {
-                z-index: 3;
+                z-index: 4;
                 & .dropdown-toggle {
+                    width: 1.8rem;
+                    height: 1.8rem;
+
                     &::after {
                         border: none;
                     }
                     & img {
-                        width: 1.8rem;
                         height: 1.8rem;
                     }
                 }
@@ -47,9 +47,9 @@ main {
                 z-index: 3;
 
                 & #profilePic {
-                    transform: translateY(3rem);
-                    height: 12rem;
-                    width: 12rem;
+                    transform: translateY(20%);
+                    height: 10rem;
+                    width: 10rem;
                 }
 
                 & .btn {
@@ -80,5 +80,22 @@ main {
             height: 1.5rem;
             width: 1.5rem;
         }
+    }
+}
+
+@media (max-width: 768px) {
+   main {
+        & .banner {
+        height: 11rem;
+
+            & .banner-gradient .profile-info {
+                margin-left: 0;
+    
+                & #profilePic {
+                width: 6rem;
+                height: 6rem;
+                }
+            }
+        } 
     }
 }
