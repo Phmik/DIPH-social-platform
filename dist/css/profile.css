@@ -10885,6 +10885,9 @@ main .banner .banner-gradient div #profilePic {
 main .banner .banner-gradient div .btn {
   height: 2.4rem;
 }
+main .post-input-card {
+  border: solid 2px #660024;
+}
 main .profile-img-wrapper {
   height: 3rem;
   width: 3rem;

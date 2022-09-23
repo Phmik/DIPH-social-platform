@@ -10843,6 +10843,9 @@ header .active {
   text-decoration: underline;
 }
 
+body .post-input-card {
+  border: solid 2px #660024;
+}
 body .profile-img-wrapper {
   height: 3rem;
   width: 3rem;

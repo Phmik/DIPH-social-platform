@@ -59,6 +59,10 @@ main {
         }
     }
 
+    & .post-input-card {
+        border: solid 2px $dark-red;
+    }
+
     & .profile-img-wrapper {
         height: 3rem;
         width: 3rem;
