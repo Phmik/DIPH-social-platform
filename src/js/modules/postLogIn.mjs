@@ -1,3 +1,4 @@
+
 /** ----------------
  * 
  * @param {*} url 
@@ -9,18 +10,19 @@
         const postData = {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
-                // Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkRpbmFPIiwiaWF0IjoxNjY0MjAxNzc3fQ.VT9sYZ1ZSMaKJnOxfnITzLcsAkzTJGf0sWFSp6QvCSw"
+                "Content-Type": "application/json"
             },
             body: JSON.stringify(userData),
         };
         const response = await fetch(url, postData);
-        const json = await response.json();
+        const json = await response.json(); 
         console.log(json);
+
+        const accessToken = json.accessToken;
+        localStorage.setItem("accessToken", accessToken);
     } catch (error) {
         console.log(error);
     }
 }
-
 
 export { postLogIn }; 
