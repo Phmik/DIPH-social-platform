@@ -2,17 +2,60 @@ import { postSignUp } from "./modules/postSignUp.mjs";
 
 const API_URL = "https://nf-api.onrender.com";
 
-const inputUsername = document.querySelector("#inputUsername").value;
-const inputEmail = document.querySelector("#inputEmail").value;
-const inputPassword = document.querySelector("#inputPassword").value;
+const inputUsername = document.querySelector("#inputUsername");
+const inputEmail = document.querySelector("#inputEmail");
+const inputPassword = document.querySelector("#inputPassword");
 const form = document.querySelector("form");
 
 const userInput = {
-    name: inputUsername,
-    email: inputEmail,
-    password: inputPassword,
+    name: inputUsername.value,
+    email: inputEmail.value,
+    password: inputPassword.value
 }
 
 const REG_URL = `${API_URL}/api/v1/social/auth/register`;
 
-// form.addEventListener("submit", postSignUp(LOGIN_URL, userInput)); ------------ SKAL FIKSES
+// ------------ VALIDATIONS ------------
+function validateEmail(email) {
+    const regEx = /([\w\-\.])+@(stud\.)?noroff\.no/;
+    const patternMatches = regEx.test(email);
+    return patternMatches;
+}
+
+function validatePassword(password) {
+    const regEx = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/;
+    const patternMatches = regEx.test(password);
+    return patternMatches;
+}
+
+// VALIDATE INPUTS
+function validateSignUp(e) {
+    e.preventDefault();
+
+    if(inputUsername.value.trim().length < 4) {
+        const usernameHelp = document.querySelector("#usernameHelp");
+        usernameHelp.style.color = "#FF6F6C";
+    } else {
+        usernameHelp.style.color = "";
+    }
+
+    if(!validateEmail(inputEmail.value)) {
+        const emailHelp = document.querySelector("#emailHelp");
+        emailHelp.style.color = "#FF6F6C";
+    } else {
+        emailHelp.style.color = "";
+    }
+
+    if(!validatePassword(inputPassword.value)) {
+        const passwordHelp = document.querySelector("#passwordHelp");
+        passwordHelp.style.color = "#FF6F6C";
+    } else {
+        passwordHelp.style.color = "";
+    }
+
+    if(inputUsername.value.trim().length >= 4 && validateEmail(inputEmail.value) && validatePassword(inputPassword.value)){
+        postSignUp(REG_URL, userInput);
+    } 
+}
+
+form.addEventListener("submit", validateSignUp);
