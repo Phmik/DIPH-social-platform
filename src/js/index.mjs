@@ -1,35 +1,35 @@
 const API_URL = "https://nf-api.onrender.com";
-
-// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkRpbmFPIiwiaWF0IjoxNjY0MjAxNzc3fQ.VT9sYZ1ZSMaKJnOxfnITzLcsAkzTJGf0sWFSp6QvCSw
+const POST_URL = "/api/v1/social/posts"
+const PROFILE_URL = "/api/v1/social/profiles"
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEwMiwibmFtZSI6IlBITSIsImVtYWlsIjoiUGhpTWlrNTk4NTRAc3R1ZC5ub3JvZmYubm8iLCJhdmF0YXIiOm51bGwsImJhbm5lciI6bnVsbCwiaWF0IjoxNjY0Mjc5NjAyfQ.NWE_UmWk21H9ZoFwR9p-1iiQaSPZc7sEKjP5Kj4t5yc
 
 const options = {
     headers: {
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkRpbmFPIiwiaWF0IjoxNjY0MjAxNzc3fQ.VT9sYZ1ZSMaKJnOxfnITzLcsAkzTJGf0sWFSp6QvCSw'
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEwMiwibmFtZSI6IlBITSIsImVtYWlsIjoiUGhpTWlrNTk4NTRAc3R1ZC5ub3JvZmYubm8iLCJhdmF0YXIiOm51bGwsImJhbm5lciI6bnVsbCwiaWF0IjoxNjY0Mjc5NjAyfQ.NWE_UmWk21H9ZoFwR9p-1iiQaSPZc7sEKjP5Kj4t5yc'
     },
-}
+}   
 
-const response = await fetch(`${API_URL}/api/v1/social/profiles/name?_posts=true&_following=true&_followers=true`, options)
-const result = await response.json();
-
-
-const userName = document.querySelector(".user-name");
-const posts = document.querySelector(".posts");
-
-
+        
+/*
+fetch(`${API_URL}/api/v1/social/auth/login`, {
+    method: 'POST',
+    body: JSON.stringify({
+        email: 'PhiMik59854@stud.noroff.no',
+        password: 'phillip123',
+    }),
+    headers: {
+        'Content-type': 'application/json; charset=UTF-8'
+    },
+})
+    .then((response) => response.json())
+    .then((json) => console.log(json))
+*/
+const userName = document.querySelector('.user-name');
 
 function getUser() {
-    for(let i = 0; i < result.length; i++) {
-        userName.innerHTML = result[i].name;
+    fetch(`${API_URL}${PROFILE_URL}`, options)
+    .then((response) => response.json())
+    .then((result) => console.log(result))
     }
-    
-}
 
 getUser();
-
-
-
-
-        
-        
-    
-
