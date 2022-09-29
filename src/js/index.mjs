@@ -45,7 +45,7 @@ async function onNewPostFormSubmit(event) {
 
   // CREATE POST 
 
-  const userPosts = document.querySelector('.post-content');
+  
 
   async function createPost(postData, url, method) {
     const options = {
@@ -57,4 +57,46 @@ async function onNewPostFormSubmit(event) {
    const post = await response.json();
    console.log(post)
   }
+
+const posts = document.querySelector('.post-content');
+
+async function fetchPosts(method) {
+  const options = {
+    method,
+  }
+  const response = await fetchWithToken(`${API_URL}/api/v1/social/posts/?_author=true`, options)
+  const postResults = await response.json();
+  console.log(postResults)
+  for(let i = 0; i < postResults.length; i++) {
+    const postIndex = postResults[i];
+    posts.innerHTML += "";
+    posts.innerHTML += `<div class="card d-flex flex-column p-3 mt-3">
+    <div class="d-flex align-items-center">
+        <div class="profile-img-wrapper">
+            <img src="/assets/components/icons/account-icon.png">
+        </div>
+        <h2 class="ms-2 user-name">${postIndex.author.name}</h2>
+    </div>
+    <div class="ms-5">
+    <h5>${postIndex.title}</h5>
+        <p class="posts">${postIndex.body}</p>
+    </div>
+    <div class="small-icons d-flex">
+        <div class="me-3">
+            <img src="/assets/components/icons/comment.png">
+            <span>0</span>
+        </div>
+        <div>
+            <img src="/assets/components/icons/heart-empty.png">
+            <span>0</span>
+        </div>
+    </div>
+</div>`
+   }
+}
+
+fetchPosts();
+
+  
+
 
