@@ -1,8 +1,8 @@
 
 /** -----------------
  * 
- * @param {*} url 
- * @param {*} userData 
+ * @param {string} url 
+ * @param {object} userData 
  */
 
 async function postSignUp(url, userData) {
@@ -18,8 +18,14 @@ async function postSignUp(url, userData) {
         const json = await response.json();
         console.log(json);
 
-        const accessToken = json.accessToken;
-        localStorage.setItem("accessToken", accessToken);
+        //FEEDBACK TO USER --- not finished --- Make feedback <div>!
+        if(json.code === "P2002") {
+            console.log("There is already a user for this E-mail address")
+        } else if (json.message === "Profile already exists") {
+            console.log("This username already exist")
+        } else {
+            console.log("Success!")
+        }
     } catch (error) {
         console.log(error);
     }

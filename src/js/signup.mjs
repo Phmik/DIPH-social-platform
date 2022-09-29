@@ -7,15 +7,9 @@ const inputEmail = document.querySelector("#inputEmail");
 const inputPassword = document.querySelector("#inputPassword");
 const form = document.querySelector("form");
 
-const userInput = {
-    name: inputUsername.value,
-    email: inputEmail.value,
-    password: inputPassword.value
-}
-
 const REG_URL = `${API_URL}/api/v1/social/auth/register`;
 
-// ------------ VALIDATIONS ------------
+//  INDIVIDUAL VALIDATIONS 
 function validateEmail(email) {
     const regEx = /([\w\-\.])+@(stud\.)?noroff\.no/;
     const patternMatches = regEx.test(email);
@@ -31,6 +25,12 @@ function validatePassword(password) {
 // VALIDATE INPUTS
 function validateSignUp(e) {
     e.preventDefault();
+
+    const userInput = {
+        name: inputUsername.value,
+        email: inputEmail.value,
+        password: inputPassword.value
+    }
 
     if(inputUsername.value.trim().length < 4) {
         const usernameHelp = document.querySelector("#usernameHelp");
@@ -56,6 +56,9 @@ function validateSignUp(e) {
     if(inputUsername.value.trim().length >= 4 && validateEmail(inputEmail.value) && validatePassword(inputPassword.value)){
         postSignUp(REG_URL, userInput);
     } 
+//TEST
+    console.log(userInput)
+//
 }
 
 form.addEventListener("submit", validateSignUp);
