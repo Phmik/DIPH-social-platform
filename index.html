@@ -52,11 +52,12 @@
                             <h2 class="ms-2 self-user">Username</h2>
                         </div>
                         <div class="form-floating ms-5">
-                            <textarea class="form-control" id="postInput" placeholder="Write here"></textarea>
-                            <label class="fw-lighter" for="postInput">Write something...</label>
+                    <form action="https://nf-api.onrender.com/api/v1/social/posts" id="newPost" method="post">
+                                <textarea class="form-control" id="postInput" placeholder="Write here" name="body" required></textarea>
                         </div>
                     </div>
-                    <button class="btn w-25 align-self-end rounded post-button">Post</button>
+                        <button class="btn w-25 align-self-end rounded" id="postButton">Post</button>
+                    </form>
                 </div>
             </div>
         </section>
