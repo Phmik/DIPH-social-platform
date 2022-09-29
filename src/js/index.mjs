@@ -1,35 +1,47 @@
+
 const API_URL = "https://nf-api.onrender.com";
-const POST_URL = "/api/v1/social/posts"
-const PROFILE_URL = "/api/v1/social/profiles"
-// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEwMiwibmFtZSI6IlBITSIsImVtYWlsIjoiUGhpTWlrNTk4NTRAc3R1ZC5ub3JvZmYubm8iLCJhdmF0YXIiOm51bGwsImJhbm5lciI6bnVsbCwiaWF0IjoxNjY0Mjc5NjAyfQ.NWE_UmWk21H9ZoFwR9p-1iiQaSPZc7sEKjP5Kj4t5yc
 
-const options = {
-    headers: {
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEwMiwibmFtZSI6IlBITSIsImVtYWlsIjoiUGhpTWlrNTk4NTRAc3R1ZC5ub3JvZmYubm8iLCJhdmF0YXIiOm51bGwsImJhbm5lciI6bnVsbCwiaWF0IjoxNjY0Mjc5NjAyfQ.NWE_UmWk21H9ZoFwR9p-1iiQaSPZc7sEKjP5Kj4t5yc'
-    },
-}   
+async function fetchUserInfo(url) {
 
-        
-/*
-fetch(`${API_URL}/api/v1/social/auth/login`, {
-    method: 'POST',
-    body: JSON.stringify({
-        email: 'PhiMik59854@stud.noroff.no',
-        password: 'phillip123',
-    }),
-    headers: {
-        'Content-type': 'application/json; charset=UTF-8'
-    },
-})
-    .then((response) => response.json())
-    .then((json) => console.log(json))
-*/
-const userName = document.querySelector('.user-name');
+        const token = localStorage.getItem('accessToken');
+        const getData = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json; charset=UTF-8',
+                Authorization: `Bearer ${token}`,
+            },
+        };
+        const response = await fetch(url, getData);
+        const json = await response.json();
+        console.log(json)
+        for(let i = 0; i < json.length; i++) {
+            if(i = 5) {
+            const userInfo = json[i];
+                posts.innerHTML = `<div class="card d-flex flex-column p-3 mt-3">
+                <div class="d-flex align-items-center">
+                    <div class="profile-img-wrapper">
+                        <img src="/assets/components/icons/account-icon.png">
+                    </div>
+                    <h2 class="ms-2 user-name">${userInfo.author.name}</h2>
+                </div>
+                <div class="ms-5">
+                    <p class="posts">${userInfo.title}</p>
+                </div>
+                <div class="small-icons d-flex">
+                    <div class="me-3">
+                        <img src="/assets/components/icons/comment.png">
+                        <span>0</span>
+                    </div>
+                    <div>
+                        <img src="/assets/components/icons/heart-empty.png">
+                        <span>0</span>
+                    </div>
+                </div>
+            </div>`
+            }
+        }
+}
 
-function getUser() {
-    fetch(`${API_URL}${PROFILE_URL}`, options)
-    .then((response) => response.json())
-    .then((result) => console.log(result))
-    }
+const posts = document.querySelector('.post-content');
+fetchUserInfo(API_URL + '/api/v1/social/posts/?_author=true&_comments=true&_reactions=true')
 
-getUser();
