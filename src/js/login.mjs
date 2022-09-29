@@ -8,13 +8,9 @@ const inputPassword = document.querySelector("#inputPassword");
 const rememberCheck = document.querySelector("#rememberCheck");
 const form = document.querySelector("form");
 
-const userInput = {
-    email: inputEmail.value,
-    password: inputPassword.value
-}
-
 const LOGIN_URL = `${API_URL}/api/v1/social/auth/login`;
 
+// "Remember Me" checkbox
 if (localStorage.checkbox && localStorage.checkbox !== "") {
     rememberCheck.setAttribute("checked", "checked");
     inputEmail.value = localStorage.email;
@@ -42,6 +38,11 @@ function validatePassword(password) {
 function validateLogIn(e) {
     e.preventDefault();
 
+    const userInput = {
+        email: inputEmail.value,
+        password: inputPassword.value
+    }
+
     if(!validateEmail(inputEmail.value)) {
         const emailHelp = document.querySelector("#emailHelp");
         emailHelp.style.color = "#FF6F6C";
@@ -60,6 +61,10 @@ function validateLogIn(e) {
         checkRememberMe(rememberCheck, inputEmail);
         postLogIn(LOGIN_URL, userInput);
     } 
+
+    //TEST
+    console.log(userInput)
+    //
 }
 
 form.addEventListener("submit", validateLogIn);
