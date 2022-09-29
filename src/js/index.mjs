@@ -20,6 +20,14 @@ async function fetchWithToken(url) {
         }
 }
 
+// LOGGED IN USER POST AREA
+
+const userName = localStorage.getItem('name');
+const self = document.querySelector('.self-user');
+self.innerHTML = `${userName}`;
+
+// FORM FOR CREATING POST (EVENT HANDLER)
+
 const newPost = document.getElementById('newPost')
 
 newPost.addEventListener('submit', onNewPostFormSubmit)
@@ -29,21 +37,24 @@ async function onNewPostFormSubmit(event) {
     const form = event.target;
     const method = form.method;
     const url = form.action;
-  
     const formData = new FormData(form);
     const body = Object.fromEntries(formData.entries());
-
     await createPost(body, url, method) 
+    form.reset();
   }
+
+  // CREATE POST 
+
+  const userPosts = document.querySelector('.post-content');
 
   async function createPost(postData, url, method) {
     const options = {
-      
       method,
       body: JSON.stringify(postData)
     }
+    console.log(postData);
    const response = await fetchWithToken(url, options)
    const post = await response.json();
-   console.log(post);
+   console.log(post)
   }
 

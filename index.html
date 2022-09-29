@@ -49,15 +49,16 @@
                             <div class="profile-img-wrapper">
                                 <img src="/assets/components/icons/account-icon.png">
                             </div>
+                            <form action="https://nf-api.onrender.com/api/v1/social/posts/?_author=true" id="newPost" method="post">
                             <h2 class="ms-2 self-user">Username</h2>
                         </div>
                         <div class="form-floating ms-5">
-                    <form action="https://nf-api.onrender.com/api/v1/social/posts" id="newPost" method="post">
-                                <textarea class="form-control" id="postInput" placeholder="Write here" name="body" required></textarea>
+                            <textarea class="form-control" id="postInput" placeholder="Write here" name="body" required></textarea>
+                            <label for="postInput" class="fw-lighter">Write Something</label>
                         </div>
                     </div>
                         <button class="btn w-25 align-self-end rounded" id="postButton">Post</button>
-                    </form>
+                            </form>
                 </div>
             </div>
         </section>
