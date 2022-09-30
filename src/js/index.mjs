@@ -91,7 +91,7 @@ async function fetchPosts(method) {
   const options = {
     method,
   }
-  const response = await fetchWithToken(`${API_URL}/api/v1/social/posts/?_author=true`, options)
+  const response = await getWithToken(`${API_URL}/api/v1/social/posts/?_author=true`, options)
   const postResults = await response.json();
   console.log(postResults)
   for(let i = 0; i < postResults.length; i++) {
