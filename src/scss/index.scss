@@ -25,6 +25,12 @@ body {
         }
     }
 
+    & #titleInput {
+        height: 4.5rem;
+        background-color: $gray;
+        color: $white;
+    }
+
     & #postInput {
         background-color: $gray;
         color: $white;

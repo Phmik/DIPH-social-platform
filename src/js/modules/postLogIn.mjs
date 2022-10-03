@@ -19,10 +19,10 @@
         console.log(json);
 
 //Gives user Feedback 
-        const loginFeedback = document.querySelector(".login-feedback");
+        const formFeedback = document.querySelector(".form-feedback");
         if(json.message) {
-            loginFeedback.innerHTML = json.message;
-            loginFeedback.style.border = "solid 1px #FF6F6C";
+            formFeedback.innerHTML = json.message;
+            formFeedback.style.border = "solid 1px #FF6F6C";
         } else {
                 window.location.href = "index.html";
         }
