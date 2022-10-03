@@ -49,14 +49,16 @@
                             <div class="profile-img-wrapper">
                                 <img src="/assets/components/icons/account-icon.png">
                             </div>
-                            <h2 class="ms-2">Username</h2>
+                            <form action="https://nf-api.onrender.com/api/v1/social/posts/?_author=true" id="newPost" method="post">
+                            <h2 class="ms-2 self-user">Username</h2>
                         </div>
                         <div class="form-floating ms-5">
-                            <textarea class="form-control" id="postInput" placeholder="Write here"></textarea>
-                            <label class="fw-lighter" for="postInput">Write something...</label>
+                            <textarea class="form-control" id="postInput" placeholder="Write here" name="body" required></textarea>
+                            <label for="postInput" class="fw-lighter">Write Something</label>
                         </div>
                     </div>
-                    <button class="btn w-25 align-self-end rounded">Post</button>
+                        <button class="btn w-25 align-self-end rounded" id="postButton">Post</button>
+                            </form>
                 </div>
             </div>
         </section>
@@ -74,16 +76,16 @@
                         <option value="3">I have no idea</option>
                     </select>
                 </div>
-                <div class="post-wrapper d-flex flex-column">
+                <div class="post-wrapper d-flex flex-column post-content">
                     <div class="card d-flex flex-column p-3 mt-3">
                         <div class="d-flex align-items-center">
                             <div class="profile-img-wrapper">
                                 <img src="/assets/components/icons/account-icon.png">
                             </div>
-                            <h3 class="ms-2">Username</h3>
+                            <h2 class="ms-2 user-name">Username</h2>
                         </div>
                         <div class="ms-5">
-                            <p></p>
+                            <p class="posts">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores recusandae, ipsam veritatis incidunt blanditiis cumque architecto quidem tempora animi fuga temporibus dolores, nostrum quaerat doloribus ex nam. Quam, exercitationem modi!</p>
                         </div>
                         <div class="small-icons d-flex">
                             <div class="me-3">
@@ -101,7 +103,7 @@
                             <div class="profile-img-wrapper">
                                 <img src="/assets/components/icons/account-icon.png">
                             </div>
-                            <h3 class="ms-2">Username</h3>
+                            <h2 class="ms-2 user-name">Username</h2>
                         </div>
                         <div class="ms-5">
                             <p></p>
