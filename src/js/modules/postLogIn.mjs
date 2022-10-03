@@ -18,9 +18,13 @@
         const json = await response.json(); 
         console.log(json);
 
-//Feedback --- not finished --- Display feedback in <div>
+//Gives user Feedback 
+        const loginFeedback = document.querySelector(".login-feedback");
         if(json.message) {
-            console.log(json.message)
+            loginFeedback.innerHTML = json.message;
+            loginFeedback.style.border = "solid 1px #FF6F6C";
+        } else {
+                window.location.href = "index.html";
         }
 
 //Save access token to localStorage
