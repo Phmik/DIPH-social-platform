@@ -20,20 +20,6 @@ if (localStorage.checkbox && localStorage.checkbox !== "") {
 }
 
 
-// ------------ VALIDATIONS ------------
-function validateEmail(email) {
-    const regEx = /([\w\-\.])+@(stud\.)?noroff\.no/;
-    const patternMatches = regEx.test(email);
-    return patternMatches;
-}
-
-function validatePassword(password) {
-    const regEx = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/;
-    const patternMatches = regEx.test(password);
-    return patternMatches;
-}
-
-
 // VALIDATE INPUTS
 function validateLogIn(e) {
     e.preventDefault();
@@ -43,24 +29,8 @@ function validateLogIn(e) {
         password: inputPassword.value
     }
 
-    if(!validateEmail(inputEmail.value)) {
-        const emailHelp = document.querySelector("#emailHelp");
-        emailHelp.style.color = "#FF6F6C";
-    } else {
-        emailHelp.style.color = "";
-    }
-
-    if(!validatePassword(inputPassword.value)) {
-        const passwordHelp = document.querySelector("#passwordHelp");
-        passwordHelp.style.color = "#FF6F6C";
-    } else {
-        passwordHelp.style.color = "";
-    }
-
-    if(validateEmail(inputEmail.value) && validatePassword(inputPassword.value)){
-        checkRememberMe(rememberCheck, inputEmail);
-        postLogIn(LOGIN_URL, userInput);
-    } 
+    checkRememberMe(rememberCheck, inputEmail);
+    postLogIn(LOGIN_URL, userInput);
 
     //TEST
     console.log(userInput)

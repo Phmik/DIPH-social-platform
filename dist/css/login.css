@@ -10859,6 +10859,10 @@ header .active {
   text-transform: uppercase;
   justify-self: center;
 }
+.card .login-feedback {
+  color: #FF6F6C;
+  text-align: center;
+}
 .card .form-check {
   margin: 1.5rem 0;
 }
