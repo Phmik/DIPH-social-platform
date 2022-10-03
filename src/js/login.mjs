@@ -19,20 +19,12 @@ if (localStorage.checkbox && localStorage.checkbox !== "") {
     inputEmail.value = "";
 }
 
-
-// ------------ VALIDATIONS ------------
+//  INDIVIDUAL E-MAIL 
 function validateEmail(email) {
     const regEx = /([\w\-\.])+@(stud\.)?noroff\.no/;
     const patternMatches = regEx.test(email);
     return patternMatches;
 }
-
-function validatePassword(password) {
-    const regEx = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/;
-    const patternMatches = regEx.test(password);
-    return patternMatches;
-}
-
 
 // VALIDATE INPUTS
 function validateLogIn(e) {
@@ -50,17 +42,11 @@ function validateLogIn(e) {
         emailHelp.style.color = "";
     }
 
-    if(!validatePassword(inputPassword.value)) {
-        const passwordHelp = document.querySelector("#passwordHelp");
-        passwordHelp.style.color = "#FF6F6C";
-    } else {
-        passwordHelp.style.color = "";
-    }
-
-    if(validateEmail(inputEmail.value) && validatePassword(inputPassword.value)){
-        checkRememberMe(rememberCheck, inputEmail);
+    if(validateEmail(inputEmail.value)){
         postLogIn(LOGIN_URL, userInput);
     } 
+
+    checkRememberMe(rememberCheck, inputEmail);
 
     //TEST
     console.log(userInput)

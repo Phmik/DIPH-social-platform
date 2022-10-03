@@ -6,7 +6,7 @@
  * ```js
  * // Use this function to get an API endpoint with a url
  * // and an accessToken.
- * getWithToken(access)
+ * getWithToken(accessToken, API_ENDPOINT_URL);
  * ```
  */
 
@@ -23,6 +23,7 @@
         const response = await fetch(url, options);
         const json = await response.json();
         console.log(json);
+        return json;
 
     } catch(error) {
         console.log(error);

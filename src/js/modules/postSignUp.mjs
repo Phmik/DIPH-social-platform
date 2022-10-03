@@ -1,3 +1,4 @@
+import {redirectToLogIn} from "./redirectToLogIn.mjs";
 
 /** -----------------
  * 
@@ -19,15 +20,21 @@ async function postSignUp(url, userData) {
         console.log(json);
 
         //FEEDBACK TO USER --- not finished --- Make feedback <div>!
+        const formFeedback = document.querySelector(".form-feedback");
+
         if(json.code === "P2002") {
-            console.log("There is already a user for this E-mail address")
+            formFeedback.innerHTML = "This E-mail address already exists";
+            formFeedback.style.border = "solid 1px #FF6F6C";
         } else if (json.message === "Profile already exists") {
-            console.log("This username already exist")
+            formFeedback.innerHTML = "This username already exist";
+            formFeedback.style.border = "solid 1px #FF6F6C";
         } else {
-            console.log("Success!")
+            window.location.href = "/login.html";
         }
+
     } catch (error) {
         console.log(error);
+        redirectToLogIn();
     }
 }
 
