@@ -47,6 +47,7 @@ async function fetchWithToken(url) {
 }
 */
 
+
 // LOGGED IN USER POST AREA
 
 const userName = localStorage.getItem('name');
