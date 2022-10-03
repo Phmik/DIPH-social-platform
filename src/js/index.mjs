@@ -123,7 +123,3 @@ async function fetchPosts(method) {
 }
 
 fetchPosts();
-
-  
-
-
