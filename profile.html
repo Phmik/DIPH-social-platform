@@ -30,7 +30,7 @@
                     <li class="nav-item">
                         <a href="/profile.html" class="nav-link">
                             <div class="img-container">
-                            <img src="assets/images/moi.jpg" alt="" class="rounded-circle">
+                            <img src="assets/components/icons/account-icon.png" alt="" class="rounded-circle">
                             </div>
                             profile
                         </a>
@@ -43,7 +43,7 @@
         <section class="w-100 profile-header">
             <div class="banner">
                 <div class="banner-gradient row flex-column justify-content-between w-100 h-100 m-0">
-                    <div class="banner-img-wrapper d-flex h-100 w-100"></div>
+                    <div class="banner-img-wrapper d-flex h-100 w-100 px-0"></div>
                     <div class="dropdown d-flex justify-content-end">
                         <div type="button" class="dropdown-toggle mt-1" class="rounded-circle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img src="/assets/components/icons/options-icon.png" alt="">
@@ -57,7 +57,7 @@
                         <img class="rounded-circle" id="profilePic" src="/assets/components/icons/account-icon.png" alt="">
                         <div class="profile-text d-flex flex-column ms-2 ms-md-4">
                             <div class="d-flex align-items-center">
-                                <h1 class="me-3 mb-0">Username</h1>
+                                <h1 class="me-3 mb-0 profile-name">Username</h1>
                                 <button class="btn px-3 px-md-4">Follow</button>
                             </div>
                             <div>Description</div>
@@ -78,8 +78,13 @@
                                             <div class="profile-img-wrapper">
                                                 <img src="/assets/components/icons/account-icon.png">
                                             </div>
-                                            <h2 class="ms-2">Username</h2>
+                                            <h2 class="ms-2 profile-name">Username</h2>
                                         </div>
+                                        <div class="form-floating ms-5">
+                                            <input class="rounded-pill form-control fs-4" id="titleInput" placeholder="Write title here" name="title" required>
+                                            <label for="titleInput" class="fw-lighter fs-5">Your Title</label>
+                                        </div>
+                                        <hr class="my-1">
                                         <div class="form-floating ms-5">
                                             <textarea class="form-control" id="postInput" placeholder="Write here"></textarea>
                                             <label class="fw-lighter" for="postInput">Write something...</label>
@@ -97,7 +102,8 @@
                                         <h3 class="ms-2">Username</h3>
                                     </div>
                                     <div class="ms-5">
-                                        <p></p>
+                                        <h4 id="post-title"></h4>
+                                        <p id="post-content"></p>
                                     </div>
                                     <div class="small-icons d-flex">
                                         <div class="me-3">
@@ -118,7 +124,8 @@
                                         <h3 class="ms-2">Username</h3>
                                     </div>
                                     <div class="ms-5">
-                                        <p></p>
+                                        <h4 id="post-title"></h4>
+                                        <p id="post-content"></p>
                                     </div>
                                     <div class="small-icons d-flex">
                                         <div class="me-3">

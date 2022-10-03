@@ -6,7 +6,7 @@
  * ```js
  * // Use this function to get an API endpoint with a url
  * // and an accessToken.
- * getWithToken(accessToken, SOME_URL);
+ * getWithToken(accessToken, API_ENDPOINT_URL);
  * ```
  */
 
