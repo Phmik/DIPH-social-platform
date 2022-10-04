@@ -26,7 +26,7 @@ const POSTS_URL = `${API_URL}/api/v1/social/posts/`
 checkIfToken(accessToken, POSTS_URL);
 
 
-/* Tror ikke du trenger denne lenger, men gjør noen tester før du sletter!
+
 async function fetchWithToken(url) {
 
         const token = localStorage.getItem('accessToken');
@@ -45,7 +45,6 @@ async function fetchWithToken(url) {
             throw new Error("Auch")
         }
 }
-*/
 
 // LOGGED IN USER POST AREA
 
