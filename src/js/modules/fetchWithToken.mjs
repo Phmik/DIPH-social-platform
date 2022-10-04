@@ -1,30 +1,20 @@
-const userLogin = {
-    email: 'PhiMik59854@stud.noroff.no',
-    password: 'phillip123',
-};
+async function fetchWithToken(url) {
 
-async function loginUser(url, data) {
-    try {
-      const postData = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      };
-      const response = await fetch(url, postData);
-      console.log(response);
-      const json = await response.json();
-      const accessToken = json.accessToken;
-      const user = json.name;
-      localStorage.setItem('accessToken', accessToken);
-      localStorage.setItem('name', user)
-      console.log(json); 
-      return json;
-    }
-    catch (error) {
-        console.log(error)
-    }
-    }
+  const token = localStorage.getItem('accessToken');
+  const getData = {
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json; charset=UTF-8',
+          Authorization: `Bearer ${token}`,
+      },
+  };
+  const response = await fetch(url, getData);
+  if(!response.ok) {
+  return response
+  }
+  else {
+      throw new Error("Auch")
+  }
+}
 
-    loginUser(`${API_URL}/api/v1/social/auth/login`, userLogin);
+export { fetchWithToken };
