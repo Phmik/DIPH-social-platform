@@ -5,8 +5,8 @@ import { redirectToLogIn } from "./modules/redirectToLogIn.mjs";
 
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
-// const id = params.get("id");                      <----- change to this when param has been added to url
-const id = "1011";
+const id = params.get("id");                
+
 
 // if(!id) {
 //     window.location.href = "index.html";

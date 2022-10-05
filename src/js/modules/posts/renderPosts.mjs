@@ -4,7 +4,6 @@ export async function renderPosts() {
     const post = await posts.getPosts();
     for(let i = 0; i < post.length; i++) {
         const postRender = post[i];
-        console.log(postRender)
     const postContainer = document.querySelector('#postContent')
     postContainer.innerHTML += `
                                 <div class="card d-flex flex-column p-3 mt-3">
@@ -14,7 +13,7 @@ export async function renderPosts() {
                                         </div>
                                         <h2 class="ms-2 user-name">${postRender.author.name}</h2>
                                     </div>
-                                    <a href="./post.html/id=${postRender.id}" class="no-style">
+                                    <a href="./post.html?id=${postRender.id}" class="no-style">
                                     <div class="ms-5" >
                                         <h4 class="post-title">${postRender.title}</h4>
                                         <p class="post-content">${postRender.body}</p>
