@@ -13,11 +13,6 @@ const API_URL = "https://nf-api.onrender.com";
 const accessToken = localStorage.getItem("accessToken");
 
 
-/**Check if there is an existing accessToken
- * 
- * @param {string} token 
- * @param {string} url
- */
 function checkIfToken(token, url) {
     if(token) {
         getWithToken(token, url);
@@ -31,6 +26,7 @@ function checkIfToken(token, url) {
 const POSTS_URL = `${API_URL}/api/v1/social/posts/`
 
 checkIfToken(accessToken, POSTS_URL);
+
 
 // LOGGED IN USER POST AREA
 

@@ -1,10 +1,6 @@
-<<<<<<< js2Phillip
-import { checkIfToken } from "./modules/checkIfToken.mjs";
-import { readSinglePost } from "./modules/posts/singlePost.mjs";
-=======
+
 import { getWithToken } from "./modules/getWithToken.mjs";
 import { postWithToken } from "./modules/postWithToken.mjs";
->>>>>>> js2
 import { redirectToLogIn } from "./modules/redirectToLogIn.mjs";
 
 const queryString = document.location.search;
@@ -113,5 +109,3 @@ const REACT_URL = `${API_URL}/api/v1/social/posts/${id}/react/like`;
 // function clickHeart(e) {
 //     postWithToken()
 // }
-
-// heart.addEventListener("click", clickHeart);        ------------ UNDER CONSTRUCTION
