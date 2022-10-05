@@ -50,7 +50,7 @@
                                 <img src="/assets/components/icons/account-icon.png">
                             </div>
                             <form action="https://nf-api.onrender.com/api/v1/social/posts/?_author=true" id="newPost" method="post">
-                            <h2 class="ms-2 self-user">Username</h2>
+                            <h2 class="ms-2 self-user"></h2>
                         </div>
                         <div class="form-floating ms-5">
                             <input class="rounded-pill form-control fs-4" id="titleInput" placeholder="Write title here" name="title" required>
@@ -76,57 +76,12 @@
                     </div>
                     <select class="rounded-pill px-3 col-4 col-sm-3" id="filterSelect">
                         <option>Filter...</option>
-                        <option value="1">Chronological</option>
+                        <option value="1">Descending</option>
                         <option value="2">By username</option>
-                        <option value="3">I have no idea</option>
+                        <option value="3">??</option>
                     </select>
                 </div>
-                <div class="post-wrapper d-flex flex-column post-content">
-                    <div class="card d-flex flex-column p-3 mt-3">
-                        <div class="d-flex align-items-center">
-                            <div class="profile-img-wrapper">
-                                <img src="/assets/components/icons/account-icon.png">
-                            </div>
-                            <h2 class="ms-2 user-name">Username</h2>
-                        </div>
-                        <div class="ms-5">
-                            <h4 id="post-title"></h4>
-                            <p id="post-content"></p>
-
-                        </div>
-                        <div class="small-icons d-flex">
-                            <div class="me-3">
-                                <img src="/assets/components/icons/comment.png">
-                                <span>0</span>
-                            </div>
-                            <div>
-                                <img src="/assets/components/icons/heart-empty.png">
-                                <span>0</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card d-flex flex-column p-3 mt-3">
-                        <div class="d-flex align-items-center">
-                            <div class="profile-img-wrapper">
-                                <img src="/assets/components/icons/account-icon.png">
-                            </div>
-                            <h2 class="ms-2 user-name">Username</h2>
-                        </div>
-                        <div class="ms-5">
-                            <h4 id="post-title"></h4>
-                            <p id="post-content"></p>
-                        </div>
-                        <div class="small-icons d-flex">
-                            <div class="me-3">
-                                <img src="/assets/components/icons/comment.png">
-                                <span>0</span>
-                            </div>
-                            <div>
-                                <img src="/assets/components/icons/heart-empty.png">
-                                <span>0</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="post-wrapper d-flex flex-column" id="postContent">
                 </div>
             </div>
         </section>

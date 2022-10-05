@@ -1,3 +1,4 @@
+
 import { getWithToken } from "./modules/getWithToken.mjs";
 import { postWithToken } from "./modules/postWithToken.mjs";
 import { redirectToLogIn } from "./modules/redirectToLogIn.mjs";
@@ -108,5 +109,3 @@ const REACT_URL = `${API_URL}/api/v1/social/posts/${id}/react/like`;
 // function clickHeart(e) {
 //     postWithToken()
 // }
-
-// heart.addEventListener("click", clickHeart);        ------------ UNDER CONSTRUCTION
