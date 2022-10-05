@@ -19,7 +19,7 @@ async function postSignUp(url, userData) {
         const json = await response.json();
         console.log(json);
 
-        //FEEDBACK TO USER --- not finished --- Make feedback <div>!
+        //FEEDBACK TO USER 
         const formFeedback = document.querySelector(".form-feedback");
 
         if(json.code === "P2002") {
