@@ -1,17 +1,15 @@
 import { getWithToken } from "./modules/getWithToken.mjs";
 import { redirectToLogIn } from "./modules/redirectToLogIn.mjs";
 import { fetchWithToken } from "./modules/fetchWithToken.mjs";
+import { renderPosts } from "./modules/posts/renderPosts.mjs";
 
 
 // POSTS
 
 import * as posts from "./modules/posts/postGather.mjs"
-import { getPost, updatePost } from "./modules/posts/postGather.mjs";
-import { renderPosts } from "./modules/renderers.mjs";
 
 
 const API_URL = "https://nf-api.onrender.com";
-
 const accessToken = localStorage.getItem("accessToken");
 
 
@@ -58,6 +56,4 @@ async function onNewPostFormSubmit(event) {
     form.reset();
   }
 
-
-
-
+  renderPosts();
