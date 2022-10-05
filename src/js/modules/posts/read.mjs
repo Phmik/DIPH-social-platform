@@ -3,7 +3,7 @@ import { fetchWithToken } from "../fetchWithToken.mjs";
 
 
 const action = "/posts"
-const author = "?_author=true"
+const author = "?_author=true&_comments=true&_reactions=true"
 
 export async function getPosts() {
     const updatePostURL = `${API_SOCIAL_URL}${action}${author}`;
