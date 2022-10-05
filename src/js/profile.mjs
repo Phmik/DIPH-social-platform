@@ -5,7 +5,7 @@ const API_URL = "https://nf-api.onrender.com";
 
 const accessToken = localStorage.getItem("accessToken");
 
-// Check if there's a token - if so, getWithToken
+// Check if there's a token - if not, redirectToLogIn
 function checkIfToken(token) {
     if(token) {
         console.log("yes, token!");

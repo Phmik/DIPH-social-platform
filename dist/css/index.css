@@ -10882,5 +10882,9 @@ body .small-icons img {
   height: 1.5rem;
   width: 1.5rem;
 }
+body .main-post {
+  border: solid 3px #2A7567;
+  min-height: 12rem;
+}
 
 /*# sourceMappingURL=index.css.map */

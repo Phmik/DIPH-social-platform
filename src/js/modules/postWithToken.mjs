@@ -23,7 +23,7 @@ async function postWithToken(token, url, postInfo) {
         const response = await fetch(url, postData);
         const json = await response.json();
         console.log(json);
-        return json;
+        form.reset();
 
     } catch (error) {
         console.log(error);
