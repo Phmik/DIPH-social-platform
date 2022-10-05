@@ -2,9 +2,13 @@ import { getWithToken } from "./modules/getWithToken.mjs";
 import { redirectToLogIn } from "./modules/redirectToLogIn.mjs";
 import { fetchWithToken } from "./modules/fetchWithToken.mjs";
 
+
 // POSTS
 
-import * posts from "./modules/posts/postGather.mjs"
+import * as posts from "./modules/posts/postGather.mjs"
+import { getPost, updatePost } from "./modules/posts/postGather.mjs";
+import { renderPosts } from "./modules/renderers.mjs";
+
 
 const API_URL = "https://nf-api.onrender.com";
 
@@ -49,21 +53,11 @@ async function onNewPostFormSubmit(event) {
     const url = form.action;
     const formData = new FormData(form);
     const body = Object.fromEntries(formData.entries());
-    await createPost(body, url, method) 
+    const title = Object.fromEntries(formData.entries())
+    posts.createPost(body, title)
     form.reset();
   }
 
-  // CREATE POST 
 
-  async function createPost(postData, url, method) {
-    const options = {
-      method,
-      body: JSON.stringify(postData)
-    }
-    console.log(postData);
-   const response = await fetchWithToken(url, options)
-   const post = await response.json();
-   console.log(post)
-  }
 
 

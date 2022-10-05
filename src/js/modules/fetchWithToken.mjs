@@ -1,20 +1,36 @@
-async function fetchWithToken(url) {
+// async function fetchWithToken(url) {
 
-  const token = localStorage.getItem('accessToken');
-  const getData = {
-      method: 'GET',
-      headers: {
-          'Content-Type': 'application/json; charset=UTF-8',
-          Authorization: `Bearer ${token}`,
-      },
-  };
-  const response = await fetch(url, getData);
-  if(!response.ok) {
-  return response
-  }
-  else {
-      throw new Error("Auch")
-  }
+//   const token = localStorage.getItem('accessToken');
+//   const getData = {
+//       method: 'GET',
+//       headers: {
+//           'Content-Type': 'application/json; charset=UTF-8',
+//           Authorization: `Bearer ${token}`,
+//       },
+//   };
+//   const response = await fetch(url, getData);
+//   if(!response.ok) {
+//   return response
+//   }
+//   else {
+//       throw new Error("Auch")
+//   }
+// }
+
+// export { fetchWithToken };
+
+export function headers() {
+    const token = localStorage.getItem('accessToken');
+
+    return {
+        'Content-Type': 'application/json; charset=UTF-8',
+        Authorization: `Bearer ${token}`,
+    }
 }
 
-export { fetchWithToken };
+export async function fetchWithToken(url, options = {}) {
+    return fetch(url, {
+        ...options,
+        headers: headers()
+    })
+}
