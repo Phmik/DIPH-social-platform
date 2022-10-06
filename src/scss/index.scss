@@ -67,3 +67,13 @@ body {
         min-height: 12rem;
     }
 }
+
+.post-title {
+    text-transform: none;
+}
+
+.no-style,
+.no-style:hover {
+    color: $white;
+    text-decoration: none;
+}
