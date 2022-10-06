@@ -84,21 +84,26 @@ const form = document.querySelector("form");
 const COMMENT_URL = `${API_URL}/api/v1/social/posts/${id}/comment`;
 const comment = document.querySelector("#postInput");
 
-const userInput = {
-    body: comment.value
-}
+ function postComment(e) {
+    const userInput = {
+        body: comment.value
+    }
 
-function postComment(e) {
     e.preventDefault();
-    postWithToken(accessToken, COMMENT_URL, userInput);
+    if(userInput.body.length > 0){
+        postWithToken(accessToken, COMMENT_URL, userInput);
+        form.reset();
+    } else {
+        console.log("value empty or isn't coming through")
+    }
 }
 
 form.addEventListener("submit", postComment);
 
 
-// React to post
-const heart = document.querySelector("#react-icon");
-const REACT_URL = `${API_URL}/api/v1/social/posts/${id}/react/like`;
+// React to post ------------------------------------------------------- make PUT function later
+// const heart = document.querySelector("#react-icon");
+// const REACT_URL = `${API_URL}/api/v1/social/posts/${id}/react/like`;
 
 // const react = {
 //     symbol: "like",
