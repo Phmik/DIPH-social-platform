@@ -10910,6 +10910,10 @@ main .small-icons img {
   width: 1.5rem;
 }
 
+.green-text {
+  color: #43aa97;
+}
+
 @media (max-width: 768px) {
   main .banner {
     height: 11rem;
