@@ -18,12 +18,23 @@ function checkIfToken(token) {
 checkIfToken(accessToken);
 
 
+// Get user from url param
+const queryString = document.location.search;
+const params = new URLSearchParams(queryString);
+let name = params.get("name");     
+
+
 
 // Get user from localStorage
-const name = localStorage.getItem("name");
-const USER_URL = `${API_URL}/api/v1/social/profiles/${name}?_posts=true&_following=true&_followers=true`
+const userName = localStorage.getItem("name");
+if(!name) {
+    name = userName;
+}
+
+
 
 // Get user info
+const USER_URL = `${API_URL}/api/v1/social/profiles/${name}?_posts=true&_following=true&_followers=true`
 const userData = await getWithToken(accessToken, USER_URL); 
 
 const profileName = document.querySelectorAll(".profile-name");

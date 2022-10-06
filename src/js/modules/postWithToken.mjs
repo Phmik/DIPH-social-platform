@@ -2,7 +2,7 @@
  * Posts to API endpoint with accessToken
  * @param {string} token the accessToken
  * @param {string} url the url to the API endpoint
- * @param {string} postInfo the information you want to post
+ * @param {string} postInfo an object with the information you want to post
  * @example
  * ```js
  * // Use this function to post to an API endpoint with an
@@ -22,9 +22,8 @@ async function postWithToken(token, url, postInfo) {
         };
         const response = await fetch(url, postData);
         const json = await response.json();
-        console.log(json);
-        form.reset();
 
+        window.location.reload();
     } catch (error) {
         console.log(error);
     }
