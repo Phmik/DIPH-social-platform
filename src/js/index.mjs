@@ -43,8 +43,6 @@ newPost.addEventListener('submit', onNewPostFormSubmit)
 async function onNewPostFormSubmit(event) {
     event.preventDefault();
     const form = event.target;
-    const method = form.method;
-    const url = form.action;
     const formData = new FormData(form);
     const body = Object.fromEntries(formData.entries());
     const title = Object.fromEntries(formData.entries())
