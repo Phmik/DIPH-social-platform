@@ -11,7 +11,7 @@ export async function renderPosts() {
                                         <div class="profile-img-wrapper">
                                             <img src="/assets/components/icons/account-icon.png">
                                         </div>
-                                        <h2 class="ms-2 user-name">${postRender.author.name}</h2>
+                                        <h2 class="ms-2 user-name"><a href="./profile.html/?id=${postRender.id}" class="no-style user-hover">${postRender.author.name}</a></h2>
                                     </div>
                                     <a href="./post.html?id=${postRender.id}" class="no-style">
                                     <div class="ms-5" >
