@@ -10890,4 +10890,8 @@ body .main-post {
   text-decoration: none;
 }
 
+.user-hover:hover {
+  color: #D999A5;
+}
+
 /*# sourceMappingURL=index.css.map */
