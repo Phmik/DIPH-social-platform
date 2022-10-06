@@ -77,3 +77,19 @@ body {
     color: $white;
     text-decoration: none;
 }
+
+.user-hover:hover {
+    color: $link-color;
+}
+
+.post-options {
+
+    max-width: 1rem;
+    max-height: 1rem;
+
+    & img {
+        width: 1rem;
+        height: 1rem;
+    }
+
+}
