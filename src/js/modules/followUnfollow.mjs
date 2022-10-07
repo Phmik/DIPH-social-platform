@@ -1,3 +1,6 @@
+import { fetchWithToken } from "./fetchWithToken.mjs";
+import { getWithToken } from "./getWithToken.mjs";
+
 /**
  * Follow/Unfollow users 
  * @param {string} token the accessToken
@@ -8,6 +11,8 @@
  * putWithToken(accessToken, API_ENDPOINT_URL);
  * ```
  */
+
+
  async function followUnfollow(token, url) {
     try {
         const postData = {

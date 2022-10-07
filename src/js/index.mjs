@@ -51,3 +51,6 @@ async function onNewPostFormSubmit(event) {
   }
 
   renderPosts();
+
+  
+

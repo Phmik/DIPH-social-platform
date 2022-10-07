@@ -18,9 +18,19 @@ export async function renderPosts() {
                                         </div>
                                         <h3 class="ms-2 user-name"><a href="./profile.html?name=${postRender.author.name}" class="no-style user-hover">${postRender.author.name}</a></h3>
                                     </div>
-                                    ${localUser === postRender.author.name ? `<div class="post-options" data-author="${postRender.author.name}">
-                                    <img src="./assets/components/icons/options-icon.png" alt="edit wheel for posts"  width="20" height="20">
-                                    </div>` : ""}
+                                    ${localUser === postRender.author.name ? 
+                                        `
+                                        <div class="post-options" data-author="${postRender.author.name}">
+                                            <div class="dropdown d-flex justify-content-end">
+                                                <div type="button" class="dropdown-toggle mt-1" class="rounded-circle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <img src="./assets/components/icons/options-icon.png" alt="edit wheel for posts"  width="40" height="40">
+                                                </div>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <li><a class="dropdown-item" href="#" id="editPost">Edit Post</a></li>
+                                                    <li><a class="dropdown-item" href="#" id="removePost">Delete post</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>` : ""}
                                     </div>
                                     <a href="./post.html?id=${postRender.id}" class="no-style">
                                     <div class="ms-5" >
