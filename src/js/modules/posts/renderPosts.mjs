@@ -16,7 +16,7 @@ export async function renderPosts() {
                                         <div class="profile-img-wrapper">
                                         <img src="/assets/components/icons/account-icon.png">
                                         </div>
-                                        <h3 class="ms-2 user-name"><a href="./profile.html?id=${postRender.id}" class="no-style user-hover">${postRender.author.name}</a></h3>
+                                        <h3 class="ms-2 user-name"><a href="./profile.html?name=${postRender.author.name}" class="no-style user-hover">${postRender.author.name}</a></h3>
                                     </div>
                                     ${localUser === postRender.author.name ? `<div class="post-options" data-author="${postRender.author.name}">
                                     <img src="./assets/components/icons/options-icon.png" alt="edit wheel for posts"  width="20" height="20">
