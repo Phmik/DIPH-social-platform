@@ -1,24 +1,22 @@
 /**
- * Posts to API endpoint with accessToken
+ * Deletes entry 
  * @param {string} token the accessToken
  * @param {string} url the url to the API endpoint
- * @param {string} postInfo an object with the information you want to post
  * @example
  * ```js
- * // Use this function to post to an API endpoint with an
+ * // Use this function to put/update an entry in the API with
  * // accessToken, a url and the information you want to post.
- * postWithToken(accessToken, API_ENDPOINT_URL, someData);
+ * putWithToken(accessToken, API_ENDPOINT_URL);
  * ```
  */
-async function postWithToken(token, url, postInfo) {
+ async function putWithToken(token, url) {
     try {
         const postData = {
-            method: "POST",
+            method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`
             },
-            body: JSON.stringify(postInfo),
         };
         const response = await fetch(url, postData);
         const json = await response.json();
@@ -29,4 +27,6 @@ async function postWithToken(token, url, postInfo) {
     }
 }
 
-export { postWithToken }; 
+export { putWithToken }; 
+
+//UNDER CONSTRUCTION... --- idk if it works
