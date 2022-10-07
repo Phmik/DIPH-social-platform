@@ -1,3 +1,5 @@
+let bodyObj = {};
+
 /**
  * Follow/Unfollow users 
  * @param {string} token the accessToken
@@ -16,12 +18,12 @@
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`
             },
+            body: JSON.stringify(bodyObj),
         };
         const response = await fetch(url, postData);
         const json = await response.json();
-        return json;
 
-        // window.location.reload(); ??
+        window.location.reload();
     } catch (error) {
         console.log(error);
     }

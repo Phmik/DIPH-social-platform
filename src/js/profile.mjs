@@ -30,7 +30,6 @@ let name = params.get("name");
 const userName = localStorage.getItem("name");
 const followBtn = document.querySelector(".follow");
 if(!name) {
-    followBtn.remove();
     name = userName;
 }
 
@@ -46,28 +45,32 @@ const profileName = document.querySelector(".profile-name");
 profileName.innerHTML = name;
 
 
+//FOLLOW
+const UNFOLLOW_URL = `${API_URL}/api/v1/social/profiles/${name}/unfollow`
+const FOLLOW_URL = `${API_URL}/api/v1/social/profiles/${name}/follow`
+
+function clickToFollowUnfollow(e) {
+    e.preventDefault();
+    if(followers.find(item => item.name === userName)) { 
+        followUnfollow(accessToken, UNFOLLOW_URL);
+    } else {
+        followUnfollow(accessToken, FOLLOW_URL)
+    }
+}
 
 
-// Check if following ------------------------ NOT working
-// const followers = userData.followers;
-// if(name !== userName) {
-//     for(let i = 0; i < followers.length; i++){
-//         if(followers[i].name.includes(userName)) {
-//             console.log(followers[i].name)
-//             console.log("You're following");
-//             followBtn.innerHTML = "unfollow";
-    
-//             const UNFOLLOW_URL = `${API_URL}/api/v1/social/profiles/${name}/unfollow`
+// Check if FOLLOW-able user AND if they already are following
+const followers = userData.followers;
 
-//             followBtn.addEventListener("submit", followUnfollow(accessToken, UNFOLLOW_URL));
-//         } else {
-//             console.log("You're NOT following");
-
-//             const FOLLOW_URL = `${API_URL}/api/v1/social/profiles/${name}/follow`
-//             followBtn.addEventListener("submit", followUnfollow(accessToken, FOLLOW_URL));
-//         }
-//     }
-// } 
+if(name !== userName) {
+    if(followers.find(item => item.name === userName)) { 
+        followBtn.innerHTML = "unfollow";
+    }
+    //LISTEN FOR CLICK ON FOLLOW/UNFOLLOW BUTTON
+    followBtn.addEventListener("click", clickToFollowUnfollow);
+} else {
+    followBtn.remove();
+}
 
 
 
