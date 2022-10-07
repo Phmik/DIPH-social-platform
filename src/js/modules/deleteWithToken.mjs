@@ -2,15 +2,14 @@
  * Deletes entry 
  * @param {string} token the accessToken
  * @param {string} url the url to the API endpoint
- * @param {string} postInfo an object with the information you want to delete
  * @example
  * ```js
  * // Use this function to put/update an entry in the API with
  * // accessToken, a url and the information you want to post.
- * putWithToken(accessToken, API_ENDPOINT_URL, someData);
+ * putWithToken(accessToken, API_ENDPOINT_URL);
  * ```
  */
- async function putWithToken(token, url, postInfo) {
+ async function putWithToken(token, url) {
     try {
         const postData = {
             method: "DELETE",
@@ -18,7 +17,6 @@
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`
             },
-            body: JSON.stringify(postInfo),
         };
         const response = await fetch(url, postData);
         const json = await response.json();
