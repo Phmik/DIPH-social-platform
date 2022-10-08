@@ -2,11 +2,14 @@ import { getWithToken } from "./modules/getWithToken.mjs";
 import { redirectToLogIn } from "./modules/redirectToLogIn.mjs";
 import { fetchWithToken } from "./modules/fetchWithToken.mjs";
 import { renderPosts } from "./modules/posts/renderPosts.mjs";
+import { removePost } from "./modules/posts/postGather.mjs";
 
 
 // POSTS
 
 import * as posts from "./modules/posts/postGather.mjs"
+
+
 
 
 const API_URL = "https://nf-api.onrender.com";
@@ -51,6 +54,4 @@ async function onNewPostFormSubmit(event) {
   }
 
   renderPosts();
-
-  
 
