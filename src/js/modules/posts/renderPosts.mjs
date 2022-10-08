@@ -28,7 +28,7 @@ export async function renderPosts() {
                                                         <img src="./assets/components/icons/options-icon.png" alt="edit wheel for posts"  width="40" height="40">
                                                     </div>
                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <li><button class="dropdown-item" href="#" id="editPost">Edit Post</button></li>
+                                                        <li><a class="dropdown-item" href="./edit.html?id=${postRender.id}" id="editPost">Edit Post</a></li>
                                                         <li><button class="dropdown-item" id="removePost"> Delete post</button></li>
                                                     </ul>
                                                 </div>

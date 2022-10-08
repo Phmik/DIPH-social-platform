@@ -18,10 +18,8 @@ export async function getPost(id) {
     const getPostURL = `${API_SOCIAL_URL}${action}/${id}`;
 
     const response = await fetchWithToken(getPostURL)
-    return await response.json();
-    
+    return await response.json()
 }
-
 
 
 export async function getUser(id) {
