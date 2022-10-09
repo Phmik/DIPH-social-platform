@@ -1,5 +1,5 @@
-import { fetchWithToken } from "./fetchWithToken.mjs";
-import { getWithToken } from "./getWithToken.mjs";
+let bodyObj = {};
+
 
 /**
  * Follow/Unfollow users 
@@ -21,12 +21,12 @@ import { getWithToken } from "./getWithToken.mjs";
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`
             },
+            body: JSON.stringify(bodyObj),
         };
         const response = await fetch(url, postData);
         const json = await response.json();
-        return json;
 
-        // window.location.reload(); ??
+        window.location.reload();
     } catch (error) {
         console.log(error);
     }
