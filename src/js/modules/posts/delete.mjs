@@ -3,17 +3,28 @@ import { API_SOCIAL_URL } from "../constants.mjs"
 import { fetchWithToken } from "../fetchWithToken.mjs";
 
 const action = "/posts"
-const method = "delete";
+const methodGET = "GET";
+const author = "?_author=true&_comments=true&_reactions=true"
 
-export async function removePost(id) {
-    if (!id) {
-        throw new Error("Delete requires a postID")
-    }
+
+export async function removePost() {  
     
-    const updatePostURL = `${API_SOCIAL_URL}${action}/${id}`;
-
-    const response = await fetchWithToken(updatePostURL, {
-        method
+    const viewPostURL = `${API_SOCIAL_URL}${action}${author}`;
+    const response = await fetchWithToken(viewPostURL, {
+        methodGET, 
     })
-    return await response.json()
+
+    const postIdResult = await response.json()
+    for(let i = 0; i < postIdResult.length; i++) {
+        const postId = postIdResult[i]
+        if(localStorage.getItem('name') === postId.author.name){
+            const response = await fetchWithToken(`${API_SOCIAL_URL}${action}/${postId.id}`, {
+                method: 'delete',
+            })
+            return response.json()   
+        }
+    }
 }
+
+
+

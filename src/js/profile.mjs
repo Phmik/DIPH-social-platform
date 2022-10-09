@@ -139,3 +139,4 @@ if(!userData.banner === "") {
     bannerImgWrap.appendChild(bannerImg);
 }
 
+followUnfollow();

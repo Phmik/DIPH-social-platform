@@ -1,5 +1,6 @@
 let bodyObj = {};
 
+
 /**
  * Follow/Unfollow users 
  * @param {string} token the accessToken
@@ -10,6 +11,8 @@ let bodyObj = {};
  * putWithToken(accessToken, API_ENDPOINT_URL);
  * ```
  */
+
+
  async function followUnfollow(token, url) {
     try {
         const postData = {
