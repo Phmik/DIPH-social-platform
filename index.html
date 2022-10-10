@@ -73,12 +73,13 @@
                     <div class="search-wrap d-flex rounded-pill col-7 col-sm-6 col-md-5">
                         <img class="search-icon" src="/assets/components/icons/search-icon.png">              
                         <input class="form-control" type="search" id="searchInput">
+                        
                     </div>
                     <select class="rounded-pill px-3 col-4 col-sm-3" id="filterSelect">
                         <option>Filter...</option>
-                        <option value="1">Descending</option>
-                        <option value="2">By username</option>
-                        <option value="3">??</option>
+                        <option value="1" id="filterBylatestPosts">Latest posts</option>
+                        <option value="2" id="filterByUsername">By username</option>
+                        <option value="3" id="filterByTitle">By title</option>
                     </select>
                 </div>
                 <div class="post-wrapper d-flex flex-column" id="postContent">
@@ -93,4 +94,3 @@
    <script type="module" src="./src/js/index.mjs"></script>
 </body>
 </html>
-
