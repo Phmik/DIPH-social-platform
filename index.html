@@ -70,16 +70,20 @@
         <section class="row justify-content-center">
             <div class="col-11 col-sm-8 col-md-6 px-0 my-5">
                 <div class="row justify-content-between mx-0">
-                    <div class="search-wrap d-flex rounded-pill col-7 col-sm-6 col-md-5">
-                        <img class="search-icon" src="/assets/components/icons/search-icon.png">              
-                        <input class="form-control" type="search" id="searchInput">
-                    </div>
-                    <select class="rounded-pill px-3 col-4 col-sm-3" id="filterSelect">
-                        <option>Filter...</option>
-                        <option value="1">Descending</option>
-                        <option value="2">By username</option>
-                        <option value="3">??</option>
-                    </select>
+                    <form id="selectForm" class="d-flex justify-content-between">
+                        <div class="search-wrap d-flex rounded-pill col-7 col-sm-6 col-md-5">
+                            
+                            <img class="search-icon" src="/assets/components/icons/search-icon.png">              
+                            <input class="form-control" type="search" id="searchInput">
+                        </div>
+                        <select class="rounded-pill px-3 col-4 col-sm-3" id="filterSelect">
+                            <option>Filter...</option>
+                            <option value="newest" id="filterByLatestPosts">Latest posts</option>
+                            <option value="oldest" id="filterByOldest">Oldest posts</option>
+                            <option value="username" id="filterByUsername">By username</option>
+                            <option value="title" id="filterByTitle">By title</option>
+                        </select>
+                    </form>
                 </div>
                 <div class="post-wrapper d-flex flex-column" id="postContent">
                 </div>
@@ -93,4 +97,3 @@
    <script type="module" src="./src/js/index.mjs"></script>
 </body>
 </html>
-

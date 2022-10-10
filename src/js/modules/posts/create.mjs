@@ -11,6 +11,6 @@ export async function createPost(postData) {
         method,
         body: JSON.stringify(postData)
     })
-
+    window.location.reload();
     return await response.json()
 }
