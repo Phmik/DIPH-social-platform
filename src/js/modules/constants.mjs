@@ -5,3 +5,5 @@ export const API_SOCIAL_URL = `${API_HOST_URL}${API_BASE}${API_SOCIAL_BASE}`;
 
 export const userURL = `/api/v1/social/profiles`;
 
+export const returnPostDate = (date) => `${['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'][date.getMonth()]}-${date.getDate()}-${date.getFullYear()} at
+${date.getHours()}:${date.getMinutes()}`

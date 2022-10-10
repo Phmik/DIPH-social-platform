@@ -1,17 +1,16 @@
 import * as posts from "./postGather.mjs"
+import { returnPostDate } from "../constants.mjs";
 
-export async function renderPosts() {
-    const post = await posts.getPosts();
+
+export async function renderPosts(postList) {
     const postContainer = document.querySelector('#postContent')
 
-    const returnPostDate = (date) => `${['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'][date.getMonth()]} ${date.getDate()} ${date.getFullYear()} at ${date.getHours()}:${date.getMinutes()}`
-    
 // POST RENDER    
-
-    for(let i = 0; i < post.length; i++) {
-        const postRender = post[i];
-            const localUser = localStorage.getItem('name')
-            
+    postContainer.innerHTML = ""
+    for(let i = 0; i < postList.length; i++) {
+        const postRender = postList[i];
+        const localUser = localStorage.getItem('name')
+        
         postContainer.innerHTML += `<div class="card d-flex flex-column p-3 mt-3" id="${postRender.id}">
                                         <div class="d-flex justify-content-between">
                                         <div class="d-flex align-items-center">
@@ -53,12 +52,9 @@ export async function renderPosts() {
                                         <div>
                                             <img src="/assets/components/icons/heart-empty.png">
                                             <span>${postRender._count.reactions}</span>
-                                            
                                         </div>
-                                        
                                         </div>
-                                        
-                                    </div>`            
+                                    </div>`
         }
 
         // REMOVE POST 
@@ -67,15 +63,7 @@ export async function renderPosts() {
             if(removeButton) {
             removeButton.addEventListener('click', posts.removePost)
         }
-            
-
-        // SEARCH 
-
     }
-
-
-    
-
                           
 
 

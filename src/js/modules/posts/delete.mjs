@@ -21,6 +21,7 @@ export async function removePost() {
             const response = await fetchWithToken(`${API_SOCIAL_URL}${action}/${postId.id}`, {
                 method: 'delete',
             })
+            window.location.reload();
             return response.json()   
         }
     }
