@@ -33,5 +33,3 @@ let bodyObj = {};
 }
 
 export { followUnfollow }; 
-
-// UNDER CONSTRUCTION... --- NOT working

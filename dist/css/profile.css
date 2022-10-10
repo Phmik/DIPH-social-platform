@@ -10864,6 +10864,9 @@ main .banner .banner-gradient .dropdown .dropdown-toggle::after {
 main .banner .banner-gradient .dropdown .dropdown-toggle img {
   height: 1.8rem;
 }
+main .banner .banner-gradient .dropdown #edit-banner, main .banner .banner-gradient .dropdown #edit-profile-image {
+  cursor: pointer;
+}
 main .banner .banner-gradient .profile-info {
   margin-left: 10%;
 }
@@ -10874,6 +10877,7 @@ main .banner .banner-gradient div #profilePic {
   transform: translateY(20%);
   height: 10rem;
   width: 10rem;
+  object-fit: cover;
 }
 main .banner .banner-gradient div .btn {
   height: 2.4rem;
@@ -10901,6 +10905,42 @@ main #postInput {
 main .small-icons img {
   height: 1.5rem;
   width: 1.5rem;
+}
+main .modal-wrap {
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.3568627451);
+}
+
+.user-name a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+.user-name a:hover {
+  color: #D999A5;
+}
+
+.post-title,
+.post-content {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.no-style,
+.no-style:hover {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.post-options {
+  max-width: 1.5rem;
+  max-height: 1.5rem;
+}
+.post-options .dropdown-toggle::after {
+  border: none;
+}
+.post-options img {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .green-text {
