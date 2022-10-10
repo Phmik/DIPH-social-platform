@@ -2,6 +2,7 @@
 import { getWithToken } from "./modules/getWithToken.mjs";
 import { postWithToken } from "./modules/postWithToken.mjs";
 import { redirectToLogIn } from "./modules/redirectToLogIn.mjs";
+import { returnPostDate } from "./modules/constants.mjs";
 
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
@@ -39,15 +40,18 @@ const postAuthor = document.querySelector(".author-name");
 const author = post.author;
 postAuthor.innerHTML = author.name;
 
-const postTitle = document.querySelector("#post-title");
-const postContent = document.querySelector("#post-content");
+const postTitle = document.querySelector(".post-title");
+const postContent = document.querySelector(".post-content");
 const commentCounter = document.querySelector("#comment-counter");
 const reactCounter = document.querySelector("#react-counter");
+const postDate = document.querySelector('.post-date')
 
 postTitle.innerHTML = post.title;
 postContent.innerHTML = post.body;
 commentCounter.innerHTML = post._count.comments;
 reactCounter.innerHTML = post._count.reactions;
+postDate.innerHTML = returnPostDate(new Date(post.created))
+
 
 
 // Display comments
@@ -56,8 +60,9 @@ const postWrapper = document.querySelector(".post-wrapper");
 
 postWrapper.innerHTML = ""
 for(let i = 0; i < comments.length; i++) { 
+    console.log(comments[i])
     postWrapper.innerHTML += `
-    <div id="${comments[i].id}" class="card d-flex flex-column p-3 mt-3">
+    <div id="${comments[i].id}"class="card d-flex flex-column p-3 mt-3">
         <div class="d-flex align-items-center">
             <div class="profile-img-wrapper">
                 <img src="/assets/components/icons/account-icon.png">
@@ -65,8 +70,13 @@ for(let i = 0; i < comments.length; i++) {
             <h3 class="ms-2">${comments[i].owner}</h3>
         </div>
         <div class="ms-5">
-            <h4 id="post-title"${comments[i].title}></h4>
-            <p id="post-content">${comments[i].body}</p>
+            <h4 class="post-title"${comments[i].title}></h4>
+            <p class="post-content">${comments[i].body}</p>
+        </div>
+        <div class="d-flex justify-content-between">
+            <p class="post-content text-bg">
+                ${returnPostDate(new Date(comments[i].created))}
+            </p>
         </div>
     </div>`
 }
