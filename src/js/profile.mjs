@@ -1,6 +1,7 @@
 import { followUnfollow } from "./modules/followUnfollow.mjs";
 import { getWithToken } from "./modules/getWithToken.mjs";
 import { redirectToLogIn } from "./modules/redirectToLogIn.mjs";
+import { putWithToken } from "./modules/putWithToken.mjs";
 
 const API_URL = "https://nf-api.onrender.com";
 
@@ -32,7 +33,6 @@ const followBtn = document.querySelector(".follow");
 if(!name) {
     name = userName;
 }
-
 
 
 // Get profile info
@@ -84,21 +84,35 @@ if(posts.length === 0) {
 } else {
 
 }
-for(let i = 0; i < posts.length; i++) { 
+for(let i = posts.length - 1; i >= 0; i--) { 
     postWrapper.innerHTML += `
-    <div class="card d-flex flex-column p-3 ${posts[i].id}">
-        <div class="d-flex align-items-center">
-            <div class="profile-img-wrapper">
-                <img src="/assets/components/icons/account-icon.png">
+    <div class="card d-flex flex-column p-3" id="${posts[i].id}">
+        <div class="d-flex justify-content-between">
+            <div class="d-flex align-items-center">
+                <div class="profile-img-wrapper">
+                    <img src="/assets/components/icons/account-icon.png">
+                </div>
+                <h3 class="user-name"><a href="./profile.html?name=${posts[i].owner}" class="no-style user-hover">${posts[i].owner}</a></h3>
             </div>
-            <h3 class="ms-2">${posts[i].owner}</h3>
+    ${userName === posts[i].owner ? 
+        `
+            <div class="post-options dropdown d-flex justify-content-end" data-author="${posts[i].owner}">
+                <div type="button" class="dropdown-toggle rounded-circle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="./assets/components/icons/options-icon.png" alt="edit wheel for posts">
+                </div>
+                <ul class="dropdown-menu  dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="./edit.html?id=${posts[i].id}" id="editPost">Edit Post</a></li>
+                    <li><button class="dropdown-item" id="removePost"> Delete post</button></li>
+                </ul>
+            </div>` : ""}
         </div>
-        <div class="ms-5">
-            <h4 id="post-title"${posts[i].title}></h4>
-            <p id="post-content">${posts[i].body}</p>
-        </div>
+        <a href="./post.html?id=${posts[i].id}" class="no-style">
+            <div class="ms-5" >
+                <h4 class="post-title">${posts[i].title}</h4>
+                <p class="post-content">${posts[i].body}</p>
+            </div>
+        </a>
     </div>`
-
     if(i === 50) {
         break;
     }
@@ -114,29 +128,121 @@ followingWrapper.innerHTML = ""
 if(following.length === 0) {
     followingWrapper.innerHTML = `<span class="green-text">This user doesn't follow anyone :(<span>`
 } else {
-    for(let i = 0; i < 3; i++) { 
+    for(let i = 0; i < following.length; i++) { 
         followingWrapper.innerHTML += `
         <div class="d-flex align-items-center">
-            <div class="profile-img-wrapper d-flex align-items-center w-100">
-                <img src="/assets/components/icons/account-icon.png">
-                <div class="ms-2">
-                    <h5 class="mb-0">${following[i].name}</h5>
-                    <button class="btn px-3 py-0">Follow</button>
+            <a href="./profile.html?name=${following[i].name}" class="no-style">
+                <div class="profile-img-wrapper d-flex align-items-center w-100">
+                ${following[i].avatar ? 
+                    `<img class="rounded-circle" src="${following[i].avatar}" onerror="this.src='/assets/components/icons/account-icon.png'">` : `<img class="rounded-circle" src="/assets/components/icons/account-icon.png" onerror="this.src='/assets/components/icons/account-icon.png'">`}
+                    <div class="ms-2">
+                        <h5 class="mb-0">${following[i].name}</h5>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>`
+
+        if(i === 2) { 
+            break;
+        }
     }
 }
 
 
 // If there is an existing banner image, display it
-if(!userData.banner === "") {
+if(userData.banner) {
     const bannerImgWrap = document.querySelector(".banner-img-wrapper");
-
     const bannerImg = document.createElement("img");
-    bannerImg.className = "banner-image w-100 h-100";
+    bannerImg.className = "banner-image h-100";
     bannerImg.src = userData.banner;
     bannerImgWrap.appendChild(bannerImg);
 }
 
-followUnfollow();
+if(userData.avatar) {
+    const profilePic = document.querySelector("#profilePic");
+    profilePic.src = userData.avatar;
+}
+
+// Click to Edit Profile Image/Banner
+const dropDownMenu = document.querySelector(".dropdown-menu");
+const editBanner = document.querySelector("#edit-banner");
+const editProfileImage = document.querySelector("#edit-profile-image");
+
+function clickToEdit(e) {
+
+    if(e.target.id === editBanner.id){
+
+        const main = document.querySelector("main");
+        const modalWrap = document.createElement("div");
+        modalWrap.className = "modal-wrap position-fixed top-0 start-0 w-100 h-100 row justify-content-center align-items-center";
+        main.appendChild(modalWrap);
+        const form = document.createElement("form");
+        form.className = "card form col-11 col-md-6 p-4 d-flex";
+        modalWrap.appendChild(form);
+        form.innerHTML = `
+            <h2 class="align-self-center">Choose a banner</h2>
+            <input type="url" title="Please provide an imageURL" id="inputBanner" class="form-control rounded-pill w-75 align-self-center">
+            <label for="inputBanner" class="col-form-label align-self-center">Banner must be added as URL/link.</label>
+            <p class="text-center">(You can generate a <b>Direct Link</b> here: <a href="https://postimages.org/" target="_blank">https://postimages.org/</a>)</p>
+            <button class="btn submitBtn w-50 align-self-center" type="submit">Send</button>
+        `;
+
+        document.addEventListener("mousedown", (e) => {
+            if(e.target.className === modalWrap.className) {
+                modalWrap.remove();
+            }
+        });
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const UPDATE_IMG_URL = `${API_URL}/api/v1/social/profiles/${userName}/media`;
+
+            const inputBanner = document.querySelector("#inputBanner");
+            const inputData = {
+                banner: inputBanner.value
+            }
+        
+            putWithToken(accessToken, UPDATE_IMG_URL, inputData);
+        });
+    }
+
+    if(e.target.id === editProfileImage.id){
+
+        const main = document.querySelector("main");
+        const modalWrap = document.createElement("div");
+        modalWrap.className = "modal-wrap position-fixed top-0 start-0 w-100 h-100 row justify-content-center align-items-center";
+        main.appendChild(modalWrap);
+        const form = document.createElement("form");
+        form.className = "card form col-11 col-md-6 p-4 d-flex";
+        modalWrap.appendChild(form);
+        form.innerHTML = `
+            <h2 class="align-self-center">Choose a profile image</h2>
+            <input type="url" title="Please provide an imageURL" id="inputImage" class="form-control rounded-pill w-75 align-self-center">
+            <label for="inputImage" class="col-form-label align-self-center">Image must be added as URL/link.</label>
+            <p class="text-center">(You can generate a <b>Direct Link</b> here: <a href="https://postimages.org/" target="_blank">https://postimages.org/</a>)</p>
+            <button class="btn submitBtn w-50 align-self-center" type="submit">Send</button>
+        `;
+
+        document.addEventListener("mousedown", (e) => {
+            if(e.target.className === modalWrap.className) {
+                modalWrap.remove();
+            }
+        });
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const UPDATE_IMG_URL = `${API_URL}/api/v1/social/profiles/${userName}/media`;
+
+            const inputImage = document.querySelector("#inputImage");
+            const inputData = {
+                avatar: inputImage.value
+            }
+        
+            putWithToken(accessToken, UPDATE_IMG_URL, inputData);
+        });
+    }
+}
+
+dropDownMenu.addEventListener("click", clickToEdit);

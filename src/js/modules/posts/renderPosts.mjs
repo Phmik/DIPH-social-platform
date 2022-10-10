@@ -45,7 +45,7 @@ export async function renderPosts() {
                                                 <span>${postRender._count.comments}</span>
                                             </div>
                                         </a>
-                                        <div>
+                                        <div class="heart">
                                             <img src="/assets/components/icons/heart-empty.png">
                                             <span>${postRender._count.reactions}</span>
                                         </div>
