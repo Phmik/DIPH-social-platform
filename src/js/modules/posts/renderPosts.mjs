@@ -15,7 +15,8 @@ export async function renderPosts(postList) {
                                         <div class="d-flex justify-content-between">
                                         <div class="d-flex align-items-center">
                                             <div class="profile-img-wrapper">
-                                            <img src="/assets/components/icons/account-icon.png">
+                                            ${postRender.author.avatar ? 
+                                                `<img src="${postRender.author.avatar}" class="rounded-circle" onerror="this.src='/assets/components/icons/account-icon.png'">` : `<img src="/assets/components/icons/account-icon.png" class="rounded-circle">`}
                                             </div>
                                             <h3 class="ms-2 user-name"><a href="./profile.html?name=${postRender.author.name}" class="no-style user-hover">${postRender.author.name}</a></h3>
                                         </div>
@@ -39,7 +40,7 @@ export async function renderPosts(postList) {
                                             <p class="post-content">${postRender.body}</p>
                                         </div>
                                         <div class="d-flex justify-content-between">
-                                            <p class="post-content text-bg">
+                                            <p class="post-content text-bg green-text ms-5">
                                                 ${returnPostDate(new Date(postRender.updated))}
                                             </p>
                                         </div>
@@ -49,9 +50,9 @@ export async function renderPosts(postList) {
                                                 <span>${postRender._count.comments}</span>
                                             </div>
                                         </a>
-                                        <div class="heart">
-                                            <img src="/assets/components/icons/heart-empty.png">
-                                            <span>${postRender._count.reactions}</span>
+                                        <div>
+                                             ${localStorage.getItem(`react-${postRender.id}`) ? 
+                                                `<img src="/assets/components/icons/heart.png" class="heart" id="react-${postRender.id}">` : `<img src="/assets/components/icons/heart-empty.png" class="heart" id="react-${postRender.id}">`}
                                         </div>
                                         </div>
                                     </div>`
