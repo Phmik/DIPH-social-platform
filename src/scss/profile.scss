@@ -37,6 +37,11 @@ main {
                         height: 1.8rem;
                     }
                 }
+
+                & #edit-banner, 
+                & #edit-profile-image {
+                    cursor: pointer;
+                }
             }
 
             & .profile-info {
@@ -50,6 +55,7 @@ main {
                     transform: translateY(20%);
                     height: 10rem;
                     width: 10rem;
+                    object-fit: cover;
                 }
 
                 & .btn {
@@ -91,6 +97,49 @@ main {
             width: 1.5rem;
         }
     }
+
+    & .modal-wrap {
+        z-index: 100;
+        background-color: #0000005b;
+    }
+}
+
+.user-name {
+    & a {
+        color: $white;
+        text-decoration: none;
+    }
+    & a:hover {
+        color: $link-color;
+    }
+}
+
+
+.post-title,
+.post-content {
+    color: $white;
+    text-decoration: none; 
+}
+
+.no-style,
+.no-style:hover {
+    color: $white;
+    text-decoration: none;
+}
+
+.post-options {
+    max-width: 1.5rem;
+    max-height: 1.5rem;
+
+    & .dropdown-toggle::after {
+        border: none;
+    }
+
+    & img {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
 }
 
 .green-text {
