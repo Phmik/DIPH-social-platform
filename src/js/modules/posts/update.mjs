@@ -15,7 +15,10 @@ export async function updatePost(postData) {
         method: "put",
         body: JSON.stringify(postData)
     })
+    window.location.href = "./index.html"
     return await response.json()
+    
+    
 }
 
 

@@ -1,13 +1,12 @@
 import * as posts from "./postGather.mjs"
 import { returnPostDate } from "../constants.mjs";
+import { handleSearchControlUp } from "./filterPosts.mjs";
 
 
 export async function renderPosts(postList) {
     const postContainer = document.querySelector('#postContent')
     const card = document.querySelector('.card')
-    const search = document.querySelector('#searchInput');
-    
-   
+
         
 // POST RENDER    
     postContainer.innerHTML = ""
@@ -69,6 +68,12 @@ export async function renderPosts(postList) {
             if(removeButton) {
             removeButton.addEventListener('click', posts.removePost)
         }
+
+        // SEARCH
+
+        const search = document.querySelector('#searchInput');
+        search.addEventListener('keyup', (event) => handleSearchControlUp(event, postList))
+
     }
 
-    
+   
