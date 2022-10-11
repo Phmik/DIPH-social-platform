@@ -10,14 +10,33 @@ const accessToken = localStorage.getItem("accessToken");
 // Check if there's a token - if not, redirectToLogIn
 function checkIfToken(token) {
     if(token) {
-        console.log("yes, token!");
     } else {
-        console.log("no token...");
         redirectToLogIn();
     }
 }
 
 checkIfToken(accessToken);
+
+
+// LOG OUT
+const logOutBtn = document.querySelector("#logout-header");
+
+function logOut() {
+    const savedCheckBox = localStorage.getItem("checkbox");
+    const savedEmail = localStorage.getItem("email");
+
+    localStorage.clear();
+
+    //If Email was saved on login earlier, keep it in localStorage
+    localStorage.setItem("checkbox", savedCheckBox);
+    localStorage.setItem("email", savedEmail);
+
+
+    redirectToLogIn();
+}
+
+logOutBtn.addEventListener("click", logOut);
+
 
 
 // Get user from url param
@@ -39,8 +58,6 @@ if(!name) {
 const USER_URL = `${API_URL}/api/v1/social/profiles/${name}?_posts=true&_following=true&_followers=true`
 const userData = await getWithToken(accessToken, USER_URL); 
 
-console.log(userData)
-
 const profileName = document.querySelector(".profile-name");
 profileName.innerHTML = name;
 
@@ -59,10 +76,16 @@ function clickToFollowUnfollow(e) {
 }
 
 
-// Check if FOLLOW-able user AND if they already are following
+// Check if owner of user AND if they are following
 const followers = userData.followers;
-
+const optionsDropDown = document.querySelector("#options-dropdown");
 if(name !== userName) {
+    const dropDownToggle = optionsDropDown.querySelector(".dropdown-toggle")
+    const dropDownMenu = optionsDropDown.querySelector(".dropdown-menu")
+
+    optionsDropDown.removeChild(dropDownMenu);
+    optionsDropDown.removeChild(dropDownToggle);
+
     if(followers.find(item => item.name === userName)) { 
         followBtn.innerHTML = "unfollow";
     }
@@ -90,13 +113,13 @@ for(let i = posts.length - 1; i >= 0; i--) {
         <div class="d-flex justify-content-between">
             <div class="d-flex align-items-center">
                 <div class="profile-img-wrapper">
-                    <img src="/assets/components/icons/account-icon.png">
+                ${userData.avatar ? 
+                `<img src="${userData.avatar}" class="rounded-circle"  onerror="this.src='/assets/components/icons/account-icon.png'">` : `<img src="/assets/components/icons/account-icon.png" class="rounded-circle">`}
                 </div>
                 <h3 class="user-name"><a href="./profile.html?name=${posts[i].owner}" class="no-style user-hover">${posts[i].owner}</a></h3>
             </div>
-    ${userName === posts[i].owner ? 
-        `
-            <div class="post-options dropdown d-flex justify-content-end" data-author="${posts[i].owner}">
+            ${userName === posts[i].owner ? 
+            `<div class="post-options dropdown d-flex justify-content-end" data-author="${posts[i].owner}">
                 <div type="button" class="dropdown-toggle rounded-circle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img src="./assets/components/icons/options-icon.png" alt="edit wheel for posts">
                 </div>
@@ -245,4 +268,6 @@ function clickToEdit(e) {
     }
 }
 
+if(dropDownMenu){
 dropDownMenu.addEventListener("click", clickToEdit);
+}

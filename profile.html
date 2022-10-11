@@ -19,18 +19,18 @@
             </div>
             <nav class="nav">
                 <ul class="nav">
-                    <li class="nav-item flex-column">
-                        <a href="/login.html" class="nav-link">
+                    <li class="nav-item flex-column" id="logout-header">
+                        <div class="nav-link">
                             <div class="img-container">
-                                <img src="assets/components/icons/key-icon.png" alt="picture of key for login" class="rounded-circle">
+                                <img src="assets/components/icons/key-icon.png" alt="picture of key for logout" class="rounded-circle">
                             </div>
-                            login
-                        </a>
+                            Log Out
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a href="/profile.html" class="nav-link">
                             <div class="img-container">
-                            <img src="assets/components/icons/account-icon.png" alt="" class="rounded-circle">
+                                <img src="assets/components/icons/account-icon.png"  alt="User Image" class="rounded-circle user-image" onerror="this.src='/assets/components/icons/account-icon.png'">
                             </div>
                             profile
                         </a>
@@ -44,7 +44,7 @@
             <div class="banner">
                 <div class="banner-gradient row flex-column justify-content-between w-100 h-100 m-0">
                     <div class="banner-img-wrapper d-flex h-100 w-100 px-0 justify-content-center"></div>
-                    <div class="dropdown d-flex justify-content-end">
+                    <div class="dropdown d-flex justify-content-end" id="options-dropdown">
                         <div type="button" class="dropdown-toggle mt-1" class="rounded-circle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img src="/assets/components/icons/options-icon.png" alt="">
                         </div>

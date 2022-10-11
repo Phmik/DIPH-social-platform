@@ -56,9 +56,6 @@ function validateSignUp(e) {
     if(inputUsername.value.trim().length >= 4 && validateEmail(inputEmail.value) && validatePassword(inputPassword.value)){
         postSignUp(REG_URL, userInput);
     } 
-//TEST
-    console.log(userInput)
-//
 }
 
 form.addEventListener("submit", validateSignUp);
