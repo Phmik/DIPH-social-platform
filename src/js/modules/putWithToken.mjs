@@ -1,12 +1,12 @@
 /**
- * Posts to API endpoint with accessToken FIX <----------------------------
+ * PUT method/Updates to API endpoint with accessToken 
  * @param {string} token the accessToken
  * @param {string} url the url to the API endpoint
- * @param {string} postInfo an object with the information you want to post
+ * @param {string} postInfo an object with the information you want to update
  * @example
  * ```js
- * // Use this function to post to an API endpoint with an
- * // accessToken, a url and the information you want to post.
+ * // Use this function to update to an API endpoint with an
+ * // accessToken, a url and the information you want to update.
  * postWithToken(accessToken, API_ENDPOINT_URL, someData);
  * ```
  */
@@ -23,7 +23,7 @@
         const response = await fetch(url, postData);
         const json = await response.json();
 
-        // window.location.reload();
+        console.log(json);
     } catch (error) {
         console.log(error);
     }

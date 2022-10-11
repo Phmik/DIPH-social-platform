@@ -1,6 +1,6 @@
-
 import { getWithToken } from "./modules/getWithToken.mjs";
 import { postWithToken } from "./modules/postWithToken.mjs";
+import { putWithToken } from "./modules/putWithToken.mjs";
 import { redirectToLogIn } from "./modules/redirectToLogIn.mjs";
 
 const queryString = document.location.search;
@@ -36,18 +36,21 @@ const post = await getWithToken(accessToken, POST_URL)
 
 // Display post information
 const postAuthor = document.querySelector(".author-name");
+const userLink = document.querySelector(".user-link")
 const author = post.author;
+userLink.href = `./profile.html?name=${author.name}`
 postAuthor.innerHTML = author.name;
+
 
 const postTitle = document.querySelector("#post-title");
 const postContent = document.querySelector("#post-content");
 const commentCounter = document.querySelector("#comment-counter");
-const reactCounter = document.querySelector("#react-counter");
+// const reactCounter = document.querySelector("#react-counter");
 
 postTitle.innerHTML = post.title;
 postContent.innerHTML = post.body;
 commentCounter.innerHTML = post._count.comments;
-reactCounter.innerHTML = post._count.reactions;
+// reactCounter.innerHTML = post._count.reactions;
 
 
 // Display comments
@@ -55,15 +58,17 @@ const comments = post.comments;
 const postWrapper = document.querySelector(".post-wrapper");
 
 postWrapper.innerHTML = ""
-for(let i = 0; i < comments.length; i++) { 
+for(let i = comments.length - 1; i >= 0; i--) { 
     postWrapper.innerHTML += `
     <div id="${comments[i].id}" class="card d-flex flex-column p-3 mt-3">
-        <div class="d-flex align-items-center">
-            <div class="profile-img-wrapper">
-                <img src="/assets/components/icons/account-icon.png">
+        <a href="./profile.html?name=${comments[i].owner}">
+            <div class="d-flex align-items-center">
+                <div class="profile-img-wrapper">
+                    <img src="/assets/components/icons/account-icon.png">
+                </div>
+                <h3 class="ms-2 no-style user-hover">${comments[i].owner}</h3>
             </div>
-            <h3 class="ms-2">${comments[i].owner}</h3>
-        </div>
+        </a>
         <div class="ms-5">
             <h4 id="post-title"${comments[i].title}></h4>
             <p id="post-content">${comments[i].body}</p>
@@ -101,16 +106,31 @@ const comment = document.querySelector("#postInput");
 form.addEventListener("submit", postComment);
 
 
-// React to post ------------------------------------------------------- make PUT function later
-// const heart = document.querySelector("#react-icon");
-// const REACT_URL = `${API_URL}/api/v1/social/posts/${id}/react/like`;
+// React to post 
+const heart = document.querySelector("#react-icon");
+const REACT_URL = `${API_URL}/api/v1/social/posts/${id}/react/♥`;
 
-// const react = {
-//     symbol: "like",
-//     count: "number",
-//     postID: id
-// }
+if(localStorage.getItem(`react-${id}`)) {
+    heart.src = "/assets/components/icons/heart.png"
+}
 
-// function clickHeart(e) {
-//     postWithToken()
-// }
+function clickHeart() {
+    if(!localStorage.getItem(`react-${id}`)){
+        const react = {
+            // symbol: "♥",
+            // count: post._count.reactions,
+            // postID: id
+        }
+    
+        localStorage.setItem(`react-${id}`, "liked");
+        heart.src = "/assets/components/icons/heart.png"
+        putWithToken(accessToken, REACT_URL, react);
+    } else {
+        localStorage.removeItem(`react-${id}`);
+        heart.src = "/assets/components/icons/heart-empty.png"
+    }
+}
+
+heart.addEventListener("click", clickHeart);
+
+

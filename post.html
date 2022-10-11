@@ -19,18 +19,10 @@
             </div>
             <nav class="nav">
                 <ul class="nav">
-                    <li class="nav-item flex-column">
-                        <a href="/login.html" class="nav-link">
-                            <div class="img-container">
-                                <img src="assets/components/icons/key-icon.png" alt="picture of key for login" class="rounded-circle">
-                            </div>
-                            login
-                        </a>
-                    </li>
                     <li class="nav-item">
                         <a href="/profile.html" class="nav-link">
                             <div class="img-container">
-                            <img src="assets/images/moi.jpg" alt="" class="rounded-circle">
+                                <img src="assets/components/icons/account-icon.png"  alt="User Image" class="rounded-circle user-image" onerror="this.src='/assets/components/icons/account-icon.png'">
                             </div>
                             profile
                         </a>
@@ -45,12 +37,12 @@
             <div class="col-11 col-sm-8 col-md-6 px-0 mt-5">
                 <div class="card d-flex flex-column justify-content-between p-3 mt-3 main-post">
                     <div class="d-flex justify-content-between">
-                        <div class="d-flex align-items-center">
+                        <a href="./profile.html?name=dina" class="d-flex align-items-center user-link no-style">
                             <div class="profile-img-wrapper">
-                                <img src="/assets/components/icons/account-icon.png">
+                                <img src="/assets/components/icons/account-icon.png" alt="user Image" class="rounded-circle user-image">
                             </div>
-                            <h2 class="ms-2 author-name">Username</h2>
-                        </div>
+                            <h2 class="ms-2 author-name no-style user-hover">Username</h2>
+                        </a>
                         <div class="post-options"></div>
                     </div>
                     <div class="ms-5">
@@ -64,7 +56,7 @@
                         </div>
                         <div>
                             <img src="/assets/components/icons/heart-empty.png" id="react-icon">
-                            <span id="react-counter">0</span>
+                            <!-- <span id="react-counter">0</span> -->
                         </div>
                     </div>
                 </div>

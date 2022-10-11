@@ -10853,6 +10853,7 @@ body .profile-img-wrapper {
 body .profile-img-wrapper img {
   height: 2.5rem;
   width: 2.5rem;
+  object-fit: cover;
 }
 body #titleInput {
   height: 4.5rem;
@@ -10894,6 +10895,10 @@ body .main-post {
 .no-style,
 .no-style:hover {
   color: #FFFFFF;
+  text-decoration: none;
+}
+
+a {
   text-decoration: none;
 }
 

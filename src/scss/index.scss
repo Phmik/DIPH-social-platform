@@ -22,6 +22,7 @@ body {
         & img {
             height: 2.5rem;
             width: 2.5rem;
+            object-fit: cover;
         }
     }
 
@@ -76,6 +77,10 @@ body {
 .no-style:hover {
     color: $white;
     text-decoration: none;
+}
+
+a {
+    text-decoration: none; 
 }
 
 .user-hover:hover {

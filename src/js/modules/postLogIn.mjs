@@ -24,7 +24,7 @@
             formFeedback.innerHTML = json.message;
             formFeedback.style.border = "solid 1px #FF6F6C";
         } else {
-                // window.location.href = "index.html";
+            window.location.href = "index.html";
         }
 
 //Save access token to localStorage
