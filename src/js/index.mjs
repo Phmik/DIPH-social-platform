@@ -9,13 +9,10 @@ import { putWithToken } from "./modules/putWithToken.mjs";
 // POSTS
 
 import * as posts from "./modules/posts/postGather.mjs"
-
-
-
+import { setupPage } from "./modules/posts/filterPosts.mjs";
 
 const API_URL = "https://nf-api.onrender.com";
 const accessToken = localStorage.getItem("accessToken");
-
 
 function checkIfToken(token, url) {
     if(token) {
@@ -62,12 +59,13 @@ async function onNewPostFormSubmit(event) {
     const body = Object.fromEntries(formData.entries());
     const title = Object.fromEntries(formData.entries())
     posts.createPost(body, title)
-    form.reset();
-  }
+        
+        form.reset();
+    }
+
+  renderPosts();
 
   await renderPosts();
-
-
 
 // React to post 
 const heart = document.querySelectorAll(".heart");

@@ -1,17 +1,16 @@
 import * as posts from "./postGather.mjs"
+import { returnPostDate } from "../constants.mjs";
 
-export async function renderPosts() {
-    const post = await posts.getPosts();
-    console.log(post)
-        for(let i = 0; i < post.length; i++) {
 
-            const postRender = post[i];
+export async function renderPosts(postList) {
+    const postContainer = document.querySelector('#postContent')
 
-            const postContainer = document.querySelector('#postContent')
-            
-            const localUser = localStorage.getItem('name')
-
-            
+// POST RENDER    
+    postContainer.innerHTML = ""
+    for(let i = 0; i < postList.length; i++) {
+        const postRender = postList[i];
+        const localUser = localStorage.getItem('name')
+        
         postContainer.innerHTML += `<div class="card d-flex flex-column p-3 mt-3" id="${postRender.id}">
                                         <div class="d-flex justify-content-between">
                                         <div class="d-flex align-items-center">
@@ -40,6 +39,11 @@ export async function renderPosts() {
                                             <h4 class="post-title">${postRender.title}</h4>
                                             <p class="post-content">${postRender.body}</p>
                                         </div>
+                                        <div class="d-flex justify-content-between">
+                                            <p class="post-content text-bg">
+                                                ${returnPostDate(new Date(postRender.updated))}
+                                            </p>
+                                        </div>
                                         <div class="small-icons d-flex">
                                             <div class="me-3">
                                             <img src="/assets/components/icons/comment.png">
@@ -51,17 +55,16 @@ export async function renderPosts() {
                                                 `<img src="/assets/components/icons/heart.png" class="heart" id="react-${postRender.id}">` : `<img src="/assets/components/icons/heart-empty.png" class="heart" id="react-${postRender.id}">`}
                                         </div>
                                         </div>
-                                    </div>`            
+                                    </div>`
         }
+
+        // REMOVE POST 
+
             const removeButton = document.querySelector('#removePost')
             if(removeButton) {
             removeButton.addEventListener('click', posts.removePost)
         }
-
-}
-
-    
-
+    }
                           
 
 

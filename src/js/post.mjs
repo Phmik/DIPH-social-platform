@@ -2,6 +2,7 @@ import { getWithToken } from "./modules/getWithToken.mjs";
 import { postWithToken } from "./modules/postWithToken.mjs";
 import { putWithToken } from "./modules/putWithToken.mjs";
 import { redirectToLogIn } from "./modules/redirectToLogIn.mjs";
+import { returnPostDate } from "./modules/constants.mjs";
 
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
@@ -42,15 +43,21 @@ userLink.href = `./profile.html?name=${author.name}`
 postAuthor.innerHTML = author.name;
 
 
-const postTitle = document.querySelector("#post-title");
-const postContent = document.querySelector("#post-content");
+const postTitle = document.querySelector(".post-title");
+const postContent = document.querySelector(".post-content");
 const commentCounter = document.querySelector("#comment-counter");
 // const reactCounter = document.querySelector("#react-counter");
+const postDate = document.querySelector('.post-date')
+
+
 
 postTitle.innerHTML = post.title;
 postContent.innerHTML = post.body;
 commentCounter.innerHTML = post._count.comments;
 // reactCounter.innerHTML = post._count.reactions;
+postDate.innerHTML = returnPostDate(new Date(post.created))
+
+
 
 
 // Display comments
@@ -70,8 +77,13 @@ for(let i = comments.length - 1; i >= 0; i--) {
             </div>
         </a>
         <div class="ms-5">
-            <h4 id="post-title"${comments[i].title}></h4>
-            <p id="post-content">${comments[i].body}</p>
+            <h4 class="post-title"${comments[i].title}></h4>
+            <p class="post-content">${comments[i].body}</p>
+        </div>
+        <div class="d-flex justify-content-between">
+            <p class="post-content text-bg">
+                ${returnPostDate(new Date(comments[i].created))}
+            </p>
         </div>
     </div>`
 }
