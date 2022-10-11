@@ -22,6 +22,7 @@ body {
         & img {
             height: 2.5rem;
             width: 2.5rem;
+            object-fit: cover;
         }
     }
 
@@ -66,6 +67,10 @@ body {
         border: solid 3px $green;
         min-height: 12rem;
     }
+
+    & .green-text {
+        color: #43aa97;
+    }
 }
 
 .post-title {
@@ -76,6 +81,10 @@ body {
 .no-style:hover {
     color: $white;
     text-decoration: none;
+}
+
+a {
+    text-decoration: none; 
 }
 
 .user-hover:hover {
