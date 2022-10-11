@@ -70,5 +70,3 @@ function onSortSelect(event, allPosts = []) {
             break;
     }
 }
-
-// FILTER OUT EMPTY POSTS
