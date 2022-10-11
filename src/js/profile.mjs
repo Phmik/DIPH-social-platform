@@ -2,6 +2,8 @@ import { followUnfollow } from "./modules/followUnfollow.mjs";
 import { getWithToken } from "./modules/getWithToken.mjs";
 import { redirectToLogIn } from "./modules/redirectToLogIn.mjs";
 import { putWithToken } from "./modules/putWithToken.mjs";
+import { removePost } from "./modules/posts/delete.mjs";
+import * as manyPosts from "./modules/posts/postGather.mjs"
 
 const API_URL = "https://nf-api.onrender.com";
 
@@ -55,7 +57,7 @@ if(!name) {
 
 
 // Get profile info
-const USER_URL = `${API_URL}/api/v1/social/profiles/${name}?_posts=true&_following=true&_followers=true`
+const USER_URL = `${API_URL}/api/v1/social/profiles/${name}?_posts=true&_author=true&_following=true&_followers=true`
 const userData = await getWithToken(accessToken, USER_URL); 
 
 const profileName = document.querySelector(".profile-name");
@@ -101,7 +103,6 @@ if(name !== userName) {
 const posts = userData.posts;
 const postWrapper = document.querySelector(".post-wrapper");
 postWrapper.innerHTML = "";
-
 if(posts.length === 0) {
     postWrapper.innerHTML = `<div class="card d-flex flex-column p-3 green-text">This user doesn't have any posts :(</div>`
 } else {
@@ -139,7 +140,13 @@ for(let i = posts.length - 1; i >= 0; i--) {
     if(i === 50) {
         break;
     }
+    
 }
+
+const removeButton = document.querySelector('#removePost')
+if(removeButton) {
+removeButton.addEventListener('click', manyPosts.removePost)
+        }
 
 
 

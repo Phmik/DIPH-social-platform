@@ -1,14 +1,19 @@
 import * as posts from "./postGather.mjs"
 import { returnPostDate } from "../constants.mjs";
+import { handleSearchControlUp } from "./filterPosts.mjs";
 
 
 export async function renderPosts(postList) {
     const postContainer = document.querySelector('#postContent')
+    const card = document.querySelector('.card')
 
+        
 // POST RENDER    
     postContainer.innerHTML = ""
     for(let i = 0; i < postList.length; i++) {
+        
         const postRender = postList[i];
+        
         const localUser = localStorage.getItem('name')
         
         postContainer.innerHTML += `<div class="card d-flex flex-column p-3 mt-3" id="${postRender.id}">
@@ -54,8 +59,7 @@ export async function renderPosts(postList) {
                                              ${localStorage.getItem(`react-${postRender.id}`) ? 
                                                 `<img src="/assets/components/icons/heart.png" class="heart" id="react-${postRender.id}">` : `<img src="/assets/components/icons/heart-empty.png" class="heart" id="react-${postRender.id}">`}
                                         </div>
-                                        </div>
-                                    </div>`
+                                        `
         }
 
         // REMOVE POST 
@@ -64,13 +68,12 @@ export async function renderPosts(postList) {
             if(removeButton) {
             removeButton.addEventListener('click', posts.removePost)
         }
+
+        // SEARCH
+
+        const search = document.querySelector('#searchInput');
+        search.addEventListener('keyup', (event) => handleSearchControlUp(event, postList))
+
     }
-                          
 
-
-
-
-
-    
-
-    
+   
