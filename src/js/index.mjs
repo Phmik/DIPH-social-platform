@@ -63,8 +63,6 @@ async function onNewPostFormSubmit(event) {
         form.reset();
     }
 
-  renderPosts();
-
   await renderPosts();
 
 // React to post 
