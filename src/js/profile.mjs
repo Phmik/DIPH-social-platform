@@ -10,9 +10,7 @@ const accessToken = localStorage.getItem("accessToken");
 // Check if there's a token - if not, redirectToLogIn
 function checkIfToken(token) {
     if(token) {
-        console.log("yes, token!");
     } else {
-        console.log("no token...");
         redirectToLogIn();
     }
 }
@@ -59,8 +57,6 @@ if(!name) {
 // Get profile info
 const USER_URL = `${API_URL}/api/v1/social/profiles/${name}?_posts=true&_following=true&_followers=true`
 const userData = await getWithToken(accessToken, USER_URL); 
-
-console.log(userData)
 
 const profileName = document.querySelector(".profile-name");
 profileName.innerHTML = name;

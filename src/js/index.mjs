@@ -17,9 +17,7 @@ const accessToken = localStorage.getItem("accessToken");
 function checkIfToken(token, url) {
     if(token) {
         getWithToken(token, url);
-        console.log("yes, token!");
     } else {
-        console.log("no token...");
         redirectToLogIn();
     }
 }
@@ -63,7 +61,7 @@ async function onNewPostFormSubmit(event) {
         form.reset();
     }
 
-  await renderPosts();
+    await setupPage().then(console.log)
 
 // React to post 
 const heart = document.querySelectorAll(".heart");

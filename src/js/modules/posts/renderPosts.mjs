@@ -40,7 +40,7 @@ export async function renderPosts(postList) {
                                             <p class="post-content">${postRender.body}</p>
                                         </div>
                                         <div class="d-flex justify-content-between">
-                                            <p class="post-content text-bg">
+                                            <p class="post-content text-bg green-text ms-5">
                                                 ${returnPostDate(new Date(postRender.updated))}
                                             </p>
                                         </div>

@@ -16,7 +16,6 @@
         };
         const response = await fetch(url, postData);
         const json = await response.json(); 
-        console.log(json);
 
 //Gives user Feedback 
         const formFeedback = document.querySelector(".form-feedback");

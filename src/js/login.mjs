@@ -47,10 +47,6 @@ function validateLogIn(e) {
     } 
 
     checkRememberMe(rememberCheck, inputEmail);
-
-    //TEST
-    console.log(userInput)
-    //
 }
 
 form.addEventListener("submit", validateLogIn);

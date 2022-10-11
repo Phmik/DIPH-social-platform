@@ -10887,6 +10887,9 @@ body .main-post {
   border: solid 3px #2A7567;
   min-height: 12rem;
 }
+body .green-text {
+  color: #43aa97;
+}
 
 .post-title {
   text-transform: none;

@@ -21,9 +21,7 @@ const accessToken = localStorage.getItem("accessToken");
 // Check if there's a token - if not, redirectToLogIn
 function checkIfToken(token) {
     if(token) {
-        console.log("yes, token!");
     } else {
-        console.log("no token...");
         redirectToLogIn();
     }
 }

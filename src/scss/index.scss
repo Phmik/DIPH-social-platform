@@ -67,6 +67,10 @@ body {
         border: solid 3px $green;
         min-height: 12rem;
     }
+
+    & .green-text {
+        color: #43aa97;
+    }
 }
 
 .post-title {
