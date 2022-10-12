@@ -23,15 +23,8 @@ checkIfToken(accessToken);
 const logOutBtn = document.querySelector("#logout-header");
 
 function logOut() {
-    const savedCheckBox = localStorage.getItem("checkbox");
-    const savedEmail = localStorage.getItem("email");
-
-    localStorage.clear();
-
-    //If Email was saved on login earlier, keep it in localStorage
-    localStorage.setItem("checkbox", savedCheckBox);
-    localStorage.setItem("email", savedEmail);
-
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("name");
 
     redirectToLogIn();
 }
@@ -61,6 +54,8 @@ const userData = await getWithToken(accessToken, USER_URL);
 
 const profileName = document.querySelector(".profile-name");
 profileName.innerHTML = name;
+const userImage = document.querySelector(".user-image")
+userImage.src = userData.avatar;
 
 
 //FOLLOW
@@ -106,41 +101,42 @@ if(posts.length === 0) {
     postWrapper.innerHTML = `<div class="card d-flex flex-column p-3 green-text">This user doesn't have any posts :(</div>`
 } else {
 
-}
-for(let i = posts.length - 1; i >= 0; i--) { 
-    console.log(posts[i])
-    postWrapper.innerHTML += `
-    <div class="card d-flex flex-column p-3" id="${posts[i].id}">
-        <div class="d-flex justify-content-between">
-            <div class="d-flex align-items-center">
-                <div class="profile-img-wrapper">
-                ${userData.avatar ? 
-                `<img src="${userData.avatar}" class="rounded-circle"  onerror="this.src='/assets/components/icons/account-icon.png'">` : `<img src="/assets/components/icons/account-icon.png" class="rounded-circle">`}
+    // Sort by ID
+    const sortedPosts = posts.sort((a, b) => a.id - b.id);
+
+    for(let i = sortedPosts.length - 1; i >= 0; i--) { 
+        postWrapper.innerHTML += `
+        <div class="card d-flex flex-column p-3" id="${sortedPosts[i].id}">
+            <div class="d-flex justify-content-between">
+                <div class="d-flex align-items-center">
+                    <div class="profile-img-wrapper">
+                    ${userData.avatar ? 
+                    `<img src="${userData.avatar}" class="rounded-circle"  onerror="this.src='/assets/components/icons/account-icon.png'">` : `<img src="/assets/components/icons/account-icon.png" class="rounded-circle">`}
+                    </div>
+                    <h3 class="user-name"><a href="./profile.html?name=${sortedPosts[i].owner}" class="no-style user-hover">${sortedPosts[i].owner}</a></h3>
                 </div>
-                <h3 class="user-name"><a href="./profile.html?name=${posts[i].owner}" class="no-style user-hover">${posts[i].owner}</a></h3>
+                ${userName === sortedPosts[i].owner ? 
+                `<div class="post-options dropdown d-flex justify-content-end" data-author="${sortedPosts[i].owner}">
+                    <div type="button" class="dropdown-toggle rounded-circle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="./assets/components/icons/options-icon.png" alt="edit wheel for posts">
+                    </div>
+                    <ul class="dropdown-menu  dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="./edit.html?id=${sortedPosts[i].id}" id="editPost">Edit Post</a></li>
+                        <li><button class="dropdown-item" id="removePost"> Delete post</button></li>
+                    </ul>
+                </div>` : ""}
             </div>
-            ${userName === posts[i].owner ? 
-            `<div class="post-options dropdown d-flex justify-content-end" data-author="${posts[i].owner}">
-                <div type="button" class="dropdown-toggle rounded-circle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="./assets/components/icons/options-icon.png" alt="edit wheel for posts">
+            <a href="./post.html?id=${sortedPosts[i].id}" class="no-style">
+                <div class="ms-5" >
+                    <h4 class="post-title">${sortedPosts[i].title}</h4>
+                    <p class="post-content">${sortedPosts[i].body}</p>
                 </div>
-                <ul class="dropdown-menu  dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton">
-                    <li><a class="dropdown-item" href="./edit.html?id=${posts[i].id}" id="editPost">Edit Post</a></li>
-                    <li><button class="dropdown-item" id="removePost"> Delete post</button></li>
-                </ul>
-            </div>` : ""}
-        </div>
-        <a href="./post.html?id=${posts[i].id}" class="no-style">
-            <div class="ms-5" >
-                <h4 class="post-title">${posts[i].title}</h4>
-                <p class="post-content">${posts[i].body}</p>
-            </div>
-        </a>
-    </div>`
-    if(i === 50) {
-        break;
+            </a>
+        </div>`
+        if(i === 50) {
+            break;
+        }   
     }
-    
 }
 
 
@@ -194,7 +190,7 @@ const editProfileImage = document.querySelector("#edit-profile-image");
 function clickToEdit(e) {
 
     if(e.target.id === editBanner.id){
-
+        // Create modal
         const main = document.querySelector("main");
         const modalWrap = document.createElement("div");
         modalWrap.className = "modal-wrap position-fixed top-0 start-0 w-100 h-100 row justify-content-center align-items-center";
@@ -204,20 +200,25 @@ function clickToEdit(e) {
         modalWrap.appendChild(form);
         form.innerHTML = `
             <h2 class="align-self-center">Choose a banner</h2>
-            <input type="url" title="Please provide an imageURL" id="inputBanner" class="form-control rounded-pill w-75 align-self-center">
+            <input type="url" pattern=".*\.(jpg|jpeg|png|svg)$" title="Direct Link to an Image (e.g. link ending with .jpg)" id="inputBanner" class="form-control rounded-pill w-75 align-self-center">
             <label for="inputBanner" class="col-form-label align-self-center">Banner must be added as URL/link.</label>
             <p class="text-center">(You can generate a <b>Direct Link</b> here: <a href="https://postimages.org/" target="_blank">https://postimages.org/</a>)</p>
             <button class="btn submitBtn w-50 align-self-center" type="submit">Send</button>
         `;
+        const feedbackDiv = document.createElement("div");
+        feedbackDiv.className = "green-text align-self-center fs-4";
+        form.appendChild(feedbackDiv);
 
+        // Remove modal
         document.addEventListener("mousedown", (e) => {
             if(e.target.className === modalWrap.className) {
                 modalWrap.remove();
             }
         });
 
-        form.addEventListener("submit", (e) => {
-            e.preventDefault();
+        // Submit function
+        async function callPutWithToken(){
+            const label = document.querySelector("label");
 
             const UPDATE_IMG_URL = `${API_URL}/api/v1/social/profiles/${userName}/media`;
 
@@ -226,12 +227,43 @@ function clickToEdit(e) {
                 banner: inputBanner.value
             }
         
-            putWithToken(accessToken, UPDATE_IMG_URL, inputData);
+            const feedback = await putWithToken(accessToken, UPDATE_IMG_URL, inputData);
+            if(feedback.name){
+                const submitBtn = document.querySelector(".submitBtn");
+                label.style.color = "white";
+                submitBtn.setAttribute("disabled", "");
+                // Feedback HTML
+                feedbackDiv.style.border = "solid 1px #43aa97"
+                feedbackDiv.style.marginTop = "1rem"
+                feedbackDiv.style.padding = "0.2rem 1rem 0.2rem 1rem"
+                feedbackDiv.innerHTML = "Success! Automatic refresh in 5..."
+
+                // Refresh countdown
+                let timer = 4;
+                var countdown = setInterval(function() {
+                    if(timer < 0){
+                        clearInterval(countdown);
+                        window.location.reload();
+
+                    } else {
+                        feedbackDiv.innerHTML = `Success! Automatic refresh in ${timer}...`
+                    }
+                    timer -= 1;
+                }, 1000);
+            } else {
+                label.style.color = "#FF6F6C";
+            }
+        }
+
+        // Listen for submit
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            callPutWithToken();
         });
     }
 
     if(e.target.id === editProfileImage.id){
-
+        // Create modal
         const main = document.querySelector("main");
         const modalWrap = document.createElement("div");
         modalWrap.className = "modal-wrap position-fixed top-0 start-0 w-100 h-100 row justify-content-center align-items-center";
@@ -241,20 +273,25 @@ function clickToEdit(e) {
         modalWrap.appendChild(form);
         form.innerHTML = `
             <h2 class="align-self-center">Choose a profile image</h2>
-            <input type="url" title="Please provide an imageURL" id="inputImage" class="form-control rounded-pill w-75 align-self-center">
+            <input type="url" pattern=".*\.(jpg|jpeg|png|svg)$" title="Direct Link to an Image (e.g. link ending with .jpg)" id="inputImage" class="form-control rounded-pill w-75 align-self-center">
             <label for="inputImage" class="col-form-label align-self-center">Image must be added as URL/link.</label>
             <p class="text-center">(You can generate a <b>Direct Link</b> here: <a href="https://postimages.org/" target="_blank">https://postimages.org/</a>)</p>
             <button class="btn submitBtn w-50 align-self-center" type="submit">Send</button>
-        `;
+            `;
+        const feedbackDiv = document.createElement("div");
+        feedbackDiv.className = "green-text align-self-center fs-4";
+        form.appendChild(feedbackDiv);
 
+        // Remove modal
         document.addEventListener("mousedown", (e) => {
             if(e.target.className === modalWrap.className) {
                 modalWrap.remove();
             }
         });
 
-        form.addEventListener("submit", (e) => {
-            e.preventDefault();
+        // Submit function
+        async function callPutWithToken(){
+            const label = document.querySelector("label");
 
             const UPDATE_IMG_URL = `${API_URL}/api/v1/social/profiles/${userName}/media`;
 
@@ -263,10 +300,43 @@ function clickToEdit(e) {
                 avatar: inputImage.value
             }
         
-            putWithToken(accessToken, UPDATE_IMG_URL, inputData);
+            const feedback = await putWithToken(accessToken, UPDATE_IMG_URL, inputData);
+            if(feedback.name){
+                const submitBtn = document.querySelector(".submitBtn");
+                label.style.color = "white";
+                submitBtn.setAttribute("disabled", "");
+                // Feedback HTML
+                feedbackDiv.style.border = "solid 1px #43aa97"
+                feedbackDiv.style.marginTop = "1rem"
+                feedbackDiv.style.padding = "0.2rem 1rem 0.2rem 1rem"
+                feedbackDiv.innerHTML = "Success! Automatic refresh in 5..."
+
+                // Refresh countdown
+                let timer = 4;
+                var countdown = setInterval(function() {
+                    if(timer < 0){
+                        clearInterval(countdown);
+                        window.location.reload();
+
+                    } else {
+                        feedbackDiv.innerHTML = `Success! Automatic refresh in ${timer}...`
+                    }
+                    timer -= 1;
+                }, 1000);
+            } else {
+                label.style.color = "#FF6F6C";
+            }
+        }
+
+        // Listen for submit
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            callPutWithToken();
         });
     }
 }
+
+
 
 if(dropDownMenu){
 dropDownMenu.addEventListener("click", clickToEdit);

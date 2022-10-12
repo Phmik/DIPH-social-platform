@@ -79,10 +79,8 @@ const comments = post.comments;
 const postWrapper = document.querySelector(".post-wrapper");
 
 postWrapper.innerHTML = ""
-for(let i = comments.length - 1; i >= 0; i--) { 
-    console.log(comments[i])
-    
 
+for(let i = 0; i < comments.length; i++) { 
     postWrapper.innerHTML += `
     <div id="${comments[i].id}" class="card d-flex flex-column p-3 mt-3">
         <a href="./profile.html?name=${comments[i].owner}">
