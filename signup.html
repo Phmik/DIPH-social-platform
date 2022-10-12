@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="dist/css/login.css">
     <title>DIPH | Log In</title>
 </head>
+
 <body class="d-flex flex-column min-vh-100">
     <header>
         <div class="d-flex align-items-center justify-content-between">
@@ -22,7 +24,8 @@
                     <li class="nav-item flex-column" id="login-header">
                         <a href="/login.html" class="nav-link">
                             <div class="img-container">
-                                <img src="assets/components/icons/key-icon.png" alt="picture of key for login" class="rounded-circle">
+                                <img src="assets/components/icons/key-icon.png" alt="picture of key for login"
+                                    class="rounded-circle">
                             </div>
                             login
                         </a>
@@ -30,48 +33,52 @@
                 </ul>
             </nav>
         </div>
-       </header> 
+    </header>
     <main class="d-flex align-items-center flex-column mb-3">
         <div class="card d-flex m-4 p-4">
             <div class="login-head-container justify-content-start d-flex align-items-center">
                 <img src="assets/components/icons/key-icon.png" alt="picture of a key for log in">
                 <span class="align-self-center mx-4">Sign up</span>
             </div>
-        <form action="">
-            <fieldset>
-                <div class="row g-3 justify-content-center">
-                    <div class="col-auto">
-                        <div class="form-feedback"></div>
-                        <label for="inputUsername" class="col-form-label">Username</label>
-                        <input type="text" id="inputUsername" class="form-control rounded-pill" aria-describedby="usernameHelp">
-                        <div id="usernameHelp" class="form-text">
-                            Username must be atleast 4 characters long
+            <form action="" id="signup">
+                <fieldset>
+                    <div class="row g-3 justify-content-center">
+                        <div class="col-auto">
+                            <div class="form-feedback"></div>
+                            <label for="inputUsername" class="col-form-label">Username</label>
+                            <input name="name" type="text" id="inputUsername" class="form-control rounded-pill"
+                                aria-describedby="usernameHelp">
+                            <div id="usernameHelp" class="form-text">
+                                Username must be atleast 4 characters long
+                            </div>
+                            <label for="inputEmail" class="col-form-label">E-mail</label>
+                            <input name="email" type="email" id="inputEmail" class="form-control rounded-pill"
+                                aria-describedby="emailHelp">
+                            <div id="emailHelp" class="form-text">
+                                Please enter a valid Noroff E-mail
+                            </div>
+                            <label for="inputPassword" class="col-form-label">Password</label>
+                            <input name="password" type="password" name="password" id="inputPassword" class="form-control rounded-pill"
+                                aria-describedby="passwordHelp">
+                            <div id="passwordHelp" class="form-text">
+                                Password must contain 8-20 characters and <br> contain at least 1 uppercase and 1 number
+                            </div>
+                            <div class="d-flex justify-content-center row text-center">
+                                <button type="submit" class="btn btn-primary my-3" id="signupBtn">
+                                    sign up
+                                </button>
+                                <a href="/login.html" class="user-link">Already have a user? Log in! </a>
+                            </div>
                         </div>
-                        <label for="inputEmail" class="col-form-label">E-mail</label>
-                        <input type="email" id="inputEmail" class="form-control rounded-pill" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">
-                            Please enter a valid Noroff E-mail
-                        </div>
-                        <label for="inputPassword" class="col-form-label">Password</label>
-                        <input type="password" name="password" id="inputPassword" class="form-control rounded-pill" aria-describedby="passwordHelp">
-                        <div id="passwordHelp" class="form-text">
-                            Password must contain 8-20 characters and <br> contain at least 1 uppercase and 1 number
-                        </div>
-                        <div class="d-flex justify-content-center row text-center">
-                        <button type="submit" class="btn btn-primary my-3" id="signupBtn">
-                            sign up
-                        </button>
-                        <a href="/login.html" class="user-link">Already have a user? Log in! </a>
                     </div>
-                    </div>
-                </div>
-            </fieldset>
-        </form>
-    </div>
+                </fieldset>
+            </form>
+        </div>
     </main>
     <footer class="mt-auto">
         <p class="text-center">&copy; Dina Olufsen & Phillip Mikalsen</p>
     </footer>
     <script type="module" src="./src/js/signup.mjs"></script>
 </body>
+
 </html>
