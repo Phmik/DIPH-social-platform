@@ -1,6 +1,9 @@
 import { getPost } from "./read.mjs";
 import { updatePost } from "./update.mjs";
 
+
+// UPDATE POST
+
 export async function setUpdateFormListener() {
     const form = document.querySelector('#editForm');
     
@@ -22,7 +25,12 @@ export async function setUpdateFormListener() {
             post.id = id;
 
             // API SEND
-            updatePost(post)
+            if(confirm("Are you sure you want to update this post?")) {
+                alert("Post updated! Cheerio")
+                updatePost(post)
+            } else {
+                alert("Did not update your post")
+            }
         })
     }
 }
