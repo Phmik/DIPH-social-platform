@@ -1,17 +1,15 @@
 /** -----------------
  * 
- * @param {*} url 
- * @param {*} userData 
+ * @param {HTMLInputElement} isChecked 
+ * @param {HTMLInputElement} email 
  */
 
-function checkRememberMe(isChecked, email) {
+export function checkRememberMe(isChecked, email) {
     if (isChecked.checked && email.value !== "") {
-        localStorage.email = email.value;
-        localStorage.checkbox = isChecked.value;
+        localStorage.setItem("email", email.value);
+        localStorage.setItem("rememberMe", isChecked.checked);
     } else {
-        localStorage.email = "";
-        localStorage.checkbox = "";
+        localStorage.removeItem("email")
+        localStorage.removeItem("rememberMe")
     }
 }
-
-export { checkRememberMe };
