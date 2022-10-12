@@ -7,3 +7,17 @@ export const userURL = `/api/v1/social/profiles`;
 
 export const returnPostDate = (date) => `${['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'][date.getMonth()]}-${date.getDate()}-${date.getFullYear()} at
 ${date.getHours()}:${date.getMinutes()}`
+
+/**
+ * @param {string | Date} date a date encoded string or date object
+ * @returns {string} a Norwegian formatted date string
+ */
+export const nicePostDate = (date) => new Date(date).toLocaleString("no-NO", {
+  weekday: 'short',
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+}) + ' at ' + new Date(date).toLocaleTimeString("no-NO", {
+  hour: 'numeric',
+  minute: 'numeric'
+})
