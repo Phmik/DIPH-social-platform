@@ -1,6 +1,3 @@
-let bodyObj = {};
-
-
 /**
  * Follow/Unfollow users 
  * @param {string} token the accessToken
@@ -11,17 +8,13 @@ let bodyObj = {};
  * putWithToken(accessToken, API_ENDPOINT_URL);
  * ```
  */
-
-
- async function followUnfollow(token, url) {
+export async function followUnfollow(token, url) {
     try {
         const postData = {
             method: "PUT",
             headers: {
-                "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`
-            },
-            body: JSON.stringify(bodyObj),
+            }
         };
         const response = await fetch(url, postData);
         const json = await response.json();
@@ -31,5 +24,3 @@ let bodyObj = {};
         console.log(error);
     }
 }
-
-export { followUnfollow }; 
