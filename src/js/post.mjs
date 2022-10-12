@@ -3,6 +3,7 @@ import { postWithToken } from "./modules/postWithToken.mjs";
 import { putWithToken } from "./modules/putWithToken.mjs";
 import { redirectToLogIn } from "./modules/redirectToLogIn.mjs";
 import { returnPostDate } from "./modules/constants.mjs";
+import * as posts from "./modules/posts/postGather.mjs"
 
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
@@ -17,6 +18,7 @@ const API_URL = "https://nf-api.onrender.com";
 const POST_URL = `${API_URL}/api/v1/social/posts/${id}?_author=true&_comments=true&_reactions=true`
 
 const accessToken = localStorage.getItem("accessToken");
+const localUser = localStorage.getItem('name');
 
 // Check if there's a token - if not, redirectToLogIn
 function checkIfToken(token) {
@@ -45,7 +47,8 @@ const postTitle = document.querySelector(".post-title");
 const postContent = document.querySelector(".post-content");
 const commentCounter = document.querySelector("#comment-counter");
 // const reactCounter = document.querySelector("#react-counter");
-const postDate = document.querySelector('.post-date')
+const postDate = document.querySelector('.post-date');
+const postOptions = document.querySelector('.post-options');
 
 
 
@@ -56,7 +59,20 @@ commentCounter.innerHTML = post._count.comments;
 postDate.innerHTML = returnPostDate(new Date(post.created))
 
 
-
+postOptions.innerHTML = `
+${localUser === author.name ? 
+    `
+    <div class="post-options" data-author="${author.name}">
+        <div class="dropdown d-flex justify-content-end">
+            <div type="button" class="dropdown-toggle mt-1" class="rounded-circle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="./assets/components/icons/options-icon.png" alt="edit wheel for posts"  width="40" height="40">
+            </div>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="./edit.html?id=${author.id}" id="editPost">Edit Post</a></li>
+                <li><button class="dropdown-item" id="removePost"> Delete post</button></li>
+            </ul>
+        </div>
+    </div>` : ""}`
 
 // Display comments
 const comments = post.comments;
@@ -64,6 +80,9 @@ const postWrapper = document.querySelector(".post-wrapper");
 
 postWrapper.innerHTML = ""
 for(let i = comments.length - 1; i >= 0; i--) { 
+    console.log(comments[i])
+    
+
     postWrapper.innerHTML += `
     <div id="${comments[i].id}" class="card d-flex flex-column p-3 mt-3">
         <a href="./profile.html?name=${comments[i].owner}">
@@ -79,12 +98,17 @@ for(let i = comments.length - 1; i >= 0; i--) {
             <p class="post-content">${comments[i].body}</p>
         </div>
         <div class="d-flex justify-content-between">
-            <p class="post-content text-bg">
+            <p class="post-content text-bg green-text ms-5">
                 ${returnPostDate(new Date(comments[i].created))}
             </p>
         </div>
     </div>`
 }
+
+const removeButton = document.querySelector('#removePost')
+            if(removeButton) {
+            removeButton.addEventListener('click', posts.removePost)
+        }
 
 
 

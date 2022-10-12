@@ -13,7 +13,6 @@ export async function setupPage() {
     const formSelect = document.querySelector('#selectForm')
         formSelect.reset()
 
-
     return "Ready"
 }
 // SORTING ALGORHYTHM

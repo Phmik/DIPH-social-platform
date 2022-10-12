@@ -2,7 +2,6 @@ import { followUnfollow } from "./modules/followUnfollow.mjs";
 import { getWithToken } from "./modules/getWithToken.mjs";
 import { redirectToLogIn } from "./modules/redirectToLogIn.mjs";
 import { putWithToken } from "./modules/putWithToken.mjs";
-import { removePost } from "./modules/posts/delete.mjs";
 import * as manyPosts from "./modules/posts/postGather.mjs"
 
 const API_URL = "https://nf-api.onrender.com";
@@ -109,6 +108,7 @@ if(posts.length === 0) {
 
 }
 for(let i = posts.length - 1; i >= 0; i--) { 
+    console.log(posts[i])
     postWrapper.innerHTML += `
     <div class="card d-flex flex-column p-3" id="${posts[i].id}">
         <div class="d-flex justify-content-between">
@@ -143,12 +143,6 @@ for(let i = posts.length - 1; i >= 0; i--) {
     
 }
 
-const removeButton = document.querySelector('#removePost')
-if(removeButton) {
-removeButton.addEventListener('click', manyPosts.removePost)
-        }
-
-
 
 // Display following-section
 const following = userData.following;
@@ -177,7 +171,6 @@ if(following.length === 0) {
         }
     }
 }
-
 
 // If there is an existing banner image, display it
 if(userData.banner) {
@@ -278,3 +271,10 @@ function clickToEdit(e) {
 if(dropDownMenu){
 dropDownMenu.addEventListener("click", clickToEdit);
 }
+
+
+const removeButton = document.querySelector('#removePost')
+if(removeButton) {
+removeButton.addEventListener('click', manyPosts.removePost)
+}
+
