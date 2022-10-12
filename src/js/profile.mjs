@@ -2,7 +2,6 @@ import { followUnfollow } from "./modules/followUnfollow.mjs";
 import { getWithToken } from "./modules/getWithToken.mjs";
 import { redirectToLogIn } from "./modules/redirectToLogIn.mjs";
 import { putWithToken } from "./modules/putWithToken.mjs";
-import { removePost } from "./modules/posts/delete.mjs";
 import * as manyPosts from "./modules/posts/postGather.mjs"
 
 const API_URL = "https://nf-api.onrender.com";
