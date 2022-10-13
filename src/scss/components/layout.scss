@@ -1,13 +1,12 @@
 body {
-    color: $white;
-    background-color: $bg;
-    font-family: $body-text;
+  color: $white;
+  background-color: $bg;
+  font-family: $body-text;
 
-    & a {
-        color: $link-color;
-    }
+  & a {
+    color: $link-color;
+  }
 }
-
 
 //FONT
 
@@ -18,12 +17,12 @@ h4,
 h5,
 h6,
 .btn {
-    text-transform: uppercase;
-    font-family: $heading-font;
-    font-weight: $logo-weight;
+  text-transform: uppercase;
+  font-family: $heading-font;
+  font-weight: $logo-weight;
 }
 
 header,
 footer {
-        background-color: $gray;
-    }
+  background-color: $gray;
+}

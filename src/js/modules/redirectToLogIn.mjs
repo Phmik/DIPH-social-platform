@@ -1,6 +1,5 @@
-
-function redirectToLogIn(){
-    window.location.href = "login.html";
+function redirectToLogIn() {
+  window.location.href = "login.html";
 }
 
 export { redirectToLogIn };
