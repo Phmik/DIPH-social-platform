@@ -2,7 +2,6 @@ import { followUnfollow } from "./modules/followUnfollow.mjs";
 import { getWithToken } from "./modules/getWithToken.mjs";
 import { redirectToLogIn } from "./modules/redirectToLogIn.mjs";
 import { putWithToken } from "./modules/putWithToken.mjs";
-import { removePost } from "./modules/posts/delete.mjs";
 import * as manyPosts from "./modules/posts/postGather.mjs"
 
 const API_URL = "https://nf-api.onrender.com";
@@ -101,6 +100,7 @@ postWrapper.innerHTML = "";
 if(posts.length === 0) {
     postWrapper.innerHTML = `<div class="card d-flex flex-column p-3 green-text">This user doesn't have any posts :(</div>`
 } else {
+
     // Sort by ID
     const sortedPosts = posts.sort((a, b) => a.id - b.id);
 
@@ -139,12 +139,6 @@ if(posts.length === 0) {
     }
 }
 
-const removeButton = document.querySelector('#removePost')
-if(removeButton) {
-removeButton.addEventListener('click', manyPosts.removePost)
-        }
-
-
 
 // Display following-section
 const following = userData.following;
@@ -173,7 +167,6 @@ if(following.length === 0) {
         }
     }
 }
-
 
 // If there is an existing banner image, display it
 if(userData.banner) {
@@ -348,3 +341,10 @@ function clickToEdit(e) {
 if(dropDownMenu){
 dropDownMenu.addEventListener("click", clickToEdit);
 }
+
+
+const removeButton = document.querySelector('#removePost')
+if(removeButton) {
+removeButton.addEventListener('click', manyPosts.removePost)
+}
+

@@ -2,6 +2,7 @@ import { API_SOCIAL_URL } from "../constants.mjs"
 
 import { fetchWithToken } from "../fetchWithToken.mjs";
 
+const path = location.pathname;
 const action = "/posts"
 const methodGET = "GET";
 const author = "?_author=true&_comments=true&_reactions=true"
@@ -21,11 +22,10 @@ export async function removePost() {
             const response = await fetchWithToken(`${API_SOCIAL_URL}${action}/${postId.id}`, {
                 method: 'delete',
             })
-            window.location.reload();
-            return response.json()   
+            window.location.href = "./index.html";
+            return response.json() 
+            
         }
     }
 }
-
-
 

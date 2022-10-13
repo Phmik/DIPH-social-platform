@@ -5,9 +5,7 @@ import { handleSearchControlUp } from "./filterPosts.mjs";
 
 export async function renderPosts(postList) {
     const postContainer = document.querySelector('#postContent')
-    const card = document.querySelector('.card')
-
-        
+    
 // POST RENDER    
     postContainer.innerHTML = ""
     for(let i = 0; i < postList.length; i++) {
@@ -45,7 +43,7 @@ export async function renderPosts(postList) {
                                             <p class="post-content">${postRender.body}</p>
                                         </div>
                                         <div class="d-flex justify-content-between">
-                                            <p class="post-content text-bg green-text ms-5">
+                                            <p class="post-content green-text ms-5">
                                                 ${returnPostDate(new Date(postRender.updated))}
                                             </p>
                                         </div>
