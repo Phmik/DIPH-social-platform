@@ -12,7 +12,7 @@ export async function removePost() {
     methodGET,
   });
   const postIdResult = await response.json();
-  console.log(postIdResult)
+  
   for (let i = 0; i < postIdResult.length; i++) {
     const postId = postIdResult[i];
     if (localStorage.getItem("name") === postId.author.name) {
@@ -22,11 +22,10 @@ export async function removePost() {
           method: "delete",
         }
       );
-      window.location.href = "./index.html";
-      console.log(postId)
+      
+      
+        window.location.href = "./index.html";
       return response.json();
+      }
     }
   }
-}
-
-removePost(4459)

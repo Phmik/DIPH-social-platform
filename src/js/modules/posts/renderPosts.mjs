@@ -4,17 +4,11 @@ import { handleSearchControlUp } from "./filterPosts.mjs";
 
 export async function renderPosts(postList) {
   const postContainer = document.querySelector("#postContent");
-  const media = document.querySelector('.img-wrapper')
-
-  
 
   // POST RENDER
   postContainer.innerHTML = "";
   for (let i = 0; i < postList.length; i++) {
     const postRender = postList[i];
-    
-    console.log(postRender)
-
     const localUser = localStorage.getItem("name");
 
     postContainer.innerHTML += `<div class="card d-flex flex-column p-3 mt-3" id="${
