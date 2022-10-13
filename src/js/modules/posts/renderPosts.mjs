@@ -4,11 +4,16 @@ import { handleSearchControlUp } from "./filterPosts.mjs";
 
 export async function renderPosts(postList) {
   const postContainer = document.querySelector("#postContent");
+  const media = document.querySelector('.img-wrapper')
+
+  
 
   // POST RENDER
   postContainer.innerHTML = "";
   for (let i = 0; i < postList.length; i++) {
     const postRender = postList[i];
+    
+    console.log(postRender)
 
     const localUser = localStorage.getItem("name");
 
@@ -57,6 +62,13 @@ export async function renderPosts(postList) {
                                             <p class="post-content">${
                                               postRender.body
                                             }</p>
+                                            ${postRender.media ?
+                                            `<div class="img-wrapper">
+                                              <img src="${postRender.media}" alt=">
+                                            </div>
+                                            `
+                                            : ""
+                                          }
                                         </div>
                                         <div class="d-flex justify-content-between">
                                             <p class="post-content green-text ms-5">
@@ -82,8 +94,10 @@ export async function renderPosts(postList) {
                                                  : `<img src="/assets/components/icons/heart-empty.png" class="heart" id="react-${postRender.id}">`
                                              }
                                         </div>
-                                        `;
+                                        `;            
   }
+
+
 
   // REMOVE POST
 

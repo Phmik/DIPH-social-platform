@@ -24,7 +24,6 @@ export async function setUpdateFormListener() {
 
       // API SEND
       if (confirm("Are you sure you want to update this post?")) {
-        alert("Post updated! Cheerio");
         updatePost(post);
       } else {
         alert("Did not update your post");

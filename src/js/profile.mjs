@@ -102,6 +102,7 @@ if (posts.length === 0) {
   const sortedPosts = posts.sort((a, b) => a.id - b.id);
 
   for (let i = sortedPosts.length - 1; i >= 0; i--) {
+    console.log(sortedPosts[i])
     postWrapper.innerHTML += `
         <div class="card d-flex flex-column p-3" id="${sortedPosts[i].id}">
             <div class="d-flex justify-content-between">
@@ -137,6 +138,9 @@ if (posts.length === 0) {
                 <div class="ms-5" >
                     <h4 class="post-title">${sortedPosts[i].title}</h4>
                     <p class="post-content">${sortedPosts[i].body}</p>
+                    <div class="img-wrapper">
+                      <img src="${sortedPosts[i].media}" alt="">
+                    </div>
                 </div>
             </a>
         </div>`;

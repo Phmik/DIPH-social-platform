@@ -42,9 +42,12 @@ const userLink = document.querySelector(".user-link");
 const postTitle = document.querySelector(".post-title");
 const postContent = document.querySelector(".post-content");
 const commentCounter = document.querySelector("#comment-counter");
+
 // const reactCounter = document.querySelector("#react-counter");
+
 const postDate = document.querySelector(".post-date");
 const postOptions = document.querySelector(".post-options");
+const postMedia = document.querySelector('.img-wrapper');
 const author = post.author;
 
 userLink.href = `./profile.html?name=${author.name}`;
@@ -52,6 +55,7 @@ postAuthor.innerHTML = author.name;
 postTitle.innerHTML = post.title;
 postContent.innerHTML = post.body;
 commentCounter.innerHTML = post._count.comments;
+postMedia.innerHTML += `<img src="${post.media}" alt="">`
 // reactCounter.innerHTML = post._count.reactions;
 postDate.innerHTML = returnPostDate(new Date(post.created));
 postOptions.innerHTML = `
@@ -110,6 +114,13 @@ for (let i = 0; i < comments.length; i++) {
         <div class="ms-5">
             <h4 class="post-title"${comments[i].title}></h4>
             <p class="post-content">${comments[i].body}</p>
+            ${postRender.media ?
+              `<div class="img-wrapper">
+                <img src="${postRender.media}" alt=">
+              </div>
+              `
+              : ""
+            }
         </div>
         <div class="d-flex justify-content-between">
             <p class="post-content text-bg green-text ms-5">
