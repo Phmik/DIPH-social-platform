@@ -1,5 +1,5 @@
 import { postLogIn } from "./modules/postLogIn.mjs";
-import {checkRememberMe} from "./modules/rememberMe.mjs"
+import { checkRememberMe } from "./modules/rememberMe.mjs";
 
 const API_URL = "https://nf-api.onrender.com";
 
@@ -12,41 +12,42 @@ const LOGIN_URL = `${API_URL}/api/v1/social/auth/login`;
 
 // "Remember Me" checkbox
 if (localStorage.checkbox && localStorage.checkbox !== "") {
-    rememberCheck.setAttribute("checked", "checked");
-    inputEmail.value = localStorage.email;
-} if (!localStorage.checkbox && localStorage.checkbox === "") {
-    rememberCheck.removeAttribute("checked");
-    inputEmail.value = "";
+  rememberCheck.setAttribute("checked", "checked");
+  inputEmail.value = localStorage.email;
+}
+if (!localStorage.checkbox && localStorage.checkbox === "") {
+  rememberCheck.removeAttribute("checked");
+  inputEmail.value = "";
 }
 
-//  INDIVIDUAL E-MAIL 
+//  INDIVIDUAL E-MAIL
 function validateEmail(email) {
-    const regEx = /([\w\-\.])+@(stud\.)?noroff\.no/;
-    const patternMatches = regEx.test(email);
-    return patternMatches;
+  const regEx = /([\w\-\.])+@(stud\.)?noroff\.no/;
+  const patternMatches = regEx.test(email);
+  return patternMatches;
 }
 
 // VALIDATE INPUTS
 function validateLogIn(e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    const userInput = {
-        email: inputEmail.value,
-        password: inputPassword.value
-    }
+  const userInput = {
+    email: inputEmail.value.trim(),
+    password: inputPassword.value,
+  };
 
-    if(!validateEmail(inputEmail.value)) {
-        const emailHelp = document.querySelector("#emailHelp");
-        emailHelp.style.color = "#FF6F6C";
-    } else {
-        emailHelp.style.color = "";
-    }
+  if (!validateEmail(inputEmail.value)) {
+    const emailHelp = document.querySelector("#emailHelp");
+    emailHelp.style.color = "#FF6F6C";
+  } else {
+    emailHelp.style.color = "";
+  }
 
-    if(validateEmail(inputEmail.value)){
-        postLogIn(LOGIN_URL, userInput);
-    } 
+  if (validateEmail(inputEmail.value)) {
+    postLogIn(LOGIN_URL, userInput);
+  }
 
-    checkRememberMe(rememberCheck, inputEmail);
+  checkRememberMe(rememberCheck, inputEmail);
 }
 
 form.addEventListener("submit", validateLogIn);

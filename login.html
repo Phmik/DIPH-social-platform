@@ -1,78 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.typekit.net/tat3ron.css">
-    <link rel="stylesheet" href="dist/css/login.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://use.typekit.net/tat3ron.css" />
+    <link rel="stylesheet" href="dist/css/login.css" />
     <title>DIPH | Log In</title>
-</head>
-<body class="d-flex flex-column min-vh-100">
+  </head>
+  <body class="d-flex flex-column min-vh-100">
     <header>
-        <div class="d-flex align-items-center justify-content-between">
-            <div class="justify-content-start d-flex align-items-center">
-                <a href="/index.html" class="home-link d-flex">
-                    <img src="assets/components/logo/DIPH-logo.png" alt="Picture of DIPH logo">
-                    <span class="align-self-center">DIPH</span>
-                </a>
-            </div>
-            <nav class="nav">
-                <ul class="nav">
-                    <li class="nav-item flex-column" id="login-header">
-                        <a href="/login.html" class="nav-link">
-                            <div class="img-container">
-                                <img src="assets/components/icons/key-icon.png" alt="picture of key for login" class="rounded-circle">
-                            </div>
-                            login
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="justify-content-start d-flex align-items-center">
+          <a href="/index.html" class="home-link d-flex">
+            <img
+              src="assets/components/logo/DIPH-logo.png"
+              alt="Picture of DIPH logo"
+            />
+            <span class="align-self-center">DIPH</span>
+          </a>
         </div>
-       </header> 
-    <main class="d-flex align-items-center flex-column mb-3">
-        <div class="card d-flex m-4 p-4">
-            <div class="login-head-container justify-content-start d-flex align-items-center">
-                <img src="assets/components/icons/key-icon.png" alt="picture of a key for log in">
-                <span class="align-self-center mx-4">Log in</span>
-            </div>
-        <form action="">
-            <fieldset>
-                <div class="row g-3 justify-content-center">
-                    <div class="col-auto">
-                        <div class="form-feedback"></div>
-                        <label for="inputEmail" class="col-form-label">E-mail</label>
-                        <input type="email" id="inputEmail" class="form-control rounded-pill" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">
-                            Please enter your E-mail address
-                        </div>
-                        <label for="inputPassword" class="col-form-label">Password</label>
-                        <input type="password" id="inputPassword" class="form-control rounded-pill" aria-describedby="passwordHelp">
-                        <div id="passwordHelp" class="form-text">
-                            Please enter your password 
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" id="rememberCheck" class="form-check-input remember-checkbox" >
-                            <label for="rememberCheck" class="form-check-label">
-                                Remember me
-                            </label>
-                        </div>
-                        <div class="d-flex justify-content-center row text-center">
-                        <button type="submit" class="btn btn-primary my-3" id="loginBtn">
-                            Log in
-                        </button>
-                        <a href="/signup.html" class="user-link">Don't have a user? Sign up! </a>
-                    </div>
-                    </div>
+        <nav class="nav">
+          <ul class="nav">
+            <li class="nav-item flex-column" id="login-header">
+              <a href="/login.html" class="nav-link">
+                <div class="img-container">
+                  <img
+                    src="assets/components/icons/key-icon.png"
+                    alt="picture of key for login"
+                    class="rounded-circle"
+                  />
                 </div>
-            </fieldset>
+                login
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="d-flex align-items-center flex-column mb-3">
+      <div class="card d-flex m-4 p-4">
+        <div
+          class="login-head-container justify-content-start d-flex align-items-center"
+        >
+          <img
+            src="assets/components/icons/key-icon.png"
+            alt="picture of a key for log in"
+          />
+          <span class="align-self-center mx-4">Log in</span>
+        </div>
+        <form action="">
+          <fieldset>
+            <div class="row g-3 justify-content-center">
+              <div class="col-auto">
+                <div class="form-feedback"></div>
+                <label for="inputEmail" class="col-form-label">E-mail</label>
+                <input
+                  type="email"
+                  id="inputEmail"
+                  class="form-control rounded-pill"
+                  aria-describedby="emailHelp"
+                />
+                <div id="emailHelp" class="form-text">
+                  Please enter your E-mail address
+                </div>
+                <label for="inputPassword" class="col-form-label"
+                  >Password</label
+                >
+                <input
+                  type="password"
+                  id="inputPassword"
+                  class="form-control rounded-pill"
+                  aria-describedby="passwordHelp"
+                />
+                <div id="passwordHelp" class="form-text">
+                  Please enter your password
+                </div>
+                <div class="form-check">
+                  <input
+                    type="checkbox"
+                    id="rememberCheck"
+                    class="form-check-input remember-checkbox"
+                  />
+                  <label for="rememberCheck" class="form-check-label">
+                    Remember me
+                  </label>
+                </div>
+                <div class="d-flex justify-content-center row text-center">
+                  <button
+                    type="submit"
+                    class="btn btn-primary my-3"
+                    id="loginBtn"
+                  >
+                    Log in
+                  </button>
+                  <a href="/signup.html" class="user-link"
+                    >Don't have a user? Sign up!
+                  </a>
+                </div>
+              </div>
+            </div>
+          </fieldset>
         </form>
-    </div>
+      </div>
     </main>
     <footer class="mt-auto">
-        <p class="text-center">&copy; Dina Olufsen & Phillip Mikalsen</p>
+      <p class="text-center">&copy; Dina Olufsen & Phillip Mikalsen</p>
     </footer>
     <script type="module" src="./src/js/login.mjs"></script>
-</body>
+  </body>
 </html>
