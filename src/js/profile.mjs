@@ -1,4 +1,5 @@
 import { followUnfollow } from "./modules/followUnfollow.mjs";
+import { nicePostDate } from "./modules/constants.mjs";
 import { getWithToken } from "./modules/getWithToken.mjs";
 import { redirectToLogIn } from "./modules/redirectToLogIn.mjs";
 import { putWithToken } from "./modules/putWithToken.mjs";
@@ -141,6 +142,11 @@ if (posts.length === 0) {
                     <div class="img-wrapper">
                       <img src="${sortedPosts[i].media}" alt="">
                     </div>
+                        <p class="post-content green-text">
+                            ${nicePostDate(
+                              new Date(sortedPosts[i].updated)
+                            )}
+                        </p>
                 </div>
             </a>
         </div>`;

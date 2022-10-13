@@ -1,5 +1,5 @@
 import * as posts from "./postGather.mjs";
-import { returnPostDate } from "../constants.mjs";
+import { nicePostDate } from "../constants.mjs";
 import { handleSearchControlUp } from "./filterPosts.mjs";
 
 export async function renderPosts(postList) {
@@ -69,13 +69,13 @@ export async function renderPosts(postList) {
                                             `
                                             : ""
                                           }
-                                        </div>
-                                        <div class="d-flex justify-content-between">
-                                            <p class="post-content green-text ms-5">
-                                                ${returnPostDate(
+                                          <div class="d-flex">
+                                            <p class="post-content green-text ">
+                                                ${nicePostDate(
                                                   new Date(postRender.updated)
                                                 )}
                                             </p>
+                                        </div>
                                         </div>
                                         <div class="small-icons d-flex">
                                             <div class="me-3">

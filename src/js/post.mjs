@@ -2,7 +2,7 @@ import { getWithToken } from "./modules/getWithToken.mjs";
 import { postWithToken } from "./modules/postWithToken.mjs";
 import { putWithToken } from "./modules/putWithToken.mjs";
 import { redirectToLogIn } from "./modules/redirectToLogIn.mjs";
-import { returnPostDate } from "./modules/constants.mjs";
+import { nicePostDate } from "./modules/constants.mjs";
 import * as posts from "./modules/posts/postGather.mjs";
 
 const queryString = document.location.search;
@@ -57,7 +57,7 @@ postContent.innerHTML = post.body;
 commentCounter.innerHTML = post._count.comments;
 postMedia.innerHTML += `<img src="${post.media}" alt="">`
 // reactCounter.innerHTML = post._count.reactions;
-postDate.innerHTML = returnPostDate(new Date(post.created));
+postDate.innerHTML = nicePostDate(new Date(post.created));
 postOptions.innerHTML = `
 ${
   localUser === author.name
@@ -124,7 +124,7 @@ for (let i = 0; i < comments.length; i++) {
         </div>
         <div class="d-flex justify-content-between">
             <p class="post-content text-bg green-text ms-5">
-                ${returnPostDate(new Date(comments[i].created))}
+                ${nicePostDate(new Date(comments[i].created))}
             </p>
         </div>
     </div>`;
