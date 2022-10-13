@@ -8,158 +8,159 @@
 @import "components/_header";
 
 main {
-    & .banner {
-        background-color: $dark-red;
-        height: 15rem;
+  & .banner {
+    background-color: $dark-red;
+    height: 15rem;
 
-        & .banner-gradient {
-            z-index: 2;
-            position: relative;
-            background: linear-gradient(0deg, rgba(51,51,51,1) 0%, rgba(0,0,0,0) 100%);
+    & .banner-gradient {
+      z-index: 2;
+      position: relative;
+      background: linear-gradient(
+        0deg,
+        rgba(51, 51, 51, 1) 0%,
+        rgba(0, 0, 0, 0) 100%
+      );
 
-            & .banner-img-wrapper {
-                position: absolute;
-                top: 0;
-                left: 0;
-                z-index: 1;
-            }
+      & .banner-img-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+      }
 
-            & .dropdown {
-                z-index: 4;
-                & .dropdown-toggle {
-                    width: 1.8rem;
-                    height: 1.8rem;
+      & .dropdown {
+        z-index: 4;
+        & .dropdown-toggle {
+          width: 1.8rem;
+          height: 1.8rem;
 
-                    &::after {
-                        border: none;
-                    }
-                    & img {
-                        height: 1.8rem;
-                    }
-                }
-
-                & #edit-banner, 
-                & #edit-profile-image {
-                    cursor: pointer;
-                }
-            }
-
-            & .profile-info {
-                margin-left: 10%;
-            }
-
-            & div {
-                z-index: 3;
-
-                & #profilePic {
-                    transform: translateY(20%);
-                    height: 10rem;
-                    width: 10rem;
-                    object-fit: cover;
-                }
-
-                & .btn {
-                    height: 2.4rem;
-                }
-            }
+          &::after {
+            border: none;
+          }
+          & img {
+            height: 1.8rem;
+          }
         }
-    }
 
-    & .post-input-card {
-        border: solid 2px $dark-red;
-    }
-
-    & .profile-img-wrapper {
-        height: 3rem;
-        width: 3rem;
-
-        & img {
-            height: 2.5rem;
-            width: 2.5rem;
-            object-fit: cover;
+        & #edit-banner,
+        & #edit-profile-image {
+          cursor: pointer;
         }
-    }
+      }
 
-    & #titleInput {
-        height: 4.5rem;
-        background-color: $gray;
-        color: $white;
-    }
+      & .profile-info {
+        margin-left: 10%;
+      }
 
-    & #postInput {
-        background-color: $gray;
-        color: $white;
-    }
+      & div {
+        z-index: 3;
 
-    & .small-icons {
-
-        & img {
-            height: 1.5rem;
-            width: 1.5rem;
+        & #profilePic {
+          transform: translateY(20%);
+          height: 10rem;
+          width: 10rem;
+          object-fit: cover;
         }
-    }
 
-    & .modal-wrap {
-        z-index: 100;
-        background-color: #0000005b;
+        & .btn {
+          height: 2.4rem;
+        }
+      }
     }
+  }
+
+  & .post-input-card {
+    border: solid 2px $dark-red;
+  }
+
+  & .profile-img-wrapper {
+    height: 3rem;
+    width: 3rem;
+
+    & img {
+      height: 2.5rem;
+      width: 2.5rem;
+      object-fit: cover;
+    }
+  }
+
+  & #titleInput {
+    height: 4.5rem;
+    background-color: $gray;
+    color: $white;
+  }
+
+  & #postInput {
+    background-color: $gray;
+    color: $white;
+  }
+
+  & .small-icons {
+    & img {
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+  }
+
+  & .modal-wrap {
+    z-index: 100;
+    background-color: #0000005b;
+  }
 }
 
 .user-name {
-    & a {
-        color: $white;
-        text-decoration: none;
-    }
-    & a:hover {
-        color: $link-color;
-    }
+  & a {
+    color: $white;
+    text-decoration: none;
+  }
+  & a:hover {
+    color: $link-color;
+  }
 }
-
 
 .post-title,
 .post-content {
-    color: $white;
-    text-decoration: none; 
+  color: $white;
+  text-decoration: none;
 }
 
 .no-style,
 .no-style:hover {
-    color: $white;
-    text-decoration: none;
+  color: $white;
+  text-decoration: none;
 }
 
 .post-options {
-    max-width: 1.5rem;
-    max-height: 1.5rem;
+  max-width: 1.5rem;
+  max-height: 1.5rem;
 
-    & .dropdown-toggle::after {
-        border: none;
-    }
+  & .dropdown-toggle::after {
+    border: none;
+  }
 
-    & img {
-        width: 1.5rem;
-        height: 1.5rem;
-    }
-
+  & img {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 }
 
 .green-text {
-    color: #43aa97;
+  color: #43aa97;
 }
 
 @media (max-width: 768px) {
-   main {
-        & .banner {
-        height: 11rem;
+  main {
+    & .banner {
+      height: 11rem;
 
-            & .banner-gradient .profile-info {
-                margin-left: 0;
-    
-                & #profilePic {
-                width: 6rem;
-                height: 6rem;
-                }
-            }
-        } 
+      & .banner-gradient .profile-info {
+        margin-left: 0;
+
+        & #profilePic {
+          width: 6rem;
+          height: 6rem;
+        }
+      }
     }
+  }
 }
