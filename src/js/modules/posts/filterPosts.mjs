@@ -5,7 +5,6 @@ import { renderPosts } from "./renderPosts.mjs";
 
 export async function setupPage() {
   const allPosts = await getPosts();
-  console.log(allPosts);
   renderPosts(allPosts);
 
   const sortSelect = document.querySelector("#filterSelect");
@@ -79,11 +78,15 @@ function onSortSelect(event, allPosts = []) {
 // SEARCH FUNCTION
 
 export function handleSearchControlUp(event, allPosts = []) {
-  const inputValue = event.currentTarget.value.toLowerCase();
+  const inputValue = event.target.value.toLowerCase();
   const result = allPosts.filter((post) => {
-    if (post.title.toLowerCase().startsWith(inputValue)) {
-      return true;
+    if(post.title.toLowerCase().startsWith(inputValue)) {
+
+      return true
     }
-  });
-  return renderPosts(result);
-}
+    
+  })
+
+return renderPosts(result)
+
+    }

@@ -164,3 +164,10 @@ main {
     }
   }
 }
+
+
+.img-wrapper {
+  & img {
+    max-width: 30rem;
+  }
+}

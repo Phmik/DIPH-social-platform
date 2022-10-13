@@ -1,5 +1,5 @@
 import * as posts from "./postGather.mjs";
-import { returnPostDate } from "../constants.mjs";
+import { nicePostDate } from "../constants.mjs";
 import { handleSearchControlUp } from "./filterPosts.mjs";
 
 export async function renderPosts(postList) {
@@ -9,7 +9,6 @@ export async function renderPosts(postList) {
   postContainer.innerHTML = "";
   for (let i = 0; i < postList.length; i++) {
     const postRender = postList[i];
-
     const localUser = localStorage.getItem("name");
 
     postContainer.innerHTML += `<div class="card d-flex flex-column p-3 mt-3" id="${
@@ -57,13 +56,20 @@ export async function renderPosts(postList) {
                                             <p class="post-content">${
                                               postRender.body
                                             }</p>
-                                        </div>
-                                        <div class="d-flex justify-content-between">
-                                            <p class="post-content green-text ms-5">
-                                                ${returnPostDate(
+                                            ${postRender.media ?
+                                            `<div class="img-wrapper">
+                                              <img src="${postRender.media}" alt=">
+                                            </div>
+                                            `
+                                            : ""
+                                          }
+                                          <div class="d-flex">
+                                            <p class="post-content green-text ">
+                                                ${nicePostDate(
                                                   new Date(postRender.updated)
                                                 )}
                                             </p>
+                                        </div>
                                         </div>
                                         <div class="small-icons d-flex">
                                             <div class="me-3">
@@ -82,8 +88,10 @@ export async function renderPosts(postList) {
                                                  : `<img src="/assets/components/icons/heart-empty.png" class="heart" id="react-${postRender.id}">`
                                              }
                                         </div>
-                                        `;
+                                        `;            
   }
+
+
 
   // REMOVE POST
 
