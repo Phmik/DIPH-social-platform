@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="See their DIPH profile here! DIPH is a social media application where you can interact with your friends online.">
     <link rel="stylesheet" href="https://use.typekit.net/tat3ron.css" />
     <link rel="stylesheet" href="dist/css/profile.css" />
     <title>DIPH | Profile</title>
@@ -58,6 +59,9 @@
             class="banner-gradient row flex-column justify-content-between w-100 h-100 m-0"
           >
             <div
+              class="real-gradient d-flex h-100 w-100 px-0 justify-content-center"
+            ></div>
+            <div
               class="banner-img-wrapper d-flex h-100 w-100 px-0 justify-content-center"
             ></div>
             <div
@@ -72,7 +76,7 @@
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                <img src="/assets/components/icons/options-icon.png" alt="" />
+                <img src="/assets/components/icons/options-icon.png" alt="options dropdown icon" />
               </div>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <li>
@@ -85,19 +89,19 @@
                 </li>
               </ul>
             </div>
-            <div class="d-flex align-items-end col-10 profile-info">
+            <div class="profile-info d-flex align-items-end col-11 col-md-9">
               <img
                 class="rounded-circle"
                 id="profilePic"
                 src="/assets/components/icons/account-icon.png"
-                alt=""
+                alt="User Image"
               />
               <div class="profile-text d-flex flex-column ms-2 ms-md-4">
-                <div class="d-flex align-items-center mb-3">
+                <div class="d-flex align-items-center mb-1">
                   <h1 class="me-3 mb-0 profile-name"></h1>
                   <button class="btn px-3 px-md-4 follow">Follow</button>
                 </div>
-                <!-- <div>Description</div> -->
+                <div class="mb-2">Followers: <span class="followers-count me-3">0</span> Following: <span class="following-count">0</span></div>
               </div>
             </div>
           </div>

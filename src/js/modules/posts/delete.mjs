@@ -23,8 +23,10 @@ export async function removePost() {
         }
       );
       
-      
-        window.location.href = "./index.html";
+      const windowHref = window.location.href;
+      if(windowHref !== `/post.html?id=${postId.id}`) {
+        window.location.href = "/index.html";
+      }
       return response.json();
       }
     }
