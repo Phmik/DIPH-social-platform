@@ -2,7 +2,6 @@ import { API_SOCIAL_URL } from "../constants.mjs";
 
 import { fetchWithToken } from "../fetchWithToken.mjs";
 
-const path = location.pathname;
 const action = "/posts";
 const methodGET = "GET";
 const author = "?_author=true&_comments=true&_reactions=true";
@@ -12,8 +11,8 @@ export async function removePost() {
   const response = await fetchWithToken(viewPostURL, {
     methodGET,
   });
-
   const postIdResult = await response.json();
+  
   for (let i = 0; i < postIdResult.length; i++) {
     const postId = postIdResult[i];
     if (localStorage.getItem("name") === postId.author.name) {
@@ -23,8 +22,10 @@ export async function removePost() {
           method: "delete",
         }
       );
-      window.location.href = "./index.html";
+      
+      
+        window.location.href = "./index.html";
       return response.json();
+      }
     }
   }
-}
