@@ -36,10 +36,10 @@ const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 let name = params.get("name");
 
-// Check if the user is the owner of this profile
 const userName = localStorage.getItem("name");
 const followBtn = document.querySelector(".follow");
 const userImage = document.querySelector(".user-image");
+// Check if the user is the owner of this profile
 if (!name) {
   name = userName;
 } else {
@@ -53,12 +53,18 @@ if (!name) {
 // Get profile info
 const USER_URL = `${API_URL}/api/v1/social/profiles/${name}?_posts=true&_author=true&_following=true&_followers=true`;
 const userData = await getWithToken(accessToken, USER_URL);
-
+console.log(userData)
 const profileName = document.querySelector(".profile-name");
 profileName.innerHTML = name;
 if (userName === name) {
   userImage.src = userData.avatar;
 }
+
+// Display follow numbers
+const followersCount = document.querySelector(".followers-count");
+const followingCount = document.querySelector(".following-count");
+followersCount.innerHTML = userData._count.followers;
+followingCount.innerHTML = userData._count.following;
 
 //FOLLOW
 const UNFOLLOW_URL = `${API_URL}/api/v1/social/profiles/${name}/unfollow`;
@@ -103,7 +109,6 @@ if (posts.length === 0) {
   const sortedPosts = posts.sort((a, b) => a.id - b.id);
 
   for (let i = sortedPosts.length - 1; i >= 0; i--) {
-    console.log(sortedPosts[i])
     postWrapper.innerHTML += `
         <div class="card d-flex flex-column p-3" id="${sortedPosts[i].id}">
             <div class="d-flex justify-content-between">
@@ -111,8 +116,8 @@ if (posts.length === 0) {
                     <div class="profile-img-wrapper">
                     ${
                       userData.avatar
-                        ? `<img src="${userData.avatar}" class="rounded-circle"  onerror="this.src='/assets/components/icons/account-icon.png'">`
-                        : `<img src="/assets/components/icons/account-icon.png" class="rounded-circle">`
+                        ? `<img src="${userData.avatar}" class="rounded-circle" alt="User Image" onerror="this.src='/assets/components/icons/account-icon.png'">`
+                        : `<img src="/assets/components/icons/account-icon.png" alt="User Image" class="rounded-circle">`
                     }
                     </div>
                     <h3 class="user-name"><a href="./profile.html?name=${
@@ -171,8 +176,8 @@ if (following.length === 0) {
                 <div class="profile-img-wrapper d-flex align-items-center w-100">
                 ${
                   following[i].avatar
-                    ? `<img class="rounded-circle" src="${following[i].avatar}" onerror="this.src='/assets/components/icons/account-icon.png'">`
-                    : `<img class="rounded-circle" src="/assets/components/icons/account-icon.png" onerror="this.src='/assets/components/icons/account-icon.png'">`
+                    ? `<img class="rounded-circle" src="${following[i].avatar}" alt="User Image" onerror="this.src='/assets/components/icons/account-icon.png'">`
+                    : `<img class="rounded-circle" src="/assets/components/icons/account-icon.png" alt="User Image" onerror="this.src='/assets/components/icons/account-icon.png'">`
                 }
                     <div class="ms-2">
                         <h5 class="mb-0">${following[i].name}</h5>

@@ -23,8 +23,7 @@ export async function removePost() {
         }
       );
       
-      
-        window.location.href = "./index.html";
+      window.location.reload();
       return response.json();
       }
     }

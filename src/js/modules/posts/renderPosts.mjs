@@ -58,7 +58,7 @@ export async function renderPosts(postList) {
                                             }</p>
                                             ${postRender.media ?
                                             `<div class="img-wrapper">
-                                              <img src="${postRender.media}" alt=">
+                                              <img src="${postRender.media}" alt="">
                                             </div>
                                             `
                                             : ""
