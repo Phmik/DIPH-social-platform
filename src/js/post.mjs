@@ -47,7 +47,7 @@ const commentCounter = document.querySelector("#comment-counter");
 
 const postDate = document.querySelector(".post-date");
 const postOptions = document.querySelector(".post-options");
-const postMedia = document.querySelector('.img-wrapper');
+const postMedia = document.querySelector('.post-img-wrapper');
 const author = post.author;
 
 userLink.href = `./profile.html?name=${author.name}`;
@@ -55,7 +55,10 @@ postAuthor.innerHTML = author.name;
 postTitle.innerHTML = post.title;
 postContent.innerHTML = post.body;
 commentCounter.innerHTML = post._count.comments;
-postMedia.innerHTML += `<img src="${post.media}" alt="">`
+if(post.media){
+  postMedia.innerHTML += `<img src="${post.media}" alt="">`
+}
+
 // reactCounter.innerHTML = post._count.reactions;
 postDate.innerHTML = nicePostDate(new Date(post.created));
 postOptions.innerHTML = `
@@ -67,7 +70,7 @@ ${
                 <img src="./assets/components/icons/options-icon.png" alt="edit wheel for posts">
             </div>
             <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton">
-                <li><a class="dropdown-item" href="./edit.html?id=${author.id}" id="editPost">Edit Post</a></li>
+                <li><a class="dropdown-item" href="./edit.html?id=${post.id}" id="editPost">Edit Post</a></li>
                 <li><button class="dropdown-item" id="removePost"> Delete post</button></li>
             </ul>
         </div>
@@ -89,42 +92,35 @@ if (authorData.name === localUser) {
 
 // Display comments
 const comments = post.comments;
+const sortedComments = comments.sort((a, b) => a.id - b.id);
 const postWrapper = document.querySelector(".post-wrapper");
 
 postWrapper.innerHTML = "";
 
 for (let i = 0; i < comments.length; i++) {
-  const COMMENTER_URL = `${API_URL}/api/v1/social/profiles/${comments[i].owner}?_posts=true&_author=true&_following=true&_followers=true`;
+  const COMMENTER_URL = `${API_URL}/api/v1/social/profiles/${sortedComments[i].owner}?_posts=true&_author=true&_following=true&_followers=true`;
   const commenterData = await getWithToken(accessToken, COMMENTER_URL);
 
   postWrapper.innerHTML += `
-    <div id="${comments[i].id}" class="card d-flex flex-column p-3 mt-3">
-        <a href="./profile.html?name=${comments[i].owner}">
+    <div id="${sortedComments[i].id}" class="card d-flex flex-column p-3 mt-3">
+        <a href="./profile.html?name=${sortedComments[i].owner}">
             <div class="d-flex align-items-center">
                 <div class="profile-img-wrapper">
                 ${
                   commenterData.avatar
-                    ? `<img src="${commenterData.avatar}" class="rounded-circle"  onerror="this.src='/assets/components/icons/account-icon.png'">`
-                    : `<img src="/assets/components/icons/account-icon.png" class="rounded-circle">`
+                    ? `<img src="${commenterData.avatar}" class="rounded-circle" alt="User Image" onerror="this.src='/assets/components/icons/account-icon.png'">`
+                    : `<img src="/assets/components/icons/account-icon.png" alt="User Image" class="rounded-circle">`
                 }
                 </div>
-                <h3 class="no-style user-hover">${comments[i].owner}</h3>
+                <h3 class="no-style user-hover">${sortedComments[i].owner}</h3>
             </div>
         </a>
         <div class="ms-5">
-            <h4 class="post-title"${comments[i].title}></h4>
-            <p class="post-content">${comments[i].body}</p>
-            ${postRender.media ?
-              `<div class="img-wrapper">
-                <img src="${postRender.media}" alt=">
-              </div>
-              `
-              : ""
-            }
+            <p class="post-content">${sortedComments[i].body}</p>
         </div>
         <div class="d-flex justify-content-between">
             <p class="post-content text-bg green-text ms-5">
-                ${nicePostDate(new Date(comments[i].created))}
+                ${nicePostDate(new Date(sortedComments[i].created))}
             </p>
         </div>
     </div>`;
