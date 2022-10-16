@@ -1,0 +1,144 @@
+// CUSTOM
+
+@import "components/_variables";
+@import "components/_buttons";
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+// COMPONENTS
+@import "components/layout.scss";
+@import "components/_header";
+
+body {
+  & .post-input-card {
+    border: solid 2px $dark-red;
+  }
+
+  & .profile-img-wrapper {
+    height: 3rem;
+    width: 3rem;
+
+    & img {
+      height: 2.5rem;
+      width: 2.5rem;
+      object-fit: cover;
+    }
+  }
+
+  & #titleInput {
+    height: 4.5rem;
+    background-color: $gray;
+    color: $white;
+  }
+
+  & #postInput {
+    background-color: $gray;
+    color: $white;
+  }
+
+  & .search-wrap {
+    background-color: $white;
+    padding: 0.5rem;
+    height: 2.5rem;
+
+    & #searchInput {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  }
+
+  & #filterSelect {
+    background-color: $gray;
+    color: $white;
+    border: none;
+  }
+
+  & .small-icons {
+    & img {
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+  }
+
+  & .main-post {
+    border: solid 3px $green;
+    min-height: 12rem;
+  }
+
+  & .green-text {
+    color: #43aa97;
+  }
+
+  & .dropdown {
+    z-index: 4;
+    & .dropdown-toggle {
+      width: 1.8rem;
+      height: 1.8rem;
+
+      &::after {
+        border: none;
+      }
+      & img {
+        height: 1.5rem;
+        width: 1.5rem;
+      }
+    }
+
+    & #edit-banner,
+    & #edit-profile-image {
+      cursor: pointer;
+    }
+  }
+}
+
+.post-title {
+  text-transform: none;
+}
+
+.no-style,
+.no-style:hover {
+  color: $white;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.user-hover:hover {
+  color: $link-color;
+}
+
+.post-options {
+  max-width: 1rem;
+  max-height: 1rem;
+
+  & img {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+.img-wrapper {
+  max-height: 15rem;
+  width: 90%;
+  overflow: hidden;
+  & img {
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.post-img-wrapper {
+  width: 90%;
+  overflow: hidden;
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

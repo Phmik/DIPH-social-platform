@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The main page on DIPH where you can look at all the posts on the feed! DIPH is a social media application where you can interact with your friends online.">
+    <meta author="Dina Olufsen & Phillip Mikalsen">
+    <link rel="stylesheet" href="https://use.typekit.net/tat3ron.css">
+    <link rel="stylesheet" href="dist/css/index.css">
+    <title>DIPH | Home</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+   <header>
+    <div class="d-flex align-items-center justify-content-between">
+        <div class="justify-content-start d-flex align-items-center">
+            <a href="/index.html" class="home-link d-flex">
+                <img src="assets/components/logo/DIPH-logo.png" alt="Picture of DIPH logo">
+                <span class="align-self-center">DIPH</span>
+            </a>
+        </div>
+        <nav class="nav">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a href="/profile.html" class="nav-link">
+                        <div class="img-container">
+                            <img src="assets/components/icons/account-icon.png" alt="User Image" class="rounded-circle user-image" onerror="this.src='/assets/components/icons/account-icon.png'">
+                        </div>
+                        profile
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+   </header> 
+   <main class="container-fluid align-items-center flex-column ">
+        <h1 class="visually-hidden">DIPH home page</h1>
+        <section class="row justify-content-center">
+            <div class="post-input-card card p-3 mt-5 col-11 col-sm-9 col-md-7">
+                <form class="write-post-wrapper d-flex flex-column" action="https://nf-api.onrender.com/api/v1/social/posts/?_author=true" id="newPost" method="post">
+                    <div class="d-flex w-100 flex-column">
+                        <div class="d-flex align-items-center">
+                            <div class="profile-img-wrapper">
+                                <img src="/assets/components/icons/account-icon.png" alt="User Image" class="rounded-circle user-image" onerror="this.src='/assets/components/icons/account-icon.png'">
+                            </div>
+                            <form action="https://nf-api.onrender.com/api/v1/social/posts/?_author=true" id="newPost" method="post">
+                            <h2 class="ms-2 self-user"></h2>
+                        </div>
+                        <div class="form-floating ms-5">
+                            <input class="rounded-pill form-control fs-4" id="titleInput" placeholder="Write title here" name="title" required>
+                            <label for="titleInput" class="fw-lighter fs-5">Your Title</label>
+                        </div>
+                        <hr class="my-1">
+                        <div class="form-floating ms-5">
+                            <textarea class="form-control" id="postInput" placeholder="Write message here" name="body" required></textarea>
+                            <label for="postInput" class="fw-lighter">Write a message...</label>
+                        </div>
+                    </div>
+                    <button class="btn w-25 align-self-end rounded" id="postButton">Post</button>
+                </form>
+            </div>
+        </section>
+        <section class="row justify-content-center">
+            <div class="col-11 col-sm-9 col-md-7 px-0 my-5">
+                <form id="selectForm" class="row justify-content-between mx-0">
+                    <div class="search-wrap d-flex rounded-pill col-7 col-sm-6 col-md-5">
+                        <img class="search-icon" alt="magnifying glass icon" src="/assets/components/icons/search-icon.png">              
+                        <input class="form-control" type="search" id="searchInput">
+                    </div>
+                    <select class="rounded-pill px-3 col-4 col-sm-3" id="filterSelect">
+                        <option>Filter...</option>
+                        <option value="newest" id="filterByLatestPosts">Latest posts</option>
+                        <option value="oldest" id="filterByOldest">Oldest posts</option>
+                        <option value="username" id="filterByUsername">By username</option>
+                        <option value="title" id="filterByTitle">By title</option>
+                    </select>
+                </form>
+                <div class="post-wrapper d-flex flex-column" id="postContent">
+                    <div class="spinner-border text-dark mt-3 align-self-center" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>    
+                </div>
+            </div>
+        </section>
+   </main>
+   <footer class="mt-auto">
+        <p class="text-center">&copy; Dina Olufsen & Phillip Mikalsen</p>
+   </footer>
+   <script defer src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+   <script type="module" src="./src/js/index.mjs"></script>
+</body>
+</html>
